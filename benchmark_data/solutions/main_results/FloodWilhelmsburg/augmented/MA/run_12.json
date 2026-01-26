@@ -1,0 +1,5640 @@
+{
+  "overall_cost": 237.29629215686273,
+  "best_solution": [
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          1
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "1": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          2
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          1
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "1": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          1
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "1": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          1
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "1": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          1
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "1": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          1
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "1": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          3
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "3": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          1
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "1": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          1
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "1": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          3
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "3": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          1
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "1": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          1
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "1": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 2
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 2
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 7
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          1
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "1": 1
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "2": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 7
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "2": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 7
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "2": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 7
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 7
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 7
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 7
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 7
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 7
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "2": 7
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3,
+          2
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 3,
+          "2": 4
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 7
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "0": 7
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 7
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 7
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          2
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "2": 40
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          3
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "3": 40
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "0": 40
+        }
+      },
+      {
+        "start_depot": 1,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 40
+        }
+      }
+    ]
+  ],
+  "simulation_data": {
+    "0": {
+      "0": {
+        "details": [
+          "Bus 0 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at A-v-H-Gymnasium: 47.08 min",
+          "Bus busy for trip: 50.75 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 47.084333333333326,
+        "trip_time": 50.75099999999999
+      },
+      "1": {
+        "details": [
+          "Bus 0 Trip 1",
+          "Departure from A-v-H-Gymnasium: 50.75 min",
+          "Arrival at A-v-H-Gymnasium: 91.54 min",
+          "Bus busy for trip: 44.45 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 50.75099999999999,
+        "return": 91.53799999999998,
+        "trip_time": 44.45366666666666
+      },
+      "2": {
+        "details": [
+          "Bus 0 Trip 2",
+          "Departure from A-v-H-Gymnasium: 95.20 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 145.29 min",
+          "Bus busy for trip: 53.75 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 95.20466666666665,
+        "return": 145.2925,
+        "trip_time": 53.75449999999999
+      }
+    },
+    "1": {
+      "0": {
+        "details": [
+          "Bus 1 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 43.54 min",
+          "Bus busy for trip: 47.20 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 43.537499999999994,
+        "trip_time": 47.20416666666666
+      },
+      "1": {
+        "details": [
+          "Bus 1 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 47.20 min",
+          "Arrival at A-v-H-Gymnasium: 85.15 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 47.20416666666666,
+        "return": 85.14999999999999,
+        "trip_time": 41.6125
+      },
+      "2": {
+        "details": [
+          "Bus 1 Trip 2",
+          "Departure from A-v-H-Gymnasium: 88.82 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 138.90 min",
+          "Bus busy for trip: 53.75 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 88.81666666666666,
+        "return": 138.9045,
+        "trip_time": 53.75449999999999
+      }
+    },
+    "2": {
+      "0": {
+        "details": [
+          "Bus 2 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 2 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 78.61 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 78.615,
+        "trip_time": 37.37633333333333
+      },
+      "2": {
+        "details": [
+          "Bus 2 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.28 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.28166666666667,
+        "return": 120.22749999999999,
+        "trip_time": 41.6125
+      },
+      "3": {
+        "details": [
+          "Bus 2 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 172.94 min",
+          "Bus busy for trip: 52.71 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666666,
+        "return": 172.93966666666668,
+        "trip_time": 52.71216666666666
+      }
+    },
+    "3": {
+      "0": {
+        "details": [
+          "Bus 3 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 3 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 78.61 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 78.615,
+        "trip_time": 37.37633333333333
+      },
+      "2": {
+        "details": [
+          "Bus 3 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.28 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.28166666666667,
+        "return": 120.22749999999999,
+        "trip_time": 41.6125
+      },
+      "3": {
+        "details": [
+          "Bus 3 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 172.94 min",
+          "Bus busy for trip: 52.71 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666666,
+        "return": 172.93966666666668,
+        "trip_time": 52.71216666666666
+      }
+    },
+    "4": {
+      "0": {
+        "details": [
+          "Bus 4 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 4 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 78.61 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 78.615,
+        "trip_time": 37.37633333333333
+      },
+      "2": {
+        "details": [
+          "Bus 4 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.28 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.28166666666667,
+        "return": 120.22749999999999,
+        "trip_time": 41.6125
+      },
+      "3": {
+        "details": [
+          "Bus 4 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 173.98 min",
+          "Bus busy for trip: 53.75 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666666,
+        "return": 173.982,
+        "trip_time": 53.75449999999999
+      }
+    },
+    "5": {
+      "0": {
+        "details": [
+          "Bus 5 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 5 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 78.61 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 78.615,
+        "trip_time": 37.37633333333333
+      },
+      "2": {
+        "details": [
+          "Bus 5 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.28 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.28166666666667,
+        "return": 120.22749999999999,
+        "trip_time": 41.6125
+      },
+      "3": {
+        "details": [
+          "Bus 5 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 172.94 min",
+          "Bus busy for trip: 52.71 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666666,
+        "return": 172.93966666666668,
+        "trip_time": 52.71216666666666
+      }
+    },
+    "6": {
+      "0": {
+        "details": [
+          "Bus 6 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 6 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 78.61 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 78.615,
+        "trip_time": 37.37633333333333
+      },
+      "2": {
+        "details": [
+          "Bus 6 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.28 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.28166666666667,
+        "return": 120.22749999999999,
+        "trip_time": 41.6125
+      },
+      "3": {
+        "details": [
+          "Bus 6 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 172.94 min",
+          "Bus busy for trip: 52.71 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666666,
+        "return": 172.93966666666668,
+        "trip_time": 52.71216666666666
+      }
+    },
+    "7": {
+      "0": {
+        "details": [
+          "Bus 7 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 7 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at A-v-H-Gymnasium: 86.07 min",
+          "Bus busy for trip: 44.83 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 86.07016666666665,
+        "trip_time": 44.83149999999999
+      },
+      "2": {
+        "details": [
+          "Bus 7 Trip 2",
+          "Departure from A-v-H-Gymnasium: 89.74 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 139.82 min",
+          "Bus busy for trip: 53.75 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 89.73683333333332,
+        "return": 139.82466666666667,
+        "trip_time": 53.75449999999999
+      }
+    },
+    "8": {
+      "0": {
+        "details": [
+          "Bus 8 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 8 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 78.61 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 78.615,
+        "trip_time": 37.37633333333333
+      },
+      "2": {
+        "details": [
+          "Bus 8 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.28 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.28166666666667,
+        "return": 120.22749999999999,
+        "trip_time": 41.6125
+      },
+      "3": {
+        "details": [
+          "Bus 8 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 172.94 min",
+          "Bus busy for trip: 52.71 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666666,
+        "return": 172.93966666666668,
+        "trip_time": 52.71216666666666
+      }
+    },
+    "9": {
+      "0": {
+        "details": [
+          "Bus 9 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 9 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at A-v-H-Gymnasium: 82.16 min",
+          "Bus busy for trip: 40.92 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 82.16183333333332,
+        "trip_time": 40.92316666666666
+      },
+      "2": {
+        "details": [
+          "Bus 9 Trip 2",
+          "Departure from A-v-H-Gymnasium: 85.83 min",
+          "Arrival at A-v-H-Gymnasium: 126.62 min",
+          "Bus busy for trip: 44.45 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 85.82849999999999,
+        "return": 126.61549999999998,
+        "trip_time": 44.45366666666666
+      },
+      "3": {
+        "details": [
+          "Bus 9 Trip 3",
+          "Departure from A-v-H-Gymnasium: 130.28 min",
+          "Arrival at A-v-H-Gymnasium: 171.07 min",
+          "Bus busy for trip: 44.45 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 130.28216666666665,
+        "return": 171.06916666666666,
+        "trip_time": 44.45366666666666
+      }
+    },
+    "10": {
+      "0": {
+        "details": [
+          "Bus 10 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 10 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at A-v-H-Gymnasium: 82.16 min",
+          "Bus busy for trip: 40.92 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 82.16183333333332,
+        "trip_time": 40.92316666666666
+      },
+      "2": {
+        "details": [
+          "Bus 10 Trip 2",
+          "Departure from A-v-H-Gymnasium: 85.83 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 134.87 min",
+          "Bus busy for trip: 52.71 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 85.82849999999999,
+        "return": 134.874,
+        "trip_time": 52.71216666666666
+      }
+    },
+    "11": {
+      "0": {
+        "details": [
+          "Bus 11 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 11 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 78.61 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 78.615,
+        "trip_time": 37.37633333333333
+      },
+      "2": {
+        "details": [
+          "Bus 11 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.28 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.28166666666667,
+        "return": 120.22749999999999,
+        "trip_time": 41.6125
+      },
+      "3": {
+        "details": [
+          "Bus 11 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at A-v-H-Gymnasium: 164.68 min",
+          "Bus busy for trip: 44.45 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666666,
+        "return": 164.68116666666666,
+        "trip_time": 44.45366666666666
+      }
+    },
+    "12": {
+      "0": {
+        "details": [
+          "Bus 12 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 12 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at A-v-H-Gymnasium: 82.16 min",
+          "Bus busy for trip: 40.92 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 82.16183333333332,
+        "trip_time": 40.92316666666666
+      },
+      "2": {
+        "details": [
+          "Bus 12 Trip 2",
+          "Departure from A-v-H-Gymnasium: 85.83 min",
+          "Arrival at A-v-H-Gymnasium: 126.62 min",
+          "Bus busy for trip: 44.45 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 85.82849999999999,
+        "return": 126.61549999999998,
+        "trip_time": 44.45366666666666
+      },
+      "3": {
+        "details": [
+          "Bus 12 Trip 3",
+          "Departure from A-v-H-Gymnasium: 130.28 min",
+          "Arrival at A-v-H-Gymnasium: 170.38 min",
+          "Bus busy for trip: 43.76 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 130.28216666666665,
+        "return": 170.38,
+        "trip_time": 43.7645
+      }
+    },
+    "13": {
+      "0": {
+        "details": [
+          "Bus 13 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 13 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 79.30 min",
+          "Bus busy for trip: 38.07 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 79.30433333333332,
+        "trip_time": 38.06566666666666
+      },
+      "2": {
+        "details": [
+          "Bus 13 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.97 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 40.92 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.97099999999999,
+        "return": 120.22749999999998,
+        "trip_time": 40.92316666666666
+      },
+      "3": {
+        "details": [
+          "Bus 13 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 173.98 min",
+          "Bus busy for trip: 53.75 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666665,
+        "return": 173.982,
+        "trip_time": 53.75449999999999
+      }
+    },
+    "14": {
+      "0": {
+        "details": [
+          "Bus 14 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 14 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 78.61 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 78.615,
+        "trip_time": 37.37633333333333
+      },
+      "2": {
+        "details": [
+          "Bus 14 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.28 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.28166666666667,
+        "return": 120.22749999999999,
+        "trip_time": 41.6125
+      },
+      "3": {
+        "details": [
+          "Bus 14 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 169.94 min",
+          "Bus busy for trip: 49.71 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666666,
+        "return": 169.93683333333334,
+        "trip_time": 49.70933333333333
+      }
+    },
+    "15": {
+      "0": {
+        "details": [
+          "Bus 15 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 15 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 79.30 min",
+          "Bus busy for trip: 38.07 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 79.30433333333332,
+        "trip_time": 38.06566666666666
+      },
+      "2": {
+        "details": [
+          "Bus 15 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.97 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 40.92 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.97099999999999,
+        "return": 120.22749999999998,
+        "trip_time": 40.92316666666666
+      },
+      "3": {
+        "details": [
+          "Bus 15 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 173.98 min",
+          "Bus busy for trip: 53.75 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666665,
+        "return": 173.982,
+        "trip_time": 53.75449999999999
+      }
+    },
+    "16": {
+      "0": {
+        "details": [
+          "Bus 16 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 16 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 78.61 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 78.615,
+        "trip_time": 37.37633333333333
+      },
+      "2": {
+        "details": [
+          "Bus 16 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.28 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 129.53 min",
+          "Bus busy for trip: 50.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.28166666666667,
+        "return": 129.52816666666666,
+        "trip_time": 50.91316666666666
+      }
+    },
+    "17": {
+      "0": {
+        "details": [
+          "Bus 17 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 17 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 78.61 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 78.615,
+        "trip_time": 37.37633333333333
+      },
+      "2": {
+        "details": [
+          "Bus 17 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 82.28 min",
+          "Arrival at A-v-H-Gymnasium: 120.23 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 82.28166666666667,
+        "return": 120.22749999999999,
+        "trip_time": 41.6125
+      },
+      "3": {
+        "details": [
+          "Bus 17 Trip 3",
+          "Departure from A-v-H-Gymnasium: 123.89 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 172.94 min",
+          "Bus busy for trip: 52.71 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 123.89416666666666,
+        "return": 172.93966666666668,
+        "trip_time": 52.71216666666666
+      }
+    },
+    "18": {
+      "0": {
+        "details": [
+          "Bus 18 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at A-v-H-Gymnasium: 47.08 min",
+          "Bus busy for trip: 50.75 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 47.084333333333326,
+        "trip_time": 50.75099999999999
+      },
+      "1": {
+        "details": [
+          "Bus 18 Trip 1",
+          "Departure from A-v-H-Gymnasium: 50.75 min",
+          "Arrival at A-v-H-Gymnasium: 90.85 min",
+          "Bus busy for trip: 43.76 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 50.75099999999999,
+        "return": 90.84883333333332,
+        "trip_time": 43.7645
+      },
+      "2": {
+        "details": [
+          "Bus 18 Trip 2",
+          "Departure from A-v-H-Gymnasium: 94.52 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 140.56 min",
+          "Bus busy for trip: 49.71 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 94.51549999999999,
+        "return": 140.55816666666666,
+        "trip_time": 49.70933333333333
+      }
+    },
+    "19": {
+      "0": {
+        "details": [
+          "Bus 19 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 19 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at A-v-H-Gymnasium: 82.16 min",
+          "Bus busy for trip: 40.92 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 82.16183333333332,
+        "trip_time": 40.92316666666666
+      },
+      "2": {
+        "details": [
+          "Bus 19 Trip 2",
+          "Departure from A-v-H-Gymnasium: 85.83 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 134.87 min",
+          "Bus busy for trip: 52.71 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 85.82849999999999,
+        "return": 134.874,
+        "trip_time": 52.71216666666666
+      }
+    },
+    "20": {
+      "0": {
+        "details": [
+          "Bus 20 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 44.61 min",
+          "Bus busy for trip: 48.28 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 44.61416666666666,
+        "trip_time": 48.28083333333333
+      },
+      "1": {
+        "details": [
+          "Bus 20 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 48.28 min",
+          "Arrival at A-v-H-Gymnasium: 85.54 min",
+          "Bus busy for trip: 40.92 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 48.28083333333333,
+        "return": 85.53733333333331,
+        "trip_time": 40.92316666666666
+      },
+      "2": {
+        "details": [
+          "Bus 20 Trip 2",
+          "Departure from A-v-H-Gymnasium: 89.20 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 139.29 min",
+          "Bus busy for trip: 53.75 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 89.20399999999998,
+        "return": 139.2918333333333,
+        "trip_time": 53.75449999999999
+      }
+    },
+    "21": {
+      "0": {
+        "details": [
+          "Bus 21 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 41.24 min",
+          "Bus busy for trip: 44.91 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 41.23866666666667,
+        "trip_time": 44.90533333333333
+      },
+      "1": {
+        "details": [
+          "Bus 21 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 44.91 min",
+          "Arrival at Schule Maretstra\u00dfe: 77.01 min",
+          "Bus busy for trip: 35.77 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 44.90533333333333,
+        "return": 77.0055,
+        "trip_time": 35.76683333333333
+      },
+      "2": {
+        "details": [
+          "Bus 21 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 80.67 min",
+          "Arrival at Schule Maretstra\u00dfe: 114.38 min",
+          "Bus busy for trip: 37.38 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 2 (on time)"
+        ],
+        "departure": 80.67216666666667,
+        "return": 114.38183333333332,
+        "trip_time": 37.37633333333333
+      },
+      "3": {
+        "details": [
+          "Bus 21 Trip 3",
+          "Departure from Schule Maretstra\u00dfe: 118.05 min",
+          "Arrival at A-v-H-Gymnasium: 155.99 min",
+          "Bus busy for trip: 41.61 min",
+          "Total time at stops: 3.67 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 2 (late)"
+        ],
+        "departure": 118.04849999999999,
+        "return": 155.99433333333334,
+        "trip_time": 41.6125
+      }
+    },
+    "22": {
+      "0": {
+        "details": [
+          "Bus 22 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 42.91 min",
+          "Bus busy for trip: 48.24 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 42.90533333333334,
+        "trip_time": 48.238666666666674
+      },
+      "1": {
+        "details": [
+          "Bus 22 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 48.24 min",
+          "Arrival at Schule Maretstra\u00dfe: 83.62 min",
+          "Bus busy for trip: 40.71 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 48.238666666666674,
+        "return": 83.61500000000002,
+        "trip_time": 40.70966666666667
+      },
+      "2": {
+        "details": [
+          "Bus 22 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 88.95 min",
+          "Arrival at A-v-H-Gymnasium: 127.87 min",
+          "Bus busy for trip: 44.26 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 88.94833333333335,
+        "return": 127.87150000000001,
+        "trip_time": 44.2565
+      },
+      "3": {
+        "details": [
+          "Bus 22 Trip 3",
+          "Departure from A-v-H-Gymnasium: 133.20 min",
+          "Arrival at Schule Maretstra\u00dfe: 173.33 min",
+          "Bus busy for trip: 43.46 min",
+          "Total time at stops: 3.33 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Mannesallee 19, 21107 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 1 (late)"
+        ],
+        "departure": 133.20483333333334,
+        "return": 173.33066666666667,
+        "trip_time": 43.459166666666675
+      }
+    },
+    "23": {
+      "0": {
+        "details": [
+          "Bus 23 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 42.91 min",
+          "Bus busy for trip: 48.24 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 42.90533333333334,
+        "trip_time": 48.238666666666674
+      },
+      "1": {
+        "details": [
+          "Bus 23 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 48.24 min",
+          "Arrival at Schule Maretstra\u00dfe: 84.30 min",
+          "Bus busy for trip: 41.40 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 48.238666666666674,
+        "return": 84.30433333333335,
+        "trip_time": 41.399
+      },
+      "2": {
+        "details": [
+          "Bus 23 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 89.64 min",
+          "Arrival at A-v-H-Gymnasium: 128.56 min",
+          "Bus busy for trip: 44.26 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 89.63766666666668,
+        "return": 128.56083333333333,
+        "trip_time": 44.2565
+      }
+    },
+    "24": {
+      "0": {
+        "details": [
+          "Bus 24 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 42.91 min",
+          "Bus busy for trip: 48.24 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 42.90533333333334,
+        "trip_time": 48.238666666666674
+      },
+      "1": {
+        "details": [
+          "Bus 24 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 48.24 min",
+          "Arrival at Schule Maretstra\u00dfe: 84.30 min",
+          "Bus busy for trip: 41.40 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 48.238666666666674,
+        "return": 84.30433333333335,
+        "trip_time": 41.399
+      },
+      "2": {
+        "details": [
+          "Bus 24 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 89.64 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 137.51 min",
+          "Bus busy for trip: 53.20 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 89.63766666666668,
+        "return": 137.50866666666667,
+        "trip_time": 53.20433333333334
+      }
+    },
+    "25": {
+      "0": {
+        "details": [
+          "Bus 25 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 42.91 min",
+          "Bus busy for trip: 48.24 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 42.90533333333334,
+        "trip_time": 48.238666666666674
+      },
+      "1": {
+        "details": [
+          "Bus 25 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 48.24 min",
+          "Arrival at Schule Maretstra\u00dfe: 84.30 min",
+          "Bus busy for trip: 41.40 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 48.238666666666674,
+        "return": 84.30433333333335,
+        "trip_time": 41.399
+      },
+      "2": {
+        "details": [
+          "Bus 25 Trip 2",
+          "Departure from Schule Maretstra\u00dfe: 89.64 min",
+          "Arrival at A-v-H-Gymnasium: 129.25 min",
+          "Bus busy for trip: 44.95 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 89.63766666666668,
+        "return": 129.25016666666667,
+        "trip_time": 44.94583333333334
+      }
+    },
+    "26": {
+      "0": {
+        "details": [
+          "Bus 26 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 42.91 min",
+          "Bus busy for trip: 48.24 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 42.90533333333334,
+        "trip_time": 48.238666666666674
+      },
+      "1": {
+        "details": [
+          "Bus 26 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 48.24 min",
+          "Arrival at A-v-H-Gymnasium: 87.16 min",
+          "Bus busy for trip: 44.26 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 48.238666666666674,
+        "return": 87.16183333333335,
+        "trip_time": 44.2565
+      },
+      "2": {
+        "details": [
+          "Bus 26 Trip 2",
+          "Departure from A-v-H-Gymnasium: 92.50 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 143.21 min",
+          "Bus busy for trip: 56.05 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 92.49516666666668,
+        "return": 143.20733333333334,
+        "trip_time": 56.045500000000004
+      }
+    },
+    "27": {
+      "0": {
+        "details": [
+          "Bus 27 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 42.91 min",
+          "Bus busy for trip: 48.24 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 42.90533333333334,
+        "trip_time": 48.238666666666674
+      },
+      "1": {
+        "details": [
+          "Bus 27 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 48.24 min",
+          "Arrival at A-v-H-Gymnasium: 87.16 min",
+          "Bus busy for trip: 44.26 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 48.238666666666674,
+        "return": 87.16183333333335,
+        "trip_time": 44.2565
+      },
+      "2": {
+        "details": [
+          "Bus 27 Trip 2",
+          "Departure from A-v-H-Gymnasium: 92.50 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 143.21 min",
+          "Bus busy for trip: 56.05 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 92.49516666666668,
+        "return": 143.20733333333334,
+        "trip_time": 56.045500000000004
+      }
+    },
+    "28": {
+      "0": {
+        "details": [
+          "Bus 28 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 42.91 min",
+          "Bus busy for trip: 48.24 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 42.90533333333334,
+        "trip_time": 48.238666666666674
+      },
+      "1": {
+        "details": [
+          "Bus 28 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 48.24 min",
+          "Arrival at A-v-H-Gymnasium: 87.16 min",
+          "Bus busy for trip: 44.26 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 48.238666666666674,
+        "return": 87.16183333333335,
+        "trip_time": 44.2565
+      },
+      "2": {
+        "details": [
+          "Bus 28 Trip 2",
+          "Departure from A-v-H-Gymnasium: 92.50 min",
+          "Arrival at A-v-H-Gymnasium: 134.95 min",
+          "Bus busy for trip: 47.79 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 92.49516666666668,
+        "return": 134.94883333333334,
+        "trip_time": 47.787000000000006
+      }
+    },
+    "29": {
+      "0": {
+        "details": [
+          "Bus 29 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 42.91 min",
+          "Bus busy for trip: 48.24 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 42.90533333333334,
+        "trip_time": 48.238666666666674
+      },
+      "1": {
+        "details": [
+          "Bus 29 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 48.24 min",
+          "Arrival at A-v-H-Gymnasium: 95.76 min",
+          "Bus busy for trip: 52.85 min",
+          "Total time at stops: 8.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 3 (on time)",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 4 (on time)"
+        ],
+        "departure": 48.238666666666674,
+        "return": 95.75600000000001,
+        "trip_time": 52.85066666666666
+      },
+      "2": {
+        "details": [
+          "Bus 29 Trip 2",
+          "Departure from A-v-H-Gymnasium: 101.09 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 151.80 min",
+          "Bus busy for trip: 56.05 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 7 (late)"
+        ],
+        "departure": 101.08933333333334,
+        "return": 151.8015,
+        "trip_time": 56.045500000000004
+      }
+    },
+    "30": {
+      "0": {
+        "details": [
+          "Bus 30 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 42.91 min",
+          "Bus busy for trip: 48.24 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 42.90533333333334,
+        "trip_time": 48.238666666666674
+      },
+      "1": {
+        "details": [
+          "Bus 30 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 48.24 min",
+          "Arrival at A-v-H-Gymnasium: 87.16 min",
+          "Bus busy for trip: 44.26 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 48.238666666666674,
+        "return": 87.16183333333335,
+        "trip_time": 44.2565
+      },
+      "2": {
+        "details": [
+          "Bus 30 Trip 2",
+          "Departure from A-v-H-Gymnasium: 92.50 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 143.21 min",
+          "Bus busy for trip: 56.05 min",
+          "Total time at stops: 5.33 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 7 (on time)"
+        ],
+        "departure": 92.49516666666668,
+        "return": 143.20733333333334,
+        "trip_time": 56.045500000000004
+      }
+    },
+    "31": {
+      "0": {
+        "details": [
+          "Bus 31 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at Schule Maretstra\u00dfe: 56.20 min",
+          "Bus busy for trip: 72.54 min",
+          "Total time at stops: 16.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 40 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 56.204166666666666,
+        "trip_time": 72.5375
+      },
+      "1": {
+        "details": [
+          "Bus 31 Trip 1",
+          "Departure from Schule Maretstra\u00dfe: 72.54 min",
+          "Arrival at A-v-H-Gymnasium: 122.46 min",
+          "Bus busy for trip: 66.26 min",
+          "Total time at stops: 16.33 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 40 (on time)"
+        ],
+        "departure": 72.5375,
+        "return": 122.46066666666665,
+        "trip_time": 66.25649999999999
+      }
+    },
+    "32": {
+      "0": {
+        "details": [
+          "Bus 32 Trip 0",
+          "Departure from Schule M\u00fcmmelmannsberg: 0.00 min",
+          "Arrival at A-v-H-Gymnasium: 57.45 min",
+          "Bus busy for trip: 73.79 min",
+          "Total time at stops: 16.33 min",
+          "Route: Depot: Schule M\u00fcmmelmannsberg -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 40 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 57.452166666666656,
+        "trip_time": 73.78549999999998
+      },
+      "1": {
+        "details": [
+          "Bus 32 Trip 1",
+          "Departure from A-v-H-Gymnasium: 73.79 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 135.50 min",
+          "Bus busy for trip: 78.05 min",
+          "Total time at stops: 16.33 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 40 (on time)"
+        ],
+        "departure": 73.78549999999998,
+        "return": 135.49766666666662,
+        "trip_time": 78.04549999999999
+      }
+    }
+  },
+  "facility_timeline_features": [],
+  "depots": [
+    {
+      "label": "Schule M\u00fcmmelmannsberg",
+      "coords": [
+        10.148526582655167,
+        53.53143889821207
+      ],
+      "people": 0,
+      "capacity": 200
+    },
+    {
+      "label": "A-v-H-Gymnasium",
+      "coords": [
+        9.993166088434934,
+        53.438736688521004
+      ],
+      "people": 0,
+      "capacity": 200
+    },
+    {
+      "label": "Schule Maretstra\u00dfe",
+      "coords": [
+        9.982006240324646,
+        53.4542489338715
+      ],
+      "people": 0,
+      "capacity": 200
+    }
+  ],
+  "facilities": [
+    {
+      "label": "Neuenfelder Stra\u00dfe 33, 21109 Hamburg",
+      "coords": [
+        10.004606462954163,
+        53.49685976280374
+      ],
+      "people": 141
+    },
+    {
+      "label": "Mannesallee 19, 21107 Hamburg",
+      "coords": [
+        9.99087595417324,
+        53.514596818211984
+      ],
+      "people": 21
+    },
+    {
+      "label": "Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg",
+      "coords": [
+        9.99503446965061,
+        53.502736682925494
+      ],
+      "people": 212
+    },
+    {
+      "label": "Krieterstra\u00dfe 7, 21109 Hamburg",
+      "coords": [
+        10.013130387228374,
+        53.49849915791417
+      ],
+      "people": 136
+    }
+  ],
+  "num_buses": 33,
+  "bus_capacity": 40,
+  "algorithm": "revisionary_evolutionary_algorithm",
+  "timestamp": null,
+  "logs_directory": null,
+  "buses_count": 33,
+  "vehicles": [
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 2,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 7,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 7,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 7,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 7,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 7,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 7,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 7,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 7,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 7,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 40,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    },
+    {
+      "id": null,
+      "capacity": 40,
+      "start": {
+        "kind": "coord",
+        "lat": 53.5231931772924,
+        "lon": 10.149727113341193
+      }
+    }
+  ],
+  "problem_data": {
+    "n_depots": 3,
+    "durations_matrix": "SAVED_SEPARATELY",
+    "demand_full": {
+      "0": 141,
+      "1": 21,
+      "2": 212,
+      "3": 136
+    },
+    "deadlines": {
+      "0": 120,
+      "1": 120,
+      "2": 120,
+      "3": 120
+    },
+    "max_trips_per_bus": 15,
+    "max_stops_per_trip": 5,
+    "depots": [
+      {
+        "label": "Schule M\u00fcmmelmannsberg",
+        "coords": [
+          10.148526582655167,
+          53.53143889821207
+        ],
+        "people": 0,
+        "capacity": 200
+      },
+      {
+        "label": "A-v-H-Gymnasium",
+        "coords": [
+          9.993166088434934,
+          53.438736688521004
+        ],
+        "people": 0,
+        "capacity": 200
+      },
+      {
+        "label": "Schule Maretstra\u00dfe",
+        "coords": [
+          9.982006240324646,
+          53.4542489338715
+        ],
+        "people": 0,
+        "capacity": 200
+      }
+    ],
+    "facilities": [
+      {
+        "label": "Neuenfelder Stra\u00dfe 33, 21109 Hamburg",
+        "coords": [
+          10.004606462954163,
+          53.49685976280374
+        ],
+        "people": 141
+      },
+      {
+        "label": "Mannesallee 19, 21107 Hamburg",
+        "coords": [
+          9.99087595417324,
+          53.514596818211984
+        ],
+        "people": 21
+      },
+      {
+        "label": "Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg",
+        "coords": [
+          9.99503446965061,
+          53.502736682925494
+        ],
+        "people": 212
+      },
+      {
+        "label": "Krieterstra\u00dfe 7, 21109 Hamburg",
+        "coords": [
+          10.013130387228374,
+          53.49849915791417
+        ],
+        "people": 136
+      }
+    ],
+    "vehicles": [
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 2,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 7,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 7,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 7,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 7,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 7,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 7,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 7,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 7,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 7,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 40,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      },
+      {
+        "id": null,
+        "capacity": 40,
+        "start": {
+          "kind": "coord",
+          "lat": 53.5231931772924,
+          "lon": 10.149727113341193
+        }
+      }
+    ]
+  },
+  "algorithm_stats": {
+    "generation_costs": [
+      248.63050065359477,
+      248.63050065359477,
+      248.63050065359477,
+      245.3451107843137,
+      245.3451107843137,
+      245.3451107843137,
+      245.3451107843137,
+      245.13298790849672,
+      244.71384150326796,
+      244.71384150326796,
+      244.7076996732026,
+      244.6356245098039,
+      244.6356245098039,
+      244.48104411764703,
+      244.48104411764703,
+      244.4196062091503,
+      244.23930555555552,
+      244.23930555555552,
+      244.1610885620915,
+      244.08969836601307,
+      244.01148137254899,
+      244.01148137254899,
+      243.97678986928102,
+      243.97678986928102,
+      243.97678986928102,
+      243.92668888888886,
+      243.92668790849672,
+      243.92668790849672,
+      243.788908496732,
+      243.788908496732,
+      243.788908496732,
+      243.77744901960781,
+      243.77744901960781,
+      243.77744901960781,
+      243.18644575163398,
+      243.18644575163398,
+      243.18644575163398,
+      242.94657581699346,
+      242.79784183006535,
+      242.79784183006535,
+      242.76421307189543,
+      242.76421307189543,
+      242.76421307189543,
+      240.34542222222223,
+      240.34542222222223,
+      240.34542222222223,
+      237.88225555555556,
+      237.88225555555556,
+      237.88225555555556,
+      237.46967712418302,
+      237.46967712418302,
+      237.46967712418302,
+      237.46967385620914,
+      237.46967385620914,
+      237.46967385620914,
+      237.44462352941176,
+      237.44462352941176,
+      237.44462352941176,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.38296928104575,
+      237.38296928104575,
+      237.38296928104575,
+      237.38296928104575,
+      237.38296928104575,
+      237.38296928104575,
+      237.38220392156862,
+      237.38220392156862,
+      237.38220392156862,
+      237.38220392156862,
+      237.3730431372549,
+      237.3730431372549,
+      237.3730431372549,
+      237.33112287581702,
+      237.33112287581702,
+      237.33112287581702,
+      237.33112287581702,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.29629215686273
+    ],
+    "generation_times": [
+      0.0,
+      1.0275900999549776,
+      1.1182315999176353,
+      1.289438399951905,
+      1.0794320001732558,
+      1.0702893000561744,
+      1.0134666999801993,
+      4.209284299984574,
+      1.06705559999682,
+      1.1565620000474155,
+      3.3053186999168247,
+      1.0702287000603974,
+      0.9939308001194149,
+      3.653243500040844,
+      0.8995508998632431,
+      1.1627336000092328,
+      4.403377400012687,
+      1.1565960999578238,
+      1.0088429998140782,
+      5.643265099963173,
+      0.885846900055185,
+      0.9577360001858324,
+      3.2789400999899954,
+      1.1830891000572592,
+      1.3127945999149233,
+      4.8353122000116855,
+      1.250997900031507,
+      1.1591769000515342,
+      6.344357599969953,
+      0.9968985000159591,
+      0.9552426000591367,
+      4.365326300030574,
+      1.1750228002201766,
+      1.1214107000268996,
+      3.9675294999033213,
+      1.0680390999186784,
+      1.2684055999852717,
+      3.5920013000722975,
+      1.1737311000470072,
+      1.1567454999312758,
+      2.7730670999735594,
+      1.0277712000533938,
+      1.2064253999851644,
+      4.012702299980447,
+      1.1223022998310626,
+      1.2490489999763668,
+      3.961513799848035,
+      1.1077091000042856,
+      1.1581608999986202,
+      3.201803400181234,
+      1.0102184999268502,
+      1.3129730999935418,
+      3.9815724999643862,
+      1.2020021001808345,
+      1.1099599001463503,
+      4.229575000004843,
+      1.0761843000072986,
+      1.0108425000216812,
+      4.320123099954799,
+      1.0310815998818725,
+      1.0668859998695552,
+      3.4890127999242395,
+      1.2025013999082148,
+      1.2901467999909073,
+      4.00111349998042,
+      1.0945254999678582,
+      1.1392377000302076,
+      3.004181900061667,
+      1.1091990999411792,
+      0.9999076998792589,
+      3.657208099961281,
+      1.154241899959743,
+      1.1957857999950647,
+      3.529070100048557,
+      1.2216507999692112,
+      1.2189315999858081,
+      3.125988199841231,
+      1.106861500069499,
+      1.0214005000889301,
+      3.903005799977109,
+      1.2010941000189632,
+      1.2550002001225948,
+      4.254470400046557,
+      0.9467917999718338,
+      1.3090713999699801,
+      3.6247103998903185,
+      0.9760977998375893,
+      1.2907133002299815,
+      3.853299899958074,
+      1.3019334999844432,
+      1.1119433999992907,
+      3.5507956000510603,
+      1.2224558999296278,
+      1.1682357001118362,
+      4.231525700073689,
+      1.250391900073737,
+      1.0468198000453413,
+      3.5538276999723166,
+      0.9696485998574644,
+      1.2730986000970006,
+      3.6447691000066698,
+      0.9848809000104666,
+      1.126921899849549,
+      4.201300200074911,
+      1.0028961000498384,
+      1.3130175999831408,
+      3.4350807999726385,
+      1.2426108000800014,
+      1.0138906999491155,
+      4.622129200026393,
+      1.097736000083387,
+      1.0951116001233459,
+      4.201421400066465,
+      1.0944878000300378,
+      1.2115992000326514,
+      3.8269628998823464,
+      1.2977372999303043,
+      1.085424399934709,
+      3.0715276999399066,
+      1.0974906000774354,
+      1.0512715000659227,
+      3.8687402999494225,
+      1.0808985999319702,
+      1.0622552998829633,
+      3.006967900088057,
+      1.1405119998380542,
+      1.2044787001796067,
+      3.083587900036946,
+      1.1869300999678671,
+      1.1283314998727292,
+      3.488807199988514,
+      1.1788619998842478,
+      1.3765706999693066,
+      3.204461800167337,
+      1.301946499850601,
+      0.9435008999425918,
+      3.8341159999836236,
+      0.9655848999973387,
+      1.1901682999450713,
+      3.21866500005126,
+      0.9610253998544067,
+      0.9196311000268906,
+      3.3007490998134017,
+      1.1366888999473304,
+      1.2562536001205444,
+      4.014892000006512,
+      1.0570829000789672,
+      1.2452009997796267,
+      3.535772900097072,
+      0.9856326999142766,
+      1.0789987000171095,
+      2.9703142000362277
+    ],
+    "ls_time_per_generation": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      3.2427860994357616,
+      0.0,
+      0.0,
+      2.1941209994256496,
+      0.0,
+      0.0,
+      2.444745000451803,
+      0.0,
+      0.0,
+      3.312342799268663,
+      0.0,
+      0.0,
+      4.648587499978021,
+      0.0,
+      0.0,
+      2.2907622000202537,
+      0.0,
+      0.0,
+      3.557937600882724,
+      0.0,
+      0.0,
+      5.318798900116235,
+      0.0,
+      0.0,
+      3.2632999001070857,
+      0.0,
+      0.0,
+      2.8392596999183297,
+      0.0,
+      0.0,
+      2.474156900541857,
+      0.0,
+      0.0,
+      1.675237100571394,
+      0.0,
+      0.0,
+      2.9905499995220453,
+      0.0,
+      0.0,
+      2.8472496003378183,
+      0.0,
+      0.0,
+      2.039008299820125,
+      0.0,
+      0.0,
+      2.9826838988810778,
+      0.0,
+      0.0,
+      3.253373800544068,
+      0.0,
+      0.0,
+      3.0350289000198245,
+      0.0,
+      0.0,
+      2.2503810999915004,
+      0.0,
+      0.0,
+      2.9559382000006735,
+      0.0,
+      0.0,
+      2.155019400175661,
+      0.0,
+      0.0,
+      2.569967600516975,
+      0.0,
+      0.0,
+      2.4147277015727013,
+      0.0,
+      0.0,
+      2.0671244997065514,
+      0.0,
+      0.0,
+      2.8304697012063116,
+      0.0,
+      0.0,
+      3.0289321991149336,
+      0.0,
+      0.0,
+      2.6533908993005753,
+      0.0,
+      0.0,
+      2.912785999244079,
+      0.0,
+      0.0,
+      2.4590388003271073,
+      0.0,
+      0.0,
+      2.9994661996606737,
+      0.0,
+      0.0,
+      2.487783800577745,
+      0.0,
+      0.0,
+      2.5032651009969413,
+      0.0,
+      0.0,
+      2.9663295997306705,
+      0.0,
+      0.0,
+      2.3338102002162486,
+      0.0,
+      0.0,
+      3.4874228998087347,
+      0.0,
+      0.0,
+      2.9373992001637816,
+      0.0,
+      0.0,
+      2.6314156986773014,
+      0.0,
+      0.0,
+      2.008214100729674,
+      0.0,
+      0.0,
+      2.5791896996088326,
+      0.0,
+      0.0,
+      1.9904548993799835,
+      0.0,
+      0.0,
+      1.947764799464494,
+      0.0,
+      0.0,
+      2.465635500382632,
+      0.0,
+      0.0,
+      2.0445443999487907,
+      0.0,
+      0.0,
+      2.5975738000124693,
+      0.0,
+      0.0,
+      2.0425111998338252,
+      0.0,
+      0.0,
+      1.9392214994877577,
+      0.0,
+      0.0,
+      2.813614100217819,
+      0.0,
+      0.0,
+      2.4188446004409343,
+      0.0,
+      0.0,
+      1.935820898739621
+    ],
+    "ls_time_this_gen": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      3.2427860994357616,
+      0.0,
+      0.0,
+      2.1941209994256496,
+      0.0,
+      0.0,
+      2.444745000451803,
+      0.0,
+      0.0,
+      3.312342799268663,
+      0.0,
+      0.0,
+      4.648587499978021,
+      0.0,
+      0.0,
+      2.2907622000202537,
+      0.0,
+      0.0,
+      3.557937600882724,
+      0.0,
+      0.0,
+      5.318798900116235,
+      0.0,
+      0.0,
+      3.2632999001070857,
+      0.0,
+      0.0,
+      2.8392596999183297,
+      0.0,
+      0.0,
+      2.474156900541857,
+      0.0,
+      0.0,
+      1.675237100571394,
+      0.0,
+      0.0,
+      2.9905499995220453,
+      0.0,
+      0.0,
+      2.8472496003378183,
+      0.0,
+      0.0,
+      2.039008299820125,
+      0.0,
+      0.0,
+      2.9826838988810778,
+      0.0,
+      0.0,
+      3.253373800544068,
+      0.0,
+      0.0,
+      3.0350289000198245,
+      0.0,
+      0.0,
+      2.2503810999915004,
+      0.0,
+      0.0,
+      2.9559382000006735,
+      0.0,
+      0.0,
+      2.155019400175661,
+      0.0,
+      0.0,
+      2.569967600516975,
+      0.0,
+      0.0,
+      2.4147277015727013,
+      0.0,
+      0.0,
+      2.0671244997065514,
+      0.0,
+      0.0,
+      2.8304697012063116,
+      0.0,
+      0.0,
+      3.0289321991149336,
+      0.0,
+      0.0,
+      2.6533908993005753,
+      0.0,
+      0.0,
+      2.912785999244079,
+      0.0,
+      0.0,
+      2.4590388003271073,
+      0.0,
+      0.0,
+      2.9994661996606737,
+      0.0,
+      0.0,
+      2.487783800577745,
+      0.0,
+      0.0,
+      2.5032651009969413,
+      0.0,
+      0.0,
+      2.9663295997306705,
+      0.0,
+      0.0,
+      2.3338102002162486,
+      0.0,
+      0.0,
+      3.4874228998087347,
+      0.0,
+      0.0,
+      2.9373992001637816,
+      0.0,
+      0.0,
+      2.6314156986773014,
+      0.0,
+      0.0,
+      2.008214100729674,
+      0.0,
+      0.0,
+      2.5791896996088326,
+      0.0,
+      0.0,
+      1.9904548993799835,
+      0.0,
+      0.0,
+      1.947764799464494,
+      0.0,
+      0.0,
+      2.465635500382632,
+      0.0,
+      0.0,
+      2.0445443999487907,
+      0.0,
+      0.0,
+      2.5975738000124693,
+      0.0,
+      0.0,
+      2.0425111998338252,
+      0.0,
+      0.0,
+      1.9392214994877577,
+      0.0,
+      0.0,
+      2.813614100217819,
+      0.0,
+      0.0,
+      2.4188446004409343,
+      0.0,
+      0.0,
+      1.935820898739621
+    ],
+    "ga_time_per_generation": [
+      0.0,
+      1.0275900999549776,
+      1.1182315999176353,
+      1.289438399951905,
+      1.0794320001732558,
+      1.0702893000561744,
+      1.0134666999801993,
+      0.9664982005488127,
+      1.06705559999682,
+      1.1565620000474155,
+      1.111197700491175,
+      1.0702287000603974,
+      0.9939308001194149,
+      1.2084984995890409,
+      0.8995508998632431,
+      1.1627336000092328,
+      1.091034600744024,
+      1.1565960999578238,
+      1.0088429998140782,
+      0.9946775999851525,
+      0.885846900055185,
+      0.9577360001858324,
+      0.9881778999697417,
+      1.1830891000572592,
+      1.3127945999149233,
+      1.2773745991289616,
+      1.250997900031507,
+      1.1591769000515342,
+      1.0255586998537183,
+      0.9968985000159591,
+      0.9552426000591367,
+      1.1020263999234885,
+      1.1750228002201766,
+      1.1214107000268996,
+      1.1282697999849916,
+      1.0680390999186784,
+      1.2684055999852717,
+      1.1178443995304406,
+      1.1737311000470072,
+      1.1567454999312758,
+      1.0978299994021654,
+      1.0277712000533938,
+      1.2064253999851644,
+      1.0221523004584014,
+      1.1223022998310626,
+      1.2490489999763668,
+      1.1142641995102167,
+      1.1077091000042856,
+      1.1581608999986202,
+      1.1627951003611088,
+      1.0102184999268502,
+      1.3129730999935418,
+      0.9988886010833085,
+      1.2020021001808345,
+      1.1099599001463503,
+      0.9762011994607747,
+      1.0761843000072986,
+      1.0108425000216812,
+      1.2850941999349743,
+      1.0310815998818725,
+      1.0668859998695552,
+      1.2386316999327391,
+      1.2025013999082148,
+      1.2901467999909073,
+      1.0451752999797463,
+      1.0945254999678582,
+      1.1392377000302076,
+      0.8491624998860061,
+      1.1091990999411792,
+      0.9999076998792589,
+      1.087240499444306,
+      1.154241899959743,
+      1.1957857999950647,
+      1.1143423984758556,
+      1.2216507999692112,
+      1.2189315999858081,
+      1.0588637001346797,
+      1.106861500069499,
+      1.0214005000889301,
+      1.0725360987707973,
+      1.2010941000189632,
+      1.2550002001225948,
+      1.2255382009316236,
+      0.9467917999718338,
+      1.3090713999699801,
+      0.9713195005897433,
+      0.9760977998375893,
+      1.2907133002299815,
+      0.9405139007139951,
+      1.3019334999844432,
+      1.1119433999992907,
+      1.091756799723953,
+      1.2224558999296278,
+      1.1682357001118362,
+      1.2320595004130155,
+      1.250391900073737,
+      1.0468198000453413,
+      1.0660438993945718,
+      0.9696485998574644,
+      1.2730986000970006,
+      1.1415039990097284,
+      0.9848809000104666,
+      1.126921899849549,
+      1.2349706003442407,
+      1.0028961000498384,
+      1.3130175999831408,
+      1.1012705997563899,
+      1.2426108000800014,
+      1.0138906999491155,
+      1.1347063002176583,
+      1.097736000083387,
+      1.0951116001233459,
+      1.2640221999026835,
+      1.0944878000300378,
+      1.2115992000326514,
+      1.195547201205045,
+      1.2977372999303043,
+      1.085424399934709,
+      1.0633135992102325,
+      1.0974906000774354,
+      1.0512715000659227,
+      1.2895506003405899,
+      1.0808985999319702,
+      1.0622552998829633,
+      1.0165130007080734,
+      1.1405119998380542,
+      1.2044787001796067,
+      1.135823100572452,
+      1.1869300999678671,
+      1.1283314998727292,
+      1.0231716996058822,
+      1.1788619998842478,
+      1.3765706999693066,
+      1.1599174002185464,
+      1.301946499850601,
+      0.9435008999425918,
+      1.2365421999711543,
+      0.9655848999973387,
+      1.1901682999450713,
+      1.1761538002174348,
+      0.9610253998544067,
+      0.9196311000268906,
+      1.361527600325644,
+      1.1366888999473304,
+      1.2562536001205444,
+      1.2012778997886926,
+      1.0570829000789672,
+      1.2452009997796267,
+      1.1169282996561378,
+      0.9856326999142766,
+      1.0789987000171095,
+      1.0344933012966067
+    ],
+    "best_per_generation": [
+      248.63050065359477,
+      248.63050065359477,
+      248.63050065359477,
+      245.3451107843137,
+      245.3451107843137,
+      245.3451107843137,
+      245.3451107843137,
+      245.13298790849672,
+      244.71384150326796,
+      244.71384150326796,
+      244.7076996732026,
+      244.6356245098039,
+      244.6356245098039,
+      244.48104411764703,
+      244.48104411764703,
+      244.4196062091503,
+      244.23930555555552,
+      244.23930555555552,
+      244.1610885620915,
+      244.08969836601307,
+      244.01148137254899,
+      244.01148137254899,
+      243.97678986928102,
+      243.97678986928102,
+      243.97678986928102,
+      243.92668888888886,
+      243.92668790849672,
+      243.92668790849672,
+      243.788908496732,
+      243.788908496732,
+      243.788908496732,
+      243.77744901960781,
+      243.77744901960781,
+      243.77744901960781,
+      243.18644575163398,
+      243.18644575163398,
+      243.18644575163398,
+      242.94657581699346,
+      242.79784183006535,
+      242.79784183006535,
+      242.76421307189543,
+      242.76421307189543,
+      242.76421307189543,
+      240.34542222222223,
+      240.34542222222223,
+      240.34542222222223,
+      237.88225555555556,
+      237.88225555555556,
+      237.88225555555556,
+      237.46967712418302,
+      237.46967712418302,
+      237.46967712418302,
+      237.46967385620914,
+      237.46967385620914,
+      237.46967385620914,
+      237.44462352941176,
+      237.44462352941176,
+      237.44462352941176,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.4112045751634,
+      237.38296928104575,
+      237.38296928104575,
+      237.38296928104575,
+      237.38296928104575,
+      237.38296928104575,
+      237.38296928104575,
+      237.38220392156862,
+      237.38220392156862,
+      237.38220392156862,
+      237.38220392156862,
+      237.3730431372549,
+      237.3730431372549,
+      237.3730431372549,
+      237.33112287581702,
+      237.33112287581702,
+      237.33112287581702,
+      237.33112287581702,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3194045751634,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.3186392156863,
+      237.29629215686273
+    ],
+    "avg_per_generation": [
+      915.4918253774513,
+      688.9467471584967,
+      489.83117282352976,
+      325.27994038725495,
+      280.6387867581698,
+      278.3260400767975,
+      272.74493050326805,
+      279.2248664852942,
+      270.6292113807192,
+      272.75548703104573,
+      277.84337863235294,
+      274.2936115555558,
+      282.79930106045754,
+      284.91936259967304,
+      278.57163579411736,
+      281.9697778316994,
+      275.77298170915014,
+      271.18752681045754,
+      272.9697553447713,
+      268.8679857287584,
+      262.6286437630721,
+      267.45074141176497,
+      270.23334572385625,
+      269.3347425931375,
+      266.5790612238562,
+      270.7948345326797,
+      268.924222754902,
+      274.22098210130736,
+      272.1311933120915,
+      267.6562333888889,
+      269.8035310637256,
+      267.0777667042484,
+      271.98474275817,
+      269.5940859689541,
+      263.8565089673202,
+      270.1318801013073,
+      268.67842876470587,
+      268.6242631732026,
+      276.4955140016338,
+      279.6108904411762,
+      274.3971083496732,
+      270.7107129575163,
+      276.9185621388888,
+      286.58238138071897,
+      283.2181731062092,
+      276.82825025163396,
+      263.7437007287582,
+      268.1195581356207,
+      266.9275390898693,
+      261.3260162957515,
+      271.3244636552284,
+      266.07111201960754,
+      267.4110570669933,
+      277.2975514215686,
+      268.3478106470588,
+      270.00488590849665,
+      269.9462769689541,
+      266.07586267320255,
+      270.1628550016341,
+      268.19333577777803,
+      277.0028607058825,
+      270.428591883987,
+      258.81282613071886,
+      267.2975073169934,
+      261.12362564869267,
+      270.2046492581698,
+      273.2962702385619,
+      259.0348662679736,
+      266.8737141617645,
+      269.3687504738561,
+      268.7164698921567,
+      266.94754442156864,
+      265.3432812336603,
+      256.20988040522894,
+      257.5999817271245,
+      267.279989393791,
+      256.0878420996733,
+      253.83457780065376,
+      258.7733546977124,
+      254.81069809313715,
+      259.98129425490157,
+      259.66675495261404,
+      259.6035993660129,
+      263.75949876470554,
+      259.2625998186272,
+      252.53301501143778,
+      250.56092452124187,
+      253.35267933333358,
+      251.09807974183045,
+      262.31122387745125,
+      267.85811861274544,
+      258.35329554411777,
+      260.0561296830068,
+      256.4250799738564,
+      260.68180029085,
+      261.634448047386,
+      259.55734430882353,
+      262.31901500163434,
+      257.61400269117695,
+      259.48018325653607,
+      257.7895366307191,
+      252.12834812908517,
+      249.30683644117644,
+      254.7072312320262,
+      253.50215113071897,
+      270.23880793790823,
+      252.09337413888872,
+      254.80978735784305,
+      256.6123604248363,
+      256.79632720261424,
+      258.76537778104563,
+      261.6558581258167,
+      262.3197855849671,
+      253.47878224182995,
+      258.9684360686272,
+      253.1952973856208,
+      261.3979706307189,
+      257.41092803267946,
+      254.48357654738552,
+      255.2625017712417,
+      263.00553319444424,
+      263.35212454084945,
+      261.72989956209136,
+      257.6179386388887,
+      264.5182240392156,
+      256.63966982026136,
+      260.5769420326795,
+      263.16983403594753,
+      259.3962378088233,
+      255.9261815228755,
+      248.635461464052,
+      253.87419422222203,
+      260.44915788071876,
+      251.78415142973824,
+      259.691626235294,
+      261.1604766339866,
+      262.29212456699344,
+      252.61746962254895,
+      257.28832592647046,
+      256.89835162745084,
+      255.83729318790824,
+      261.3426054150325,
+      256.4866641437908,
+      262.57729807189526,
+      263.34748044934616,
+      260.22646946732016,
+      256.08154801470556,
+      261.6675783872546,
+      257.4664433153593,
+      251.42297701307177,
+      256.16820456535925,
+      256.71319898039206
+    ],
+    "generation_avg_evacuation_times": [
+      66.23216732026125,
+      66.23216732026125,
+      66.23216732026125,
+      66.44127745098011,
+      66.44127745098011,
+      66.44127745098011,
+      66.44127745098011,
+      66.22915457516315,
+      66.21784150326772,
+      66.21784150326772,
+      66.21169967320235,
+      66.13962450980361,
+      66.13962450980361,
+      65.98504411764684,
+      65.98504411764684,
+      65.9236062091501,
+      65.74330555555561,
+      65.74330555555561,
+      65.66508856209154,
+      65.59369836601311,
+      65.515481372549,
+      65.515481372549,
+      65.48078986928103,
+      65.48078986928103,
+      65.48078986928103,
+      65.43068888888885,
+      65.43068790849672,
+      65.43068790849672,
+      65.29290849673201,
+      65.29290849673201,
+      65.29290849673201,
+      65.2814490196078,
+      65.2814490196078,
+      65.2814490196078,
+      65.37961241830064,
+      65.37961241830064,
+      65.37961241830064,
+      65.40407581699348,
+      65.34417516339866,
+      65.34417516339866,
+      65.31054640522862,
+      65.31054640522862,
+      65.31054640522862,
+      65.37158888888895,
+      65.37158888888895,
+      65.37158888888895,
+      65.37158888888895,
+      65.37158888888895,
+      65.37158888888895,
+      65.34634379084974,
+      65.34634379084974,
+      65.34634379084974,
+      65.34634052287588,
+      65.34634052287588,
+      65.34634052287588,
+      65.3212901960785,
+      65.3212901960785,
+      65.3212901960785,
+      65.28787124183015,
+      65.28787124183015,
+      65.28787124183015,
+      65.28787124183015,
+      65.28787124183015,
+      65.28787124183015,
+      65.28787124183015,
+      65.28787124183015,
+      65.25963594771245,
+      65.25963594771245,
+      65.25963594771245,
+      65.25963594771245,
+      65.25963594771245,
+      65.25963594771245,
+      65.25887058823531,
+      65.25887058823531,
+      65.25887058823531,
+      65.25887058823531,
+      65.26504313725493,
+      65.26504313725493,
+      65.26504313725493,
+      65.22312287581701,
+      65.22312287581701,
+      65.22312287581701,
+      65.22312287581701,
+      65.21140457516341,
+      65.21140457516341,
+      65.21140457516341,
+      65.21140457516341,
+      65.21140457516341,
+      65.21140457516341,
+      65.21140457516341,
+      65.21140457516341,
+      65.21140457516341,
+      65.21140457516341,
+      65.21140457516341,
+      65.21140457516341,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.21063921568629,
+      65.18829215686276
+    ],
+    "generation_latest_evacuation_times": [
+      182.3983333333333,
+      182.3983333333333,
+      182.3983333333333,
+      178.90383333333332,
+      178.90383333333332,
+      178.90383333333332,
+      178.90383333333332,
+      178.90383333333332,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      178.49599999999998,
+      177.80683333333334,
+      177.80683333333334,
+      177.80683333333334,
+      177.5425,
+      177.45366666666666,
+      177.45366666666666,
+      177.45366666666666,
+      177.45366666666666,
+      177.45366666666666,
+      174.97383333333335,
+      174.97383333333335,
+      174.97383333333335,
+      172.51066666666668,
+      172.51066666666668,
+      172.51066666666668,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.12333333333333,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108,
+      172.108
+    ],
+    "generation_total_people_evacuated": [
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510,
+      510
+    ],
+    "generation_evacuation_efficiencies": [
+      3.3479541921091127,
+      3.3479541921091127,
+      3.3479541921091127,
+      3.218355988035288,
+      3.218355988035288,
+      3.218355988035288,
+      3.218355988035288,
+      3.218355988035288,
+      3.218355988035288,
+      3.218355988035288,
+      3.218355988035288,
+      3.218355988035288,
+      3.218355988035288,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.3324294390737155,
+      3.4129807032747888,
+      3.4129807032747888,
+      3.3324294390737155,
+      3.3324294390737155,
+      3.3324294390737155,
+      3.3324294390737155,
+      3.3324294390737155,
+      3.3324294390737155,
+      3.2740789245613695,
+      3.2740789245613695,
+      3.2740789245613695,
+      3.2740789245613695,
+      3.3324294390737155,
+      3.3324294390737155,
+      3.317486732763434,
+      3.317486732763434,
+      3.317486732763434,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813,
+      3.3475073650631813
+    ],
+    "generation_fitness_std": [
+      204.9041991531548,
+      227.90253395578202,
+      210.13511410097684,
+      102.08437410720133,
+      55.27345890822177,
+      68.53612109843012,
+      61.38447551412444,
+      60.255576982031975,
+      57.0196509123041,
+      44.66503435661792,
+      51.99361492648772,
+      38.97464598407971,
+      65.81195588487469,
+      65.80719837718779,
+      57.62127002295421,
+      49.64501223105872,
+      41.111411280177116,
+      46.2137681030676,
+      41.18530412932633,
+      56.744309440249104,
+      45.28011366332878,
+      58.059218787838354,
+      64.37883586912955,
+      58.82987998267524,
+      52.251588340396644,
+      63.395630179604844,
+      61.69283586154565,
+      67.15675494732554,
+      65.3415838180022,
+      47.56627315421957,
+      54.37973048133361,
+      49.64157358810617,
+      54.42417429689976,
+      46.986865312383166,
+      44.22739696921997,
+      54.110063088095714,
+      47.97802554952956,
+      52.710785696253666,
+      60.22347414105701,
+      63.87614427031006,
+      48.67775351544031,
+      54.4373973711454,
+      54.3320210600423,
+      74.09732142940692,
+      65.60074993116567,
+      66.44212506674634,
+      53.52130723316256,
+      58.82887744055241,
+      64.559753687322,
+      39.37589366802334,
+      75.68236471565695,
+      68.07606401747577,
+      52.1403094623635,
+      65.32217638722068,
+      49.268731388733805,
+      60.514443922551706,
+      55.87296984077935,
+      43.05247079467686,
+      55.136465542853394,
+      52.03560813869681,
+      68.9764738154932,
+      60.76210560063318,
+      31.735805789961333,
+      51.13619761540501,
+      46.097370463383974,
+      45.150661221232944,
+      68.89887314397318,
+      41.890363565178404,
+      49.22118417589701,
+      60.86670305052737,
+      65.20330588087467,
+      61.616049513054634,
+      62.968605085838334,
+      48.68010410000845,
+      54.849003173270745,
+      81.16423751390286,
+      51.55687795265246,
+      38.93678976550608,
+      52.46548782143349,
+      48.02535280772264,
+      48.61337914064306,
+      47.85359389410448,
+      56.82299854813865,
+      57.56158370536523,
+      44.704531096215284,
+      48.469365000263736,
+      39.4163539149742,
+      55.482279689513305,
+      45.79014767847887,
+      56.69008830350724,
+      77.34252295307385,
+      54.884012866924046,
+      63.75066577246927,
+      49.64387824244792,
+      63.65012867681655,
+      57.50097713281101,
+      55.60418546770612,
+      72.35638332136772,
+      52.55755797083031,
+      61.30597992670174,
+      50.200191463499216,
+      40.90725411517701,
+      28.96953081776027,
+      47.16009585570384,
+      42.475913683068065,
+      94.97093533604108,
+      35.64333450940841,
+      45.89364177458029,
+      53.90338226639055,
+      61.439089045619525,
+      63.31938157007657,
+      64.47831089190777,
+      61.93118586556478,
+      42.98497791799924,
+      53.79452247865233,
+      57.15808181279303,
+      57.9744549072267,
+      47.80485540402293,
+      51.94681425251985,
+      46.41575857698546,
+      68.39763114560856,
+      70.81254727694046,
+      57.9186028845947,
+      56.25081027775902,
+      71.51445518352422,
+      48.910609805303594,
+      58.05293815235317,
+      56.007389613052695,
+      57.4431584140585,
+      44.76108614773177,
+      29.243925094002687,
+      44.45314149963053,
+      66.93662581840319,
+      34.23462953930552,
+      55.94689085057442,
+      63.19256052307055,
+      66.2724109960134,
+      35.32343445572574,
+      64.16562303359653,
+      50.37771650584755,
+      56.34441939421537,
+      63.55627651600166,
+      47.78693147571218,
+      64.84907192826073,
+      64.17444371397825,
+      67.22095104722686,
+      56.94509529518715,
+      60.3109880130679,
+      54.621093061997215,
+      39.83143476482015,
+      49.27747869943683,
+      46.47803528618493
+    ],
+    "generation_population_diversity": [
+      0.99,
+      0.8,
+      0.84,
+      0.785,
+      0.715,
+      0.69,
+      0.62,
+      0.64,
+      0.61,
+      0.645,
+      0.66,
+      0.705,
+      0.78,
+      0.785,
+      0.73,
+      0.745,
+      0.825,
+      0.745,
+      0.735,
+      0.73,
+      0.595,
+      0.565,
+      0.69,
+      0.645,
+      0.645,
+      0.74,
+      0.635,
+      0.67,
+      0.78,
+      0.715,
+      0.66,
+      0.715,
+      0.755,
+      0.68,
+      0.71,
+      0.605,
+      0.645,
+      0.62,
+      0.735,
+      0.73,
+      0.785,
+      0.765,
+      0.79,
+      0.77,
+      0.7,
+      0.675,
+      0.68,
+      0.64,
+      0.655,
+      0.735,
+      0.675,
+      0.65,
+      0.73,
+      0.735,
+      0.705,
+      0.815,
+      0.735,
+      0.645,
+      0.795,
+      0.71,
+      0.76,
+      0.705,
+      0.645,
+      0.65,
+      0.61,
+      0.57,
+      0.53,
+      0.495,
+      0.555,
+      0.585,
+      0.62,
+      0.595,
+      0.54,
+      0.525,
+      0.42,
+      0.48,
+      0.385,
+      0.425,
+      0.435,
+      0.485,
+      0.47,
+      0.49,
+      0.51,
+      0.47,
+      0.49,
+      0.405,
+      0.405,
+      0.385,
+      0.35,
+      0.38,
+      0.43,
+      0.4,
+      0.405,
+      0.345,
+      0.4,
+      0.42,
+      0.45,
+      0.425,
+      0.41,
+      0.38,
+      0.4,
+      0.38,
+      0.425,
+      0.4,
+      0.36,
+      0.405,
+      0.41,
+      0.375,
+      0.42,
+      0.46,
+      0.45,
+      0.435,
+      0.46,
+      0.4,
+      0.415,
+      0.35,
+      0.425,
+      0.46,
+      0.4,
+      0.365,
+      0.41,
+      0.425,
+      0.43,
+      0.385,
+      0.48,
+      0.45,
+      0.465,
+      0.49,
+      0.425,
+      0.41,
+      0.35,
+      0.39,
+      0.375,
+      0.37,
+      0.41,
+      0.445,
+      0.465,
+      0.435,
+      0.42,
+      0.375,
+      0.405,
+      0.45,
+      0.4,
+      0.465,
+      0.445,
+      0.43,
+      0.32,
+      0.355,
+      0.4,
+      0.35,
+      0.355,
+      0.445
+    ],
+    "time_limit_seconds": 300,
+    "stopped_by_time_limit": true,
+    "stopped_by_early_stopping": false,
+    "preprocessing_runtime": 0.53635573387146,
+    "optimization_runtime": 301.0511598587036,
+    "postprocessing_runtime": 0.004621982574462891,
+    "total_runtime": 301.59213757514954,
+    "collect_operator_telemetry": false,
+    "operator_scoreboard": {}
+  },
+  "stopped_by_time_limit": true,
+  "stopped_by_early_stopping": false,
+  "time_limit_seconds": 300,
+  "metrics": {
+    "units": {
+      "time": "minutes",
+      "objective_terms": "person-minutes"
+    },
+    "counts": {
+      "people_required": 510,
+      "people_picked": 510,
+      "people_unserved": 0,
+      "late_people": 29,
+      "late_fraction": 0.056862745098039215,
+      "stops_visited": 113
+    },
+    "wait": {
+      "sum_person_minutes": 33246.028999999995,
+      "mean_min": 65.18829215686276,
+      "p50_min": 61.84766666666667,
+      "p90_min": 109.76933333333334,
+      "p95_min": 140.3445,
+      "p99_min": 143.0415,
+      "max_min": 152.35216666666668,
+      "gini": 0.32445592678092194
+    },
+    "lateness": {
+      "sum_person_minutes": 641.1875000000003
+    },
+    "timeline": {
+      "latest_return_min": 172.108
+    },
+    "efficiency": {
+      "total_travel_time_min": 4120.265666666664,
+      "avg_utilization_percent": 90.41654723261622,
+      "std_utilization_percent": 9.666630260778737
+    },
+    "objective_components": {
+      "total_wait_person_minutes": 33246.028999999995,
+      "total_lateness_person_minutes": 641.1875000000003,
+      "latest_return_minutes": 172.108
+    }
+  },
+  "optimization_runtime": 301.0511598587036,
+  "total_runtime": 301.59213757514954,
+  "wall_runtime": 301.6317791938782,
+  "runtime": 301.0511598587036,
+  "seed": 1010013
+}

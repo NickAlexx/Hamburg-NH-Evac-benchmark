@@ -1,0 +1,1418 @@
+/* Path: frontend2\src\styles\FullscreenApp.css */
+/* Resizable panels */
+.panel .resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #dee2e6;
+  border-radius: 50%;
+  cursor: nwse-resize;
+  bottom: 3px;
+  right: 3px;
+  z-index: 10;
+}/* FullscreenApp.css - Styles for the fullscreen map-based interface */
+
+/* Base container */
+.fullscreen-app-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+/* Fullscreen map container */
+.fullscreen-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Control toggles - always visible at top right */
+.control-toggles {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-button:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.toggle-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Panel base styles - for all collapsible panels */
+.panel {
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move; /* Indicates panel can be dragged */
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #212529;
+}
+
+.panel-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6c757d;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.panel-close:hover {
+  background-color: #e9ecef;
+  color: #343a40;
+}
+
+.panel-content {
+  padding: 15px;
+  flex: 1;
+  overflow: auto;
+}
+
+.panel-content.scrollable {
+  max-height: calc(90vh - 50px);
+  overflow-y: auto;
+}
+
+/* Specific panel positions and sizes */
+.parameters-panel {
+  top: 70px;
+  left: 15px;
+  width: 320px;
+  max-width: 90vw;
+}
+
+.timeline-panel { /* Or whichever panel you want to center */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Define its size, otherwise it might collapse or take full width/height */
+  width: 380px;       /* Or your desired width */
+  max-width: 90vw;    /* Good practice for responsiveness */
+  
+  /* Height considerations: */
+  /* Option 1: Fixed height (if you know it) */
+  /* height: 500px; */ 
+  
+  /* Option 2: Max height (allows content to define height up to a limit, then scrolls) */
+  max-height: 70vh;   /* Or your desired max height */
+
+  /* Ensure you remove or override other positioning properties like 'right' or 'bottom' */
+  right: auto;
+  bottom: auto;
+
+  /* ... other existing panel styles like background, border-radius, etc. ... */
+  position: absolute; /* This should already be there */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden; /* Important if you want the panel itself to clip content */
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-panel .panel-content { /* Ensure content area can scroll if needed */
+  padding: 15px;
+  flex: 1; /* Allows content to take available space */
+  overflow-y: auto; /* Enables scrolling within the content area */
+  /* min-height: 0; */ /* This can sometimes help flexbox behave with scrolling children */
+}
+
+.results-panel {
+  /* bottom: 15px; */ /* Remove this to avoid conflict with draggable hook's top positioning */
+  top: 70px; /* Set an initial top position; draggable hook will use this if set. If auto, hook defaults to 70px. Let's be explicit. */
+             /* Alternatively, for bottom alignment: top: calc(100vh - 250px); /* Assuming ~250px initial height, adjust as needed */
+             /* For now, let's stick with a simple top: 70px and user can drag it down. */
+  left: 15px;
+  width: 320px;
+  max-width: 90vw;
+  height: auto !important; /* Crucial for shrink-to-fit */
+  max-height: 60vh; /* Cap the maximum height */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Add this if the panel itself should scroll when max-height is hit and content overflows */
+                           /* Current setup implies panel-content scrolls, but panel-content has flex:0 0 auto */
+                           /* This suggests the panel itself might be intended to scroll if content makes it hit max-height */
+}
+
+.results-panel .panel-header {
+  flex-shrink: 0; /* Ensure header does not shrink */
+}
+
+.results-panel .panel-content {
+  padding: 15px;
+  overflow-y: auto; /* This allows scrolling if content exceeds its own calculated height, which flex:0 0 auto prevents unless panel is constrained */
+  flex: 0 0 auto; /* Correct for making content area size to its actual content */
+  /* min-height: 0; */ /* Might help in some complex flex scenarios, but flex:0 0 auto should be enough */
+}
+
+.gantt-panel {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  max-width: 1200px;
+  height: 70vh;
+}
+
+/* Animation controls overlay */
+.animation-overlay {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  z-index: 1000;
+  width: 320px;
+  max-width: 90vw;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  max-height: 40vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.animation-header {
+  padding: 15px;
+  background-color: rgba(248, 249, 250, 0.8);
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move; /* Indicates it can be dragged */
+}
+
+.animation-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #212529;
+}
+
+.animation-overlay .panel-content {
+  padding: 15px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  margin-top: 15px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Instructions in parameters panel */
+.instructions {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #6c757d;
+  border-radius: 4px;
+}
+
+.instructions p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #495057;
+}
+
+/* Action buttons in results panel */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 0; /* Ensure no bottom margin */
+}
+
+.compact-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.animation-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.animation-button:hover {
+  background-color: #0069d9;
+}
+
+/* Bus timeline styles - kept from original with some adaptations */
+.bus-timeline {
+  margin-bottom: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.bus-timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.bus-timeline-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #212529;
+}
+
+.trip-details {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #007bff;
+}
+
+.trip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.trip-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.trip-title {
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.evacuee-count {
+  display: flex;
+  align-items: center;
+  background-color: #e1f5fe;
+  border-radius: 15px;
+  padding: 3px 8px;
+}
+
+.evacuee-icon {
+  margin-right: 4px;
+  font-size: 14px;
+}
+
+.evacuee-number {
+  font-weight: 700;
+  color: #0277bd;
+  margin: 0 3px;
+}
+
+.evacuee-label {
+  font-size: 12px;
+  color: #0277bd;
+}
+
+.timeline-bar {
+  position: relative;
+  height: 20px;
+  margin: 10px 0;
+}
+
+.timeline-start, .timeline-end {
+  font-size: 12px;
+  color: #6c757d;
+  position: absolute;
+  top: 0;
+}
+
+.timeline-start {
+  left: 0;
+}
+
+.timeline-end {
+  right: 0;
+}
+
+.timeline-duration {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 6px;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  border-radius: 3px;
+}
+
+.stops-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.stop-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e8f5e9;
+  border-radius: 6px;
+  padding: 6px;
+  min-width: 80px;
+  flex: 1;
+}
+
+.stop-count {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.stop-facility {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 3px;
+  color: #1b5e20;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stop-late-indicator {
+  font-size: 10px;
+  margin-top: 3px;
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+.late-pickup {
+  background-color: #ffebee;
+}
+
+.late-pickup .stop-count {
+  color: #c62828;
+}
+
+.late-pickup .stop-facility {
+  color: #b71c1c;
+}
+
+.no-stops {
+  background-color: #f1f3f5;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  color: #868e96;
+  font-style: italic;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.details-toggle {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 13px;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.details-toggle:hover {
+  text-decoration: underline;
+}
+
+.full-trip-details {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #f1f3f5;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.full-trip-details ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.full-trip-details li {
+  margin-bottom: 3px;
+}
+
+.select-all-button {
+  background-color: #f1f3f5;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.select-all-button:hover {
+  background-color: #e9ecef;
+}
+
+/* Results styling */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.metrics-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.metrics-column p {
+  margin: 5px 0;
+}
+
+.metric-item {
+  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.metric-value {
+  font-weight: 500;
+  text-align: right;
+}
+
+.metric-good {
+  color: #2e7d32;
+}
+
+.metric-warning {
+  color: #f57c00;
+}
+
+.algorithm-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+
+.algorithm-badge.ea, .algorithm-badge.ea2 {
+  background-color: #007bff;
+  color: white;
+}
+
+.algorithm-badge.ea2 {
+  background-color: #0056b3;
+}
+
+.algorithm-badge.lns {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Dragging styles */
+.panel {
+  transition: box-shadow 0.3s ease, opacity 0.2s ease;
+}
+
+.panel.dragging {
+  opacity: 0.95;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  z-index: 1100; /* Raise dragged panel above others */
+  transition: none; /* Disable transitions while dragging for smoother experience */
+}
+
+.panel-header {
+  cursor: grab;
+}
+
+.panel-header:active {
+  cursor: grabbing;
+}
+
+.animation-header {
+  cursor: grab;
+}
+
+.animation-header:active {
+  cursor: grabbing;
+}
+
+/* NEW STYLES for custom main center controls */
+.main-center-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.main-center-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.clear-center-btn {
+  background: #e9ecef;
+  border: none;
+  color: #495057;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.clear-center-btn:hover {
+  background: #ced4da;
+}
+
+.set-on-map-btn {
+  padding: 4px 8px !important;
+  font-size: 0.85rem !important;
+  height: 28px !important;
+  border-radius: 4px !important;
+  border: 1px solid #ced4da;
+  background-color: #f8f9fa;
+}
+
+.set-on-map-btn.active {
+  background-color: #28a745;
+  color: white;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .control-toggles {
+    flex-wrap: wrap;
+  }
+  
+  .panel {
+    max-width: 100vw;
+    width: calc(100vw - 30px) !important;
+    max-height: 80vh;
+  }
+  
+  .parameters-panel, .results-panel, .timeline-panel {
+    left: 15px !important;
+    right: 15px !important;
+  }
+  
+  .parameters-panel {
+    top: 70px !important;
+  }
+  
+  .timeline-panel {
+    top: 20vh !important;
+  }
+  
+  .results-panel {
+    bottom: 15px !important;
+  }
+  
+  .gantt-panel {
+    width: calc(100vw - 30px) !important;
+    height: 70vh !important;
+  }
+  
+  .animation-overlay {
+    width: calc(100vw - 30px) !important;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.fleet-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  background-color: #e9ecef;
+  padding: 5px;
+  border-radius: 6px;
+}
+.fleet-toggle label {
+  flex: 1;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+.fleet-toggle input {
+  display: none;
+}
+.fleet-toggle input:checked + span {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-weight: 600;
+}
+
+.custom-fleet-editor {
+  border-top: 1px solid #dee2e6;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.custom-fleet-editor h4 {
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.vehicle-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.vehicle-row {
+  display: grid;
+  grid-template-columns: 25px 1fr 1fr 1fr 25px;
+  gap: 5px;
+  align-items: center;
+}
+
+.vehicle-row .vehicle-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #6c757d;
+}
+
+.vehicle-row .mini-input,
+.vehicle-row .mini-select {
+  width: 100% !important;
+}
+
+.remove-vehicle-btn {
+  background: #f8f9fa;
+  border: 1px solid #ced4da;
+  color: #e74c3c;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-vehicle-btn:hover {
+  background: #e9ecef;
+}
+
+.add-vehicle-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 6px;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #495057;
+}
+
+.add-vehicle-btn:hover {
+  background-color: #dee2e6;
+}
+
+/* Make radio buttons have a visible effect */
+.fleet-toggle input + span {
+  display: block;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+/* Path: frontend2/src/styles/FullscreenApp.css */
+/* Resizable panels */
+.panel .resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #dee2e6;
+  border-radius: 50%;
+  cursor: nwse-resize;
+  bottom: 3px;
+  right: 3px;
+  z-index: 10;
+}/* FullscreenApp.css - Styles for the fullscreen map-based interface */
+
+/* Base container */
+.fullscreen-app-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+/* Fullscreen map container */
+.fullscreen-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Control toggles - always visible at top right */
+.control-toggles {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-button:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.toggle-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Panel base styles - for all collapsible panels */
+.panel {
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move; /* Indicates panel can be dragged */
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #212529;
+}
+
+.panel-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6c757d;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.panel-close:hover {
+  background-color: #e9ecef;
+  color: #343a40;
+}
+
+.panel-content {
+  padding: 15px;
+  flex: 1;
+  overflow: auto;
+}
+
+.panel-content.scrollable {
+  max-height: calc(90vh - 50px);
+  overflow-y: auto;
+}
+
+/* Specific panel positions and sizes */
+.parameters-panel {
+  top: 70px;
+  left: 15px;
+  width: 320px;
+  max-width: 90vw;
+}
+
+/* NEW: Styles for the permanent route controls panel */
+.route-controls-panel {
+  top: 70px;
+  right: 15px;
+  width: 320px;
+  max-width: 90vw;
+  max-height: 80vh;
+}
+
+.results-panel {
+  top: 70px; 
+  left: 15px;
+  width: 320px;
+  max-width: 90vw;
+  height: auto !important; /* Crucial for shrink-to-fit */
+  max-height: 60vh; /* Cap the maximum height */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.results-panel .panel-header {
+  flex-shrink: 0; /* Ensure header does not shrink */
+}
+
+.results-panel .panel-content {
+  padding: 15px;
+  overflow-y: auto; 
+  flex: 0 0 auto; 
+}
+
+.results-scale-target {
+  font-size: calc(1rem * var(--results-scale, 1));
+}
+
+.results-scale-target .metrics-grid {
+  gap: 0.9em;
+  margin-bottom: 0.9em;
+}
+
+.results-scale-target .metrics-column p {
+  margin: 0.35em 0;
+}
+
+.results-scale-target .metric-item {
+  font-size: 0.9em;
+}
+
+.results-scale-target .algorithm-badge {
+  font-size: 0.75em;
+  padding: 0.2em 0.5em;
+}
+
+.results-panel {
+  resize: both;
+  overflow: auto;
+  min-width: 240px;
+  min-height: 200px;
+}
+
+.gantt-panel {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  max-width: 1200px;
+  height: 70vh;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  margin-top: 15px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Instructions in parameters panel */
+.instructions {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #6c757d;
+  border-radius: 4px;
+}
+
+.instructions p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #495057;
+}
+
+/* Action buttons in results panel */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 0; /* Ensure no bottom margin */
+}
+
+.compact-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.animation-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.animation-button:hover {
+  background-color: #0069d9;
+}
+
+/* Results styling */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.metrics-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.metrics-column p {
+  margin: 5px 0;
+}
+
+.metric-item {
+  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.metric-value {
+  font-weight: 500;
+  text-align: right;
+}
+
+.metric-good {
+  color: #2e7d32;
+}
+
+.metric-warning {
+  color: #f57c00;
+}
+
+.algorithm-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+
+.algorithm-badge.ea, .algorithm-badge.ea2 {
+  background-color: #007bff;
+  color: white;
+}
+
+.algorithm-badge.ea2 {
+  background-color: #0056b3;
+}
+
+.algorithm-badge.lns {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Dragging styles */
+.panel {
+  transition: box-shadow 0.3s ease, opacity 0.2s ease;
+}
+
+.panel.dragging {
+  opacity: 0.95;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  z-index: 1100; /* Raise dragged panel above others */
+  transition: none; /* Disable transitions while dragging for smoother experience */
+}
+
+.panel-header {
+  cursor: grab;
+}
+
+.panel-header:active {
+  cursor: grabbing;
+}
+
+/* NEW STYLES for custom main center controls */
+.main-center-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.main-center-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.clear-center-btn {
+  background: #e9ecef;
+  border: none;
+  color: #495057;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.clear-center-btn:hover {
+  background: #ced4da;
+}
+
+.set-on-map-btn {
+  padding: 4px 8px !important;
+  font-size: 0.85rem !important;
+  height: 28px !important;
+  border-radius: 4px !important;
+  border: 1px solid #ced4da;
+  background-color: #f8f9fa;
+}
+
+.set-on-map-btn.active {
+  background-color: #28a745;
+  color: white;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .control-toggles {
+    flex-wrap: wrap;
+  }
+  
+  .panel {
+    max-width: 100vw;
+    width: calc(100vw - 30px) !important;
+    max-height: 80vh;
+  }
+  
+  .parameters-panel, .results-panel, .route-controls-panel {
+    left: 15px !important;
+    right: 15px !important;
+  }
+  
+  .parameters-panel {
+    top: 70px !important;
+  }
+  
+  .route-controls-panel {
+    top: 20vh !important;
+  }
+  
+  .results-panel {
+    bottom: 15px !important;
+  }
+  
+  .gantt-panel {
+    width: calc(100vw - 30px) !important;
+    height: 70vh !important;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.fleet-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  background-color: #e9ecef;
+  padding: 5px;
+  border-radius: 6px;
+}
+.fleet-toggle label {
+  flex: 1;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+.fleet-toggle input {
+  display: none;
+}
+.fleet-toggle input:checked + span {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-weight: 600;
+}
+
+.custom-fleet-editor {
+  border-top: 1px solid #dee2e6;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.custom-fleet-editor h4 {
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.vehicle-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.vehicle-row {
+  display: grid;
+  grid-template-columns: 25px 1fr 1fr 1fr 25px;
+  gap: 5px;
+  align-items: center;
+}
+
+.vehicle-row .vehicle-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #6c757d;
+}
+
+.vehicle-row .mini-input,
+.vehicle-row .mini-select {
+  width: 100% !important;
+}
+
+.remove-vehicle-btn {
+  background: #f8f9fa;
+  border: 1px solid #ced4da;
+  color: #e74c3c;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-vehicle-btn:hover {
+  background: #e9ecef;
+}
+
+.add-vehicle-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 6px;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #495057;
+}
+
+.add-vehicle-btn:hover {
+  background-color: #dee2e6;
+}
+
+/* Make radio buttons have a visible effect */
+.fleet-toggle input + span {
+  display: block;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}

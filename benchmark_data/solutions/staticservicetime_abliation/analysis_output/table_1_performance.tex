@@ -1,0 +1,16 @@
+\begin{table*}[t]
+\centering
+\caption{Performance Comparison (Mean $\pm$ Std. Dev.). \textbf{Bold} indicates best result. $^\dagger$: Significantly worse than best (Wilcoxon signed-rank, $p<0.05$, Holm-corrected).}
+\label{tab:performance}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Scenario} & \textbf{Method} & \textbf{Avg Wait} & \textbf{Makespan} & \textbf{Total Cost} \\
+\midrule
+\multirow{2}{*}{\shortstack[l]{Synthetic Mass\\Transit}}
+ & Dispatcher_staticservice & 229.9 $\pm$ 0.0 & 563.3 $\pm$ 0.0 & 793.2 $\pm$ 0.0 \\
+ & MA_staticservice & \textbf{217.3 $\pm$ 1.9} & \textbf{547.4 $\pm$ 4.1} & \textbf{764.6 $\pm$ 5.9} \\
+\addlinespace
+\bottomrule
+\end{tabular}
+\end{table*}

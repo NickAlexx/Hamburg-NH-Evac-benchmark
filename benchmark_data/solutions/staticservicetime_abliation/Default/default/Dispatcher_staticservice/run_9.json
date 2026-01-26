@@ -1,0 +1,871 @@
+{
+  "overall_cost": 793.2079919634026,
+  "best_solution": [
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          4
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "4": 80
+        }
+      },
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "0": 80
+        }
+      },
+      {
+        "start_depot": 0,
+        "stops": [
+          5
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "5": 77
+        }
+      },
+      {
+        "start_depot": 0,
+        "stops": [
+          3,
+          7
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "3": 8,
+          "7": 72
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          8
+        ],
+        "end_depot": 4,
+        "pickup_counts": {
+          "8": 80
+        }
+      },
+      {
+        "start_depot": 4,
+        "stops": [
+          8,
+          6
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "8": 12,
+          "6": 68
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          4
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "4": 80
+        }
+      },
+      {
+        "start_depot": 0,
+        "stops": [
+          0
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "0": 61
+        }
+      },
+      {
+        "start_depot": 0,
+        "stops": [
+          3
+        ],
+        "end_depot": 3,
+        "pickup_counts": {
+          "3": 80
+        }
+      },
+      {
+        "start_depot": 3,
+        "stops": [
+          7,
+          2
+        ],
+        "end_depot": 2,
+        "pickup_counts": {
+          "7": 26,
+          "2": 54
+        }
+      },
+      {
+        "start_depot": 2,
+        "stops": [
+          2,
+          8
+        ],
+        "end_depot": 4,
+        "pickup_counts": {
+          "2": 17,
+          "8": 63
+        }
+      },
+      {
+        "start_depot": 4,
+        "stops": [
+          6
+        ],
+        "end_depot": 3,
+        "pickup_counts": {
+          "6": 38
+        }
+      }
+    ],
+    [
+      {
+        "start_depot": 0,
+        "stops": [
+          4
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "4": 52
+        }
+      },
+      {
+        "start_depot": 0,
+        "stops": [
+          1,
+          5
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "1": 21,
+          "5": 59
+        }
+      },
+      {
+        "start_depot": 0,
+        "stops": [
+          3
+        ],
+        "end_depot": 3,
+        "pickup_counts": {
+          "3": 80
+        }
+      },
+      {
+        "start_depot": 3,
+        "stops": [
+          2
+        ],
+        "end_depot": 0,
+        "pickup_counts": {
+          "2": 80
+        }
+      },
+      {
+        "start_depot": 0,
+        "stops": [
+          8
+        ],
+        "end_depot": 4,
+        "pickup_counts": {
+          "8": 80
+        }
+      },
+      {
+        "start_depot": 4,
+        "stops": [
+          6
+        ],
+        "end_depot": 1,
+        "pickup_counts": {
+          "6": 80
+        }
+      }
+    ]
+  ],
+  "simulation_data": {
+    "0": {
+      "0": {
+        "details": [
+          "Bus 0 Trip 0",
+          "Departure from Default Center: 0.00 min",
+          "Arrival at Default Center: 25.51 min",
+          "Bus busy for trip: 41.51 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Default Center -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Default Center",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 80 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 25.51466666666667,
+        "trip_time": 41.51466666666667
+      },
+      "1": {
+        "details": [
+          "Bus 0 Trip 1",
+          "Departure from Default Center: 41.51 min",
+          "Arrival at Default Center: 70.12 min",
+          "Bus busy for trip: 44.61 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Default Center -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Default Center",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 80 (on time)"
+        ],
+        "departure": 41.51466666666667,
+        "return": 70.12450000000001,
+        "trip_time": 44.609833333333334
+      },
+      "2": {
+        "details": [
+          "Bus 0 Trip 2",
+          "Departure from Default Center: 86.12 min",
+          "Arrival at Default Center: 118.29 min",
+          "Bus busy for trip: 48.16 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Default Center -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Default Center",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 77 (on time)"
+        ],
+        "departure": 86.12450000000001,
+        "return": 118.28716666666668,
+        "trip_time": 48.16266666666667
+      },
+      "3": {
+        "details": [
+          "Bus 0 Trip 3",
+          "Departure from Default Center: 134.29 min",
+          "Arrival at A-v-H-Gymnasium: 198.19 min",
+          "Bus busy for trip: 79.90 min",
+          "Total time at stops: 32.00 min",
+          "Route: Depot: Default Center -> Facility: Neue Stra\u00dfe 26, 21073 Hamburg -> Facility: Helmsweg 32, 21073 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Neue Stra\u00dfe 26, 21073 Hamburg: picked up 8 (late)",
+          "Stop Helmsweg 32, 21073 Hamburg: picked up 72 (late)"
+        ],
+        "departure": 134.28716666666668,
+        "return": 198.19166666666666,
+        "trip_time": 79.9045
+      },
+      "4": {
+        "details": [
+          "Bus 0 Trip 4",
+          "Departure from A-v-H-Gymnasium: 214.19 min",
+          "Arrival at Notunterkunft: 272.59 min",
+          "Bus busy for trip: 74.40 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: An der Rennkoppel 1, 21075 Hamburg -> Depot: Notunterkunft",
+          "Stop An der Rennkoppel 1, 21075 Hamburg: picked up 80 (late)"
+        ],
+        "departure": 214.19166666666666,
+        "return": 272.58983333333333,
+        "trip_time": 74.39816666666667
+      },
+      "5": {
+        "details": [
+          "Bus 0 Trip 5",
+          "Departure from Notunterkunft: 288.59 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 385.60 min",
+          "Bus busy for trip: 113.01 min",
+          "Total time at stops: 32.00 min",
+          "Route: Depot: Notunterkunft -> Facility: An der Rennkoppel 1, 21075 Hamburg -> Facility: Eichenh\u00f6he 9, 21073 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop An der Rennkoppel 1, 21075 Hamburg: picked up 12 (late)",
+          "Stop Eichenh\u00f6he 9, 21073 Hamburg: picked up 68 (late)"
+        ],
+        "departure": 288.58983333333333,
+        "return": 385.59749999999997,
+        "trip_time": 113.00766666666667
+      }
+    },
+    "1": {
+      "0": {
+        "details": [
+          "Bus 1 Trip 0",
+          "Departure from Default Center: 0.00 min",
+          "Arrival at Default Center: 25.51 min",
+          "Bus busy for trip: 41.51 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Default Center -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Default Center",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 80 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 25.51466666666667,
+        "trip_time": 41.51466666666667
+      },
+      "1": {
+        "details": [
+          "Bus 1 Trip 1",
+          "Departure from Default Center: 41.51 min",
+          "Arrival at Default Center: 70.12 min",
+          "Bus busy for trip: 44.61 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Default Center -> Facility: Neuenfelder Stra\u00dfe 33, 21109 Hamburg -> Depot: Default Center",
+          "Stop Neuenfelder Stra\u00dfe 33, 21109 Hamburg: picked up 61 (on time)"
+        ],
+        "departure": 41.51466666666667,
+        "return": 70.12450000000001,
+        "trip_time": 44.609833333333334
+      },
+      "2": {
+        "details": [
+          "Bus 1 Trip 2",
+          "Departure from Default Center: 86.12 min",
+          "Arrival at Schule Maretstra\u00dfe: 125.50 min",
+          "Bus busy for trip: 55.37 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Default Center -> Facility: Neue Stra\u00dfe 26, 21073 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neue Stra\u00dfe 26, 21073 Hamburg: picked up 80 (on time)"
+        ],
+        "departure": 86.12450000000001,
+        "return": 125.49533333333335,
+        "trip_time": 55.37083333333334
+      },
+      "3": {
+        "details": [
+          "Bus 1 Trip 3",
+          "Departure from Schule Maretstra\u00dfe: 141.50 min",
+          "Arrival at A-v-H-Gymnasium: 197.94 min",
+          "Bus busy for trip: 72.45 min",
+          "Total time at stops: 32.00 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Helmsweg 32, 21073 Hamburg -> Facility: Petersweg 3-5, 21075 Hamburg -> Depot: A-v-H-Gymnasium",
+          "Stop Helmsweg 32, 21073 Hamburg: picked up 26 (late)",
+          "Stop Petersweg 3-5, 21075 Hamburg: picked up 54 (late)"
+        ],
+        "departure": 141.49533333333335,
+        "return": 197.9426666666667,
+        "trip_time": 72.44733333333333
+      },
+      "4": {
+        "details": [
+          "Bus 1 Trip 4",
+          "Departure from A-v-H-Gymnasium: 213.94 min",
+          "Arrival at Notunterkunft: 291.97 min",
+          "Bus busy for trip: 94.02 min",
+          "Total time at stops: 32.00 min",
+          "Route: Depot: A-v-H-Gymnasium -> Facility: Petersweg 3-5, 21075 Hamburg -> Facility: An der Rennkoppel 1, 21075 Hamburg -> Depot: Notunterkunft",
+          "Stop Petersweg 3-5, 21075 Hamburg: picked up 17 (late)",
+          "Stop An der Rennkoppel 1, 21075 Hamburg: picked up 63 (late)"
+        ],
+        "departure": 213.9426666666667,
+        "return": 291.9673333333334,
+        "trip_time": 94.02466666666666
+      },
+      "5": {
+        "details": [
+          "Bus 1 Trip 5",
+          "Departure from Notunterkunft: 307.97 min",
+          "Arrival at Schule Maretstra\u00dfe: 365.45 min",
+          "Bus busy for trip: 73.48 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Notunterkunft -> Facility: Eichenh\u00f6he 9, 21073 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Eichenh\u00f6he 9, 21073 Hamburg: picked up 38 (late)"
+        ],
+        "departure": 307.9673333333334,
+        "return": 365.44633333333337,
+        "trip_time": 73.479
+      }
+    },
+    "2": {
+      "0": {
+        "details": [
+          "Bus 2 Trip 0",
+          "Departure from Default Center: 0.00 min",
+          "Arrival at Default Center: 25.51 min",
+          "Bus busy for trip: 41.51 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Default Center -> Facility: Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg -> Depot: Default Center",
+          "Stop Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg: picked up 52 (on time)"
+        ],
+        "departure": 0.0,
+        "return": 25.51466666666667,
+        "trip_time": 41.51466666666667
+      },
+      "1": {
+        "details": [
+          "Bus 2 Trip 1",
+          "Departure from Default Center: 41.51 min",
+          "Arrival at Default Center: 98.27 min",
+          "Bus busy for trip: 72.76 min",
+          "Total time at stops: 32.00 min",
+          "Route: Depot: Default Center -> Facility: Mannesallee 19, 21107 Hamburg -> Facility: Krieterstra\u00dfe 7, 21109 Hamburg -> Depot: Default Center",
+          "Stop Mannesallee 19, 21107 Hamburg: picked up 21 (on time)",
+          "Stop Krieterstra\u00dfe 7, 21109 Hamburg: picked up 59 (on time)"
+        ],
+        "departure": 41.51466666666667,
+        "return": 98.27466666666666,
+        "trip_time": 72.75999999999999
+      },
+      "2": {
+        "details": [
+          "Bus 2 Trip 2",
+          "Departure from Default Center: 114.27 min",
+          "Arrival at Schule Maretstra\u00dfe: 153.65 min",
+          "Bus busy for trip: 55.37 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Default Center -> Facility: Neue Stra\u00dfe 26, 21073 Hamburg -> Depot: Schule Maretstra\u00dfe",
+          "Stop Neue Stra\u00dfe 26, 21073 Hamburg: picked up 80 (late)"
+        ],
+        "departure": 114.27466666666666,
+        "return": 153.6455,
+        "trip_time": 55.37083333333334
+      },
+      "3": {
+        "details": [
+          "Bus 2 Trip 3",
+          "Departure from Schule Maretstra\u00dfe: 169.65 min",
+          "Arrival at Default Center: 215.50 min",
+          "Bus busy for trip: 61.85 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Schule Maretstra\u00dfe -> Facility: Petersweg 3-5, 21075 Hamburg -> Depot: Default Center",
+          "Stop Petersweg 3-5, 21075 Hamburg: picked up 80 (late)"
+        ],
+        "departure": 169.6455,
+        "return": 215.49716666666666,
+        "trip_time": 61.85166666666667
+      },
+      "4": {
+        "details": [
+          "Bus 2 Trip 4",
+          "Departure from Default Center: 231.50 min",
+          "Arrival at Notunterkunft: 296.56 min",
+          "Bus busy for trip: 81.06 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Default Center -> Facility: An der Rennkoppel 1, 21075 Hamburg -> Depot: Notunterkunft",
+          "Stop An der Rennkoppel 1, 21075 Hamburg: picked up 80 (late)"
+        ],
+        "departure": 231.49716666666666,
+        "return": 296.56,
+        "trip_time": 81.06283333333333
+      },
+      "5": {
+        "details": [
+          "Bus 2 Trip 5",
+          "Departure from Notunterkunft: 312.56 min",
+          "Arrival at Schule M\u00fcmmelmannsberg: 391.88 min",
+          "Bus busy for trip: 95.32 min",
+          "Total time at stops: 16.00 min",
+          "Route: Depot: Notunterkunft -> Facility: Eichenh\u00f6he 9, 21073 Hamburg -> Depot: Schule M\u00fcmmelmannsberg",
+          "Stop Eichenh\u00f6he 9, 21073 Hamburg: picked up 80 (late)"
+        ],
+        "departure": 312.56,
+        "return": 391.884,
+        "trip_time": 95.324
+      }
+    }
+  },
+  "facility_timeline_features": [],
+  "depots": [
+    {
+      "label": "Default Center",
+      "coords": [
+        9.996754980861652,
+        53.49221335731889
+      ],
+      "people": 0,
+      "capacity": 600
+    },
+    {
+      "label": "Schule M\u00fcmmelmannsberg",
+      "coords": [
+        10.148526582655167,
+        53.53143889821207
+      ],
+      "people": 0,
+      "capacity": 200
+    },
+    {
+      "label": "A-v-H-Gymnasium",
+      "coords": [
+        9.993166088434934,
+        53.438736688521004
+      ],
+      "people": 0,
+      "capacity": 200
+    },
+    {
+      "label": "Schule Maretstra\u00dfe",
+      "coords": [
+        9.982006240324646,
+        53.4542489338715
+      ],
+      "people": 0,
+      "capacity": 200
+    },
+    {
+      "label": "Notunterkunft",
+      "coords": [
+        9.9467,
+        53.5667
+      ],
+      "people": 0,
+      "capacity": 500
+    }
+  ],
+  "facilities": [
+    {
+      "label": "Neuenfelder Stra\u00dfe 33, 21109 Hamburg",
+      "coords": [
+        10.004606462954163,
+        53.49685976280374
+      ],
+      "people": 141
+    },
+    {
+      "label": "Mannesallee 19, 21107 Hamburg",
+      "coords": [
+        9.99087595417324,
+        53.514596818211984
+      ],
+      "people": 21
+    },
+    {
+      "label": "Petersweg 3-5, 21075 Hamburg",
+      "coords": [
+        9.964377763088107,
+        53.466273680321905
+      ],
+      "people": 151
+    },
+    {
+      "label": "Neue Stra\u00dfe 26, 21073 Hamburg",
+      "coords": [
+        9.97970909603695,
+        53.46234389601973
+      ],
+      "people": 168
+    },
+    {
+      "label": "Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg",
+      "coords": [
+        9.99503446965061,
+        53.502736682925494
+      ],
+      "people": 212
+    },
+    {
+      "label": "Krieterstra\u00dfe 7, 21109 Hamburg",
+      "coords": [
+        10.013130387228374,
+        53.49849915791417
+      ],
+      "people": 136
+    },
+    {
+      "label": "Eichenh\u00f6he 9, 21073 Hamburg",
+      "coords": [
+        9.958535608062569,
+        53.45378263325234
+      ],
+      "people": 186
+    },
+    {
+      "label": "Helmsweg 32, 21073 Hamburg",
+      "coords": [
+        9.975713292264286,
+        53.46417187947882
+      ],
+      "people": 98
+    },
+    {
+      "label": "An der Rennkoppel 1, 21075 Hamburg",
+      "coords": [
+        9.958474011085597,
+        53.46558667582815
+      ],
+      "people": 235
+    }
+  ],
+  "num_buses": 3,
+  "bus_capacity": 80,
+  "algorithm": "pendelverkehr_shuttle",
+  "timestamp": null,
+  "logs_directory": null,
+  "vehicles": [
+    {
+      "id": null,
+      "capacity": 80,
+      "start": {
+        "kind": "depot",
+        "index": 0
+      }
+    },
+    {
+      "id": null,
+      "capacity": 80,
+      "start": {
+        "kind": "depot",
+        "index": 0
+      }
+    },
+    {
+      "id": null,
+      "capacity": 80,
+      "start": {
+        "kind": "depot",
+        "index": 0
+      }
+    }
+  ],
+  "problem_data": {
+    "n_depots": 5,
+    "durations_matrix": "SAVED_SEPARATELY",
+    "demand_full": {
+      "0": 141,
+      "1": 21,
+      "2": 151,
+      "3": 168,
+      "4": 212,
+      "5": 136,
+      "6": 186,
+      "7": 98,
+      "8": 235
+    },
+    "deadlines": {
+      "0": 120,
+      "1": 120,
+      "2": 120,
+      "3": 120,
+      "4": 120,
+      "5": 120,
+      "6": 120,
+      "7": 120,
+      "8": 120
+    },
+    "max_trips_per_bus": 15,
+    "max_stops_per_trip": 6,
+    "depots": [
+      {
+        "label": "Default Center",
+        "coords": [
+          9.996754980861652,
+          53.49221335731889
+        ],
+        "people": 0,
+        "capacity": 600
+      },
+      {
+        "label": "Schule M\u00fcmmelmannsberg",
+        "coords": [
+          10.148526582655167,
+          53.53143889821207
+        ],
+        "people": 0,
+        "capacity": 200
+      },
+      {
+        "label": "A-v-H-Gymnasium",
+        "coords": [
+          9.993166088434934,
+          53.438736688521004
+        ],
+        "people": 0,
+        "capacity": 200
+      },
+      {
+        "label": "Schule Maretstra\u00dfe",
+        "coords": [
+          9.982006240324646,
+          53.4542489338715
+        ],
+        "people": 0,
+        "capacity": 200
+      },
+      {
+        "label": "Notunterkunft",
+        "coords": [
+          9.9467,
+          53.5667
+        ],
+        "people": 0,
+        "capacity": 500
+      }
+    ],
+    "facilities": [
+      {
+        "label": "Neuenfelder Stra\u00dfe 33, 21109 Hamburg",
+        "coords": [
+          10.004606462954163,
+          53.49685976280374
+        ],
+        "people": 141
+      },
+      {
+        "label": "Mannesallee 19, 21107 Hamburg",
+        "coords": [
+          9.99087595417324,
+          53.514596818211984
+        ],
+        "people": 21
+      },
+      {
+        "label": "Petersweg 3-5, 21075 Hamburg",
+        "coords": [
+          9.964377763088107,
+          53.466273680321905
+        ],
+        "people": 151
+      },
+      {
+        "label": "Neue Stra\u00dfe 26, 21073 Hamburg",
+        "coords": [
+          9.97970909603695,
+          53.46234389601973
+        ],
+        "people": 168
+      },
+      {
+        "label": "Hermann-Westphal-Stra\u00dfe 9, 21107 Hamburg",
+        "coords": [
+          9.99503446965061,
+          53.502736682925494
+        ],
+        "people": 212
+      },
+      {
+        "label": "Krieterstra\u00dfe 7, 21109 Hamburg",
+        "coords": [
+          10.013130387228374,
+          53.49849915791417
+        ],
+        "people": 136
+      },
+      {
+        "label": "Eichenh\u00f6he 9, 21073 Hamburg",
+        "coords": [
+          9.958535608062569,
+          53.45378263325234
+        ],
+        "people": 186
+      },
+      {
+        "label": "Helmsweg 32, 21073 Hamburg",
+        "coords": [
+          9.975713292264286,
+          53.46417187947882
+        ],
+        "people": 98
+      },
+      {
+        "label": "An der Rennkoppel 1, 21075 Hamburg",
+        "coords": [
+          9.958474011085597,
+          53.46558667582815
+        ],
+        "people": 235
+      }
+    ],
+    "vehicles": [
+      {
+        "id": null,
+        "capacity": 80,
+        "start": {
+          "kind": "depot",
+          "index": 0
+        }
+      },
+      {
+        "id": null,
+        "capacity": 80,
+        "start": {
+          "kind": "depot",
+          "index": 0
+        }
+      },
+      {
+        "id": null,
+        "capacity": 80,
+        "start": {
+          "kind": "depot",
+          "index": 0
+        }
+      }
+    ]
+  },
+  "algorithm_stats": {
+    "total_runtime": 0.002662181854248047,
+    "generation_costs": [
+      793.2079919634026
+    ],
+    "best_per_generation": [
+      793.2079919634026
+    ],
+    "avg_per_generation": [
+      793.2079919634026
+    ],
+    "generation_avg_evacuation_times": [
+      166.9544347799205
+    ],
+    "generation_latest_evacuation_times": [
+      391.884
+    ],
+    "generation_total_people_evacuated": [
+      1348
+    ],
+    "generation_evacuation_efficiencies": [
+      3.7421367934218344
+    ],
+    "generation_fitness_std": [
+      0.0
+    ],
+    "generation_population_diversity": [
+      1.0
+    ],
+    "time_limit_seconds": null,
+    "stopped_by_time_limit": false
+  },
+  "metrics": {
+    "units": {
+      "time": "minutes",
+      "objective_terms": "person-minutes"
+    },
+    "counts": {
+      "people_required": 1348,
+      "people_picked": 1348,
+      "people_unserved": 0,
+      "late_people": 915,
+      "late_fraction": 0.6787833827893175,
+      "stops_visited": 23
+    },
+    "wait": {
+      "sum_person_minutes": 309964.2765,
+      "mean_min": 229.94382529673567,
+      "p50_min": 230.39666666666665,
+      "p90_min": 495.5543333333334,
+      "p95_min": 502.9345,
+      "p99_min": 504.6283333333334,
+      "max_min": 504.6283333333334,
+      "gini": 0.4032206238052408
+    },
+    "lateness": {
+      "sum_person_minutes": 180144.5425
+    },
+    "timeline": {
+      "latest_return_min": 563.2641666666667
+    },
+    "efficiency": {
+      "total_travel_time_min": 534.9278333333332,
+      "avg_utilization_percent": 103.63764584507663,
+      "std_utilization_percent": 1.4778549114789572
+    },
+    "objective_components": {
+      "total_wait_person_minutes": 309964.2765,
+      "total_lateness_person_minutes": 180144.5425,
+      "latest_return_minutes": 563.2641666666667
+    }
+  },
+  "optimization_runtime": 0.002662181854248047,
+  "total_runtime": 0.002662181854248047,
+  "wall_runtime": 0.005682706832885742,
+  "runtime": 0.002662181854248047,
+  "seed": 2000010
+}

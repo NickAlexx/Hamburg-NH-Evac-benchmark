@@ -1,0 +1,41 @@
+\begin{table}[h]
+\centering
+\caption{Robustness Analysis. Stability metric indicates predictability (Mean/Max).}
+\label{tab:robustness}
+\begin{tabular}{llcc|c}
+\toprule
+\textbf{Scenario} & \textbf{Method} & \textbf{Mean Wait} & \textbf{Max Wait} & \textbf{Stability (\%)} \\
+\midrule
+\multicolumn{5}{l}{\textit{Bomb - Specialized}} \\
+ & Dispatcher & 224.5 & 224.5 & 100.0\% \\
+ & GA & 224.9 & 225.7 & 99.7\% \\
+ & MA & 225.0 & 226.3 & 99.4\% \\
+ & ALNS & 225.3 & 229.1 & 98.4\% \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Bomb - Augmented}} \\
+ & Dispatcher & 115.2 & 115.2 & 100.0\% \\
+ & GA & 114.4 & 115.2 & 99.3\% \\
+ & MA & 114.3 & 115.2 & 99.2\% \\
+ & ALNS & 113.9 & 115.2 & 98.9\% \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Flood - Specialized}} \\
+ & Dispatcher & 100.4 & 100.4 & 100.0\% \\
+ & GA & 100.6 & 101.7 & 98.9\% \\
+ & MA & 100.6 & 101.7 & 98.9\% \\
+ & ALNS & 109.0 & 111.2 & 98.0\% \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Flood - Augmented}} \\
+ & Dispatcher & 66.2 & 66.2 & 100.0\% \\
+ & GA & 65.8 & 67.0 & 98.2\% \\
+ & MA & 65.4 & 66.3 & 98.7\% \\
+ & ALNS & 68.5 & 70.0 & 97.9\% \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Synthetic Mass Transit}} \\
+ & Dispatcher & 203.0 & 203.0 & 100.0\% \\
+ & GA & 201.6 & 205.5 & 98.1\% \\
+ & MA & 201.0 & 202.6 & 99.2\% \\
+ & ALNS & 215.1 & 226.3 & 95.0\% \\
+\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}

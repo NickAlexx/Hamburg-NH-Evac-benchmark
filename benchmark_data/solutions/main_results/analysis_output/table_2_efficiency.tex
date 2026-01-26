@@ -1,0 +1,41 @@
+\begin{table}[h]
+\centering
+\caption{Operational Efficiency. Lower travel time implies smarter routing logic.}
+\label{tab:efficiency}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Scenario} & \textbf{Method} & \textbf{Total Travel (min)} & \textbf{Total Trips} & \textbf{Stops/Trip} \\
+\midrule
+\multicolumn{5}{l}{\textit{Bomb - Specialized}} \\
+ & Dispatcher & 1713.0 & 138.0 & 1.00 \\
+ & GA & 1712.5 & 137.9 & 1.00 \\
+ & MA & 1708.1 & 137.3 & 1.01 \\
+ & ALNS & \textbf{1694.8} & 137.0 & 1.00 \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Bomb - Augmented}} \\
+ & Dispatcher & \textbf{926.3} & 75.0 & 1.03 \\
+ & GA & 947.2 & 77.2 & 1.01 \\
+ & MA & 955.5 & 77.9 & 1.01 \\
+ & ALNS & 949.3 & 76.0 & 1.01 \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Flood - Specialized}} \\
+ & Dispatcher & \textbf{5522.2} & 152.0 & 1.00 \\
+ & GA & 5529.3 & 152.0 & 1.00 \\
+ & MA & 5529.1 & 151.9 & 1.00 \\
+ & ALNS & 5670.0 & 150.9 & 1.11 \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Flood - Augmented}} \\
+ & Dispatcher & 4257.1 & 113.0 & 1.01 \\
+ & GA & 4230.3 & 113.2 & 1.01 \\
+ & MA & 4156.2 & 112.1 & 1.02 \\
+ & ALNS & \textbf{3988.2} & 111.6 & 1.08 \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Synthetic Mass Transit}} \\
+ & Dispatcher & 534.9 & 18.0 & 1.28 \\
+ & GA & 511.2 & 18.0 & 1.28 \\
+ & MA & \textbf{508.0} & 18.0 & 1.27 \\
+ & ALNS & 578.5 & 17.0 & 1.37 \\
+\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}

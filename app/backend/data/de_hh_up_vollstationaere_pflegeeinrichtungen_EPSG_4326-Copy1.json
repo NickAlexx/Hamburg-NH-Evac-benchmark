@@ -1,0 +1,92 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+      {
+      "type": "Feature",
+      "id": "DE.HH.UP_VOLLSTATIONAERE_PFLEGEEINRICHTUNGEN_478",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.034189324052628,
+          53.5604790868343
+        ]
+      },
+      "properties": {
+        "pflegeeinrichtung": "Amarita Hamburg-Mitte",
+        "adresse": "Angerstraße 20-22",
+        "ort": "22087 Hamburg",
+        "postfach": "",
+        "telefonnummer": "040 555000",
+        "email": "amarita.hamburg@emvia.de",
+        "homepage": "http://www.amarita-hamburg.de",
+        "traeger": "Amarita Hamburg-Mitte Plus GmbH",
+        "adresse_traeger": "Angerstraße 20-22",
+        "ort_traeger": "22087 Hamburg",
+        "telefonnummer_traeger": "040 55500-0",
+        "email_traeger": "amarita.hamburg@emvia.de",
+        "homepage_traeger": "http://www.amarita-hamburg.de",
+        "plaetze": 336,
+        "versorgungsangebote": ""
+      },
+      "srsName": "EPSG:4326"
+    },
+    {
+      "type": "Feature",
+      "id": "DE.HH.UP_VOLLSTATIONAERE_PFLEGEEINRICHTUNGEN_514",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.923289211029147,
+          53.546879077981025
+        ]
+      },
+      "properties": {
+        "pflegeeinrichtung": "Auguste-Viktoria-Seniorenstift",
+        "adresse": "Elbchaussee 88",
+        "ort": "22763 Hamburg",
+        "postfach": "",
+        "telefonnummer": "040 3986830",
+        "email": "avs@diakonie-alten-eichen.de",
+        "homepage": "http://www.diakonie-alten-eichen.de",
+        "traeger": "Auguste-Viktoria-Stiftung",
+        "adresse_traeger": "Elbchaussee 88",
+        "ort_traeger": "22763 Hamburg",
+        "telefonnummer_traeger": "040 3986830",
+        "email_traeger": "avs@diakonie-alten-eichen.de",
+        "homepage_traeger": "http://www.diakonie-alten-eichen.de",
+        "plaetze": 95,
+        "versorgungsangebote": ""
+      },
+      "srsName": "EPSG:4326"
+    },
+      {
+      "type": "Feature",
+      "id": "DE.HH.UP_VOLLSTATIONAERE_PFLEGEEINRICHTUNGEN_461",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.932293532584074,
+          53.547333197847024
+        ]
+      },
+      "properties": {
+        "pflegeeinrichtung": "Seniorenresidenz Rumond-Walther-Haus",
+        "adresse": "Klopstockplatz 2",
+        "ort": "22765 Hamburg",
+        "postfach": "",
+        "telefonnummer": "040 398250",
+        "email": "rwh@pflegediakonie.de",
+        "homepage": "http://www.pflegediakonie.de",
+        "traeger": "Rumond-Walther-Haus gGmbH",
+        "adresse_traeger": "Klopstockplatz 2",
+        "ort_traeger": "22765 Hamburg",
+        "telefonnummer_traeger": "040 39825100",
+        "email_traeger": "info@pflegediakonie.de",
+        "homepage_traeger": "http://www.pflegediakonie.de",
+        "plaetze": 96,
+        "versorgungsangebote": ""
+      },
+      "srsName": "EPSG:4326"
+    }
+  ]
+}
