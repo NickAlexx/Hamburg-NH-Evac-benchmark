@@ -431,10 +431,19 @@ For evaluation with custom problem instances or fleets:
 If you use this benchmark in your research, please cite:
 
 ```bibtex
-[Citation to be added upon publication]
+@inproceedings{alexander2026nhevac,
+  author    = {Alexander, Nick and Tannenbaum, Milva and Noennig, J{\"o}rg Rainer},
+  title     = {Operational Decision Support for Evacuating Nursing Home Residents:
+               A Hamburg Benchmark and Metaheuristic Comparison Under a 5-Minute Time Budget},
+  booktitle = {Proceedings of the Genetic and Evolutionary Computation Conference (GECCO '26)},
+  year      = {2026},
+  publisher = {ACM},
+  address   = {San Jose, Costa Rica},
+  doi       = {10.1145/3795095.3805113},
+  note      = {To appear}
+}
 ```
 
 ## License
-
 
 This source code is made available for the purpose of peer review. Upon publication/acceptance, the repository will be released under the MIT License [or Apache 2.0/GPL].

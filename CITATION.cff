@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this benchmark or code, please cite the following paper."
+title: "Hamburg-NH-Evac Benchmark"
+authors:
+  - family-names: Alexander
+    given-names: Nick
+    affiliation: HafenCity University Hamburg
+  - family-names: Tannenbaum
+    given-names: Milva
+    affiliation: Ministry of the Interior and Sports, Hamburg
+  - family-names: Noennig
+    given-names: "Jörg Rainer"
+    affiliation: HafenCity University Hamburg
+preferred-citation:
+  type: conference-paper
+  title: "Operational Decision Support for Evacuating Nursing Home Residents: A Hamburg Benchmark and Metaheuristic Comparison Under a 5-Minute Time Budget"
+  authors:
+    - family-names: Alexander
+      given-names: Nick
+    - family-names: Tannenbaum
+      given-names: Milva
+    - family-names: Noennig
+      given-names: "Jörg Rainer"
+  year: 2026
+  collection-title: "Proceedings of the Genetic and Evolutionary Computation Conference (GECCO '26)"
+  publisher: ACM
+  location: "San Jose, Costa Rica"
+  doi: 10.1145/3795095.3805113
+  notes: "To appear"
