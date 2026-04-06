@@ -446,4 +446,11 @@ If you use this benchmark in your research, please cite:
 
 ## License
 
-This source code is made available for the purpose of peer review. Upon publication/acceptance, the repository will be released under the MIT License [or Apache 2.0/GPL].
+Unless otherwise noted, the contents of this repository are licensed under the
+Creative Commons Attribution 4.0 International license (`CC-BY-4.0`).
+
+You can find the full license text in [LICENSE](LICENSE) or at:
+https://creativecommons.org/licenses/by/4.0/
+
+Third-party dependencies and externally sourced materials remain subject to their
+own respective licenses and terms.
