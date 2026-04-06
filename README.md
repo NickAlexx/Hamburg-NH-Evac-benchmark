@@ -40,7 +40,7 @@ All optimization methods operate under a strict **300-second (5-minute) planning
   - [Units and Indexing](#units-and-indexing)
   - [Solution Format (JSON)](#solution-format-json)
   - [Custom Evaluation Inputs](#custom-evaluation-inputs)
-- [Citation & License](#citation)
+- [Citation, Data Provenance & License](#citation)
 
 ---
 
@@ -444,13 +444,34 @@ If you use this benchmark in your research, please cite:
 }
 ```
 
+## Data Provenance
+
+Parts of the benchmark inputs and precomputed routing artifacts derive from third-party
+public-sector geodata and routing services. Those materials remain subject to their
+source-specific attribution and license terms.
+
+| Material | Repository Paths | Source | License / Attribution |
+|----------|------------------|--------|-----------------------|
+| Care facility source data | `app/backend/data/de_hh_up_vollstationaere_pflegeeinrichtungen_EPSG_4326.json`, `app/backend/data/de_hh_up_vollstationaere_pflegeeinrichtungen_EPSG_4326-Copy1.json`, and benchmark inputs derived from these locations and capacities | Hamburg Geoportal / Transparenzportal, dataset and WFS "Vollstationaere Pflegeeinrichtungen Hamburg" | Datenlizenz Deutschland Namensnennung 2.0; source attribution: Freie und Hansestadt Hamburg, Behoerde fuer Arbeit, Gesundheit, Soziales, Familie und Integration |
+| Shelter source data | Benchmark problem instances and derived benchmark inputs containing Hamburg shelter / depot locations | Hamburg Geoportal / Transparenzportal, dataset and WFS "Notunterkuenfte Hamburg" | Datenlizenz Deutschland Namensnennung 2.0; source attribution: Freie und Hansestadt Hamburg, Bezirksamt Hamburg-Mitte |
+| Travel-time matrices and first-leg routing data | `benchmark_data/precomputed_matrices/matrices/*.json` and `benchmark_data/solutions/**/matrices/*.json` | Generated with openrouteservice | openrouteservice API results are provided under CC-BY 4.0; attribution: (c) openrouteservice.org by HeiGIT \| Map data (c) OpenStreetMap contributors |
+
+The benchmark problem instances in this repository are transformed derivatives prepared
+for research and evaluation. When reusing them, retain the above source attributions and
+indicate that the original data were transformed for benchmark use.
+
+Additional source details and links are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
 ## License
 
-Unless otherwise noted, the contents of this repository are licensed under the
+Unless otherwise noted, repository-authored code, documentation, and benchmark packaging
+materials are licensed under the
 Creative Commons Attribution 4.0 International license (`CC-BY-4.0`).
 
 You can find the full license text in [LICENSE](LICENSE) or at:
 https://creativecommons.org/licenses/by/4.0/
 
-Third-party dependencies and externally sourced materials remain subject to their
-own respective licenses and terms.
+Third-party dependencies, public-sector source geodata, and routing-derived matrices
+remain subject to their own respective licenses, attribution requirements, and terms.
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the specific Hamburg Geoportal
+and openrouteservice notices that apply to those materials.
