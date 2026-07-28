@@ -2,7 +2,7 @@
 
 # Try to import but if it fails, continue with fallbacks
 try:
-    from .core import n_depots, facilities, depots, durations_matrix, demand_full, deadlines
+    from .core import n_depots, facilities, depots, durations_matrix, demand_full
 except (ImportError, AttributeError):
     print("Warning: Failed to import one or more globals from core - using fallbacks")
     n_depots = 1
@@ -10,12 +10,11 @@ except (ImportError, AttributeError):
     depots = []
     durations_matrix = {}
     demand_full = {}
-    deadlines = {}
 
 def simulate_solution_with_timeline(solution, num_buses, bus_capacity, 
                                    depots_data=None, facilities_data=None, 
                                    n_depots_value=None, durations_data=None,
-                                   demand_data=None, deadlines_data=None,
+                                   demand_data=None,
                                    **kwargs):
     """
     Simulate the solution timeline for visualization.
@@ -23,7 +22,7 @@ def simulate_solution_with_timeline(solution, num_buses, bus_capacity,
     
     Now accepts explicit parameters to ensure data is available even if global variables are missing.
     """
-    global depots, facilities, durations_matrix, n_depots, demand_full, deadlines
+    global depots, facilities, durations_matrix, n_depots, demand_full
     
     # Use explicitly passed parameters if available, fallback to globals
     local_depots = depots_data if depots_data is not None else depots
@@ -31,7 +30,6 @@ def simulate_solution_with_timeline(solution, num_buses, bus_capacity,
     local_n_depots = n_depots_value if n_depots_value is not None else n_depots
     local_durations = durations_data if durations_data is not None else durations_matrix
     local_demand = demand_data if demand_data is not None else demand_full
-    local_deadlines = deadlines_data if deadlines_data is not None else deadlines
     
     # Extract service time params from kwargs
     service_params = {
@@ -208,11 +206,7 @@ def simulate_solution_with_timeline(solution, num_buses, bus_capacity,
                             if stops[0] < len(local_facilities):
                                 facility_label = local_facilities[stops[0]].get('label', f"Facility {stops[0]}")
                                 
-                            deadline = local_deadlines.get(stops[0], float('inf'))
-                            if arrival_time <= deadline:
-                                details.append(f"Stop {facility_label}: picked up {pickup} (on time)")
-                            else:
-                                details.append(f"Stop {facility_label}: picked up {pickup} (late)")
+                            details.append(f"Stop {facility_label}: picked up {pickup}")
                         else:
                             # Get facility label
                             facility_label = f"Facility {stops[0]}"
@@ -227,17 +221,12 @@ def simulate_solution_with_timeline(solution, num_buses, bus_capacity,
                             pickup = min(available, rem_cap)
                             remaining_demand[stops[0]] = remaining_demand.get(stops[0], 0) - pickup
                             rem_cap -= pickup
-                            deadline = local_deadlines.get(stops[0], float('inf'))
-                            
                             # Get facility label
                             facility_label = f"Facility {stops[0]}"
                             if stops[0] < len(local_facilities):
                                 facility_label = local_facilities[stops[0]].get('label', f"Facility {stops[0]}")
                                 
-                            if arrival_time <= deadline:
-                                details.append(f"Stop {facility_label}: picked up {pickup} (on time)")
-                            else:
-                                details.append(f"Stop {facility_label}: picked up {pickup} (late)")
+                            details.append(f"Stop {facility_label}: picked up {pickup}")
                         else:
                             # Get facility label
                             facility_label = f"Facility {stops[0]}"
@@ -275,11 +264,7 @@ def simulate_solution_with_timeline(solution, num_buses, bus_capacity,
                                 if stops[i] < len(local_facilities):
                                     facility_label = local_facilities[stops[i]].get('label', f"Facility {stops[i]}")
                                     
-                                deadline = local_deadlines.get(stops[i], float('inf'))
-                                if arrival_time <= deadline:
-                                    details.append(f"Stop {facility_label}: picked up {pickup} (on time)")
-                                else:
-                                    details.append(f"Stop {facility_label}: picked up {pickup} (late)")
+                                details.append(f"Stop {facility_label}: picked up {pickup}")
                             else:
                                 # Get facility label
                                 facility_label = f"Facility {stops[i]}"
@@ -294,17 +279,12 @@ def simulate_solution_with_timeline(solution, num_buses, bus_capacity,
                                 pickup = min(available, rem_cap)
                                 remaining_demand[stops[i]] = remaining_demand.get(stops[i], 0) - pickup
                                 rem_cap -= pickup
-                                deadline = local_deadlines.get(stops[i], float('inf'))
-                                
                                 # Get facility label
                                 facility_label = f"Facility {stops[i]}"
                                 if stops[i] < len(local_facilities):
                                     facility_label = local_facilities[stops[i]].get('label', f"Facility {stops[i]}")
                                     
-                                if arrival_time <= deadline:
-                                    details.append(f"Stop {facility_label}: picked up {pickup} (on time)")
-                                else:
-                                    details.append(f"Stop {facility_label}: picked up {pickup} (late)")
+                                details.append(f"Stop {facility_label}: picked up {pickup}")
                             else:
                                 # Get facility label
                                 facility_label = f"Facility {stops[i]}"

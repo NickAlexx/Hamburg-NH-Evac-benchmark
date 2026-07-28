@@ -11,7 +11,6 @@ def _simulate_and_get_timings(
     individual: List[List[Dict[str, Any]]],
     n_depots: int,
     durations_matrix: Dict[Tuple[int, int], float],
-    deadlines: Dict[int, float],
     origin_by_bus: List[Dict[str, Any]],
     cap_by_bus: List[int],
     depots: List[Dict[str, Any]],
@@ -28,13 +27,11 @@ def _simulate_and_get_timings(
     Returns a dictionary with detailed simulation results.
     """
     total_wait_pm = 0.0
-    total_lateness_pm = 0.0
     all_return_times: List[float] = []
     all_pickup_times: List[float] = []
     total_people_evacuated = 0
     
     # --- NEW METRICS INITIALIZATION ---
-    late_pickup_count = 0
     total_travel_time_min = 0.0
     bus_finish_times = [0.0] * len(individual)
     depot_loads = [0] * len(depots) if depots else []
@@ -91,11 +88,6 @@ def _simulate_and_get_timings(
                 for _ in range(pickup_count):
                     all_pickup_times.append(t)
                 
-                dl = float(deadlines.get(node, float('inf')))
-                if t > dl and math.isfinite(dl):
-                    total_lateness_pm += (t - dl) * pickup_count
-                    late_pickup_count += pickup_count # Accumulate late people count
-                
                 # --- UPDATED SERVICE TIME LOGIC ---
                 if use_dynamic_service_time:
                     service_time = service_time_base_min + pickup_count * service_time_per_person_min
@@ -146,12 +138,10 @@ def _simulate_and_get_timings(
 
     return {
         "total_wait_pm": total_wait_pm,
-        "total_lateness_pm": total_lateness_pm,
         "latest_evac_min": max(all_return_times) if all_return_times else 0.0,
         "pickup_times": all_pickup_times,
         "return_times": all_return_times,
         "total_people_evacuated": total_people_evacuated,
-        "late_pickup_count": late_pickup_count,
         "total_travel_time_min": total_travel_time_min,
         "bus_finish_times": bus_finish_times,
         "total_overfill": total_overfill,
@@ -221,7 +211,6 @@ def _weighted_gini(pairs: List[Tuple[float, int]]) -> float:
     return max(0.0, min(1.0, 1.0 - sum_term))
 
 def objective_from_metrics(metrics: Dict[str, Any],
-                           lateness_weight: float = 1.0,
                            latest_equiv_people: float = 0.0) -> float:
     comp = metrics["objective_components"]
     return (comp["total_wait_person_minutes"]
@@ -234,7 +223,6 @@ def compute_solution_metrics(
     n_depots: int,
     durations_matrix: Dict[Tuple[int, int], float],
     demand_full: Dict[int, int],
-    deadlines: Dict[int, float],
     depots: List[Dict[str, Any]],
     service_time_min: float = SERVICE_TIME_MIN_DEFAULT,
     vehicles: Optional[List[Dict[str, Any]]] = None,
@@ -274,7 +262,6 @@ def compute_solution_metrics(
         individual=individual,
         n_depots=n_depots,
         durations_matrix=durations_matrix,
-        deadlines=deadlines,
         origin_by_bus=origin_by_bus,
         cap_by_bus=cap_by_bus,
         depots=depots,
@@ -288,7 +275,6 @@ def compute_solution_metrics(
     )
 
     total_wait_pm = sim_results["total_wait_pm"]
-    total_lateness_pm = sim_results["total_lateness_pm"]
     latest_return_min = sim_results["latest_evac_min"]
     total_overfill = sim_results["total_overfill"]
     
@@ -312,8 +298,6 @@ def compute_solution_metrics(
             "people_required": people_total_required,
             "people_picked": people_picked,
             "people_unserved": unserved,
-            "late_people": sim_results["late_pickup_count"],
-            "late_fraction": sim_results["late_pickup_count"] / people_picked if people_picked > 0 else 0,
             "stops_visited": sum(len(trip.get("stops", [])) for bus in individual for trip in bus),
         },
         "wait": {
@@ -322,7 +306,6 @@ def compute_solution_metrics(
             "max_min": max(wait_times) if wait_times else None,
             "gini": gini_wait,
         },
-        "lateness": {"sum_person_minutes": total_lateness_pm},
         "timeline": {"latest_return_min": latest_return_min},
         "efficiency": {
             "total_travel_time_min": sim_results["total_travel_time_min"],

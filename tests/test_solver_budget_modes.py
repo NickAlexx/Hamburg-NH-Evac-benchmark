@@ -38,7 +38,6 @@ def tiny_problem():
         "max_stops_per_trip": 2,
         "pickup_nodes": [0, 1],
         "demand_full": {0: 4, 1: 4},
-        "deadlines": {0: 120.0, 1: 120.0},
         "n_depots": 1,
         "n_facilities": 2,
         "node_coords": {0: (53.51, 10.01), 1: (53.52, 10.02)},

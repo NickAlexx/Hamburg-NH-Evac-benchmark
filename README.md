@@ -83,6 +83,8 @@ Solutions must satisfy:
 - **Route continuity** (hard): End depot of trip *t* = start depot of trip *t+1*
 - **Shelter capacity** (soft): Penalized via `P_over` when violated
 
+NH-Evac-VRP does not define per-facility pickup deadlines or time windows. Urgency is represented directly by the waiting-time and makespan terms in the objective.
+
 ---
 
 ## Hamburg Benchmark Suite
@@ -233,7 +235,7 @@ The MA extends the GA with local search applied to selected individuals. It empl
 
 **takeover_gap:** Detects timeline gaps where one bus finishes just before another's trip begins and reassigns the upcoming trip.
 
-**fill_idle_time:** Assigns new trips to buses finishing significantly before the makespan, pulling late pickups forward.
+**fill_idle_time:** Assigns new trips to buses finishing significantly before the makespan, pulling the latest-scheduled pickups forward.
 
 **consolidate_trips:** Merges two trips that fit within capacity and re-optimizes the combined stop sequence to reduce trip count.
 

@@ -34,7 +34,7 @@ class PendelParams:
     """Optional knobs for the shuttle baseline."""
     home_depot: int = 0                 # Fallback depot for trips without a clear nearest one.
     use_nearest_depot: bool = True      # If true, buses return to the nearest depot.
-    pick_rule: str = "deadline_then_nearest"  # Selection rule for next node.
+    pick_rule: str = "nearest"            # Selection rule for next node.
     max_rounds: int = 10_000            # Hard safety cap to prevent infinite loops.
     secondary_stop_threshold: float = 0.6 # Capacity threshold to trigger search for a second stop.
 
@@ -187,7 +187,7 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
         pendel = PendelParams(
             home_depot=int(algorithm_specific_params.get("home_depot", 0)),
             use_nearest_depot=bool(algorithm_specific_params.get("use_nearest_depot", True)),
-            pick_rule=str(algorithm_specific_params.get("pick_rule", "deadline_then_nearest")),
+            pick_rule=str(algorithm_specific_params.get("pick_rule", "nearest")),
             max_rounds=int(algorithm_specific_params.get("max_rounds", 10_000)),
             secondary_stop_threshold=float(algorithm_specific_params.get("secondary_stop_threshold", 0.6)),
         )
@@ -215,7 +215,6 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
         durations_matrix: Dict[Tuple[int, int], float] = problem_data["durations_matrix"]
         n_depots: int = problem_data["n_depots"]
         demand_full: Dict[int, int] = problem_data["demand_full"]
-        deadlines: Dict[int, float] = problem_data["deadlines"]
         pickup_nodes: List[int] = problem_data["pickup_nodes"]
         max_trips_per_bus: int = problem_data["max_trips_per_bus"]
         max_stops_per_trip: int = problem_data["max_stops_per_trip"]
@@ -270,15 +269,13 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
 
         def next_node_for(current_location: dict) -> Optional[int]:
             if not active_nodes: return None
-            if pendel.pick_rule == "deadline_then_nearest":
-                best_deadline = min(deadlines.get(n, float("inf")) for n in active_nodes)
-                dl_candidates = [n for n in active_nodes if math.isclose(deadlines.get(n, float("inf")), best_deadline)]
-                best = min(dl_candidates, key=lambda n: get_travel_time_from_location(current_location, n))
-                return best
-            elif pendel.pick_rule == "nearest":
+            if pendel.pick_rule == "nearest":
                 return min(active_nodes, key=lambda n: get_travel_time_from_location(current_location, n))
-            else:
+            if pendel.pick_rule == "largest_demand":
                 return max(active_nodes, key=lambda n: remaining[n])
+            raise ValueError(
+                f"Unsupported pick_rule {pendel.pick_rule!r}; use 'nearest' or 'largest_demand'."
+            )
 
         rounds = 0
         while any(r > 0 for r in remaining.values()) and rounds < pendel.max_rounds:
@@ -358,13 +355,13 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
         # Get penalty factor from EA params to ensure consistent fitness calculation
         latest_evacuation_penalty_factor = algorithm_specific_params.get('latest_evacuation_penalty_factor', 0.0)
         best_fitness = self._evaluate_fitness_like_ea(
-            schedules, cap_by_bus, n_depots, durations_matrix, deadlines, normalized_vehicles,
+            schedules, cap_by_bus, n_depots, durations_matrix, normalized_vehicles,
             latest_evacuation_penalty_factor, depots
         )
 
         simulation_data = self.create_simulation_data(
             best_solution, buses_count, cap_by_bus, depots, facilities,
-            n_depots, durations_matrix, demand_full, deadlines,
+            n_depots, durations_matrix, demand_full,
             **self._service_params
         )
         solution_summary = visualization.create_solution_summary(
@@ -373,7 +370,7 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
 
         gen_metrics = self._extract_per_generation_like_ea(
             schedules, buses_count, cap_by_bus, depots, facilities,
-            n_depots, durations_matrix, demand_full, deadlines, fitness=best_fitness
+            n_depots, durations_matrix, demand_full, fitness=best_fitness
         )
 
         optimization_ended_at = budget.now()
@@ -404,7 +401,7 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
         result["vehicles"] = normalized_vehicles
         result["problem_data"] = {
             "n_depots": n_depots, "durations_matrix": {str(k): v for k, v in durations_matrix.items()},
-            "demand_full": demand_full, "deadlines": deadlines, "max_trips_per_bus": max_trips_per_bus,
+            "demand_full": demand_full, "max_trips_per_bus": max_trips_per_bus,
             "max_stops_per_trip": max_stops_per_trip, "depots": depots, "facilities": facilities,
             "vehicles": normalized_vehicles,
         }
@@ -413,7 +410,7 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
         result["time_limit_seconds"] = budget.limit_seconds
         result["metrics"] = compute_solution_metrics(
             best_solution, buses_count=buses_count, n_depots=n_depots, durations_matrix=durations_matrix,
-            demand_full=demand_full, deadlines=deadlines, vehicles=normalized_vehicles, depots=depots, 
+            demand_full=demand_full, vehicles=normalized_vehicles, depots=depots,
             **self._service_params, node_coords=self._node_coords, start_to_node_seconds=self._start_to_node_seconds,
             avg_speed_kmh=self._avg_speed_kmh, road_factor=self._road_factor,
         )
@@ -500,7 +497,7 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
     # ---- helpers (parity with EA scoring & per-gen extraction) ----
     def _evaluate_fitness_like_ea(
         self, individual: List[List[Dict[str, Any]]], cap_by_bus: List[int], n_depots: int,
-        durations_matrix: Dict[Tuple[int, int], float], deadlines: Dict[int, float],
+        durations_matrix: Dict[Tuple[int, int], float],
         normalized_vehicles: List[Dict[str, Any]], latest_evacuation_penalty_factor: float,
         depots: List[Dict[str, Any]]
     ) -> float:
@@ -516,7 +513,6 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
             individual=individual,
             n_depots=n_depots,
             durations_matrix=durations_matrix,
-            deadlines=deadlines,
             origin_by_bus=origin_by_bus,
             cap_by_bus=cap_by_bus,
             depots=depots,
@@ -539,7 +535,7 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
     def _extract_per_generation_like_ea(
         self, individual: List[List[Dict[str, Any]]], buses_count: int, cap_by_bus: List[int], depots, facilities,
         n_depots: int, durations_matrix: Dict[Tuple[int, int], float], demand_full: Dict[int, int],
-        deadlines: Dict[int, float], *, fitness: float,
+        *, fitness: float,
     ) -> Dict[str, Any]:
         solution: List[List[Dict[str, Any]]] = []
         for bus_sched in individual:
@@ -555,7 +551,7 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
 
         sim = visualization.simulate_solution_with_timeline(
             solution, buses_count, cap_by_bus, depots, facilities, n_depots, durations_matrix, demand_full,
-            deadlines, **self._service_params
+            **self._service_params
         )
 
         pickup_times, return_times, total_people_evacuated = [], [], 0
@@ -566,10 +562,10 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
                 departure_time, trip_time = trip_data.get("departure", 0.0), trip_data.get("trip_time", 0.0)
                 details = trip_data.get("details", [])
                 for detail in details:
-                    if "picked up" in detail and ("(on time)" in detail or "(late)" in detail):
+                    if "picked up" in detail:
                         try:
                             part = detail.split("picked up")[1]
-                            num = int(part.split("(")[0].strip())
+                            num = int(part.strip())
                             total_people_evacuated += num
                             est = departure_time + (trip_time * 0.5)
                             for _ in range(num): pickup_times.append(est)

@@ -47,6 +47,7 @@ def _deserialize_locations(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
 def _deserialize_problem_data(data: Dict[str, Any]) -> Dict[str, Any]:
     problem = dict(data)
+    problem.pop("deadlines", None)  # Legacy problem files remain readable.
     problem["depots"] = _deserialize_locations(data.get("depots", []))
     problem["facilities"] = _deserialize_locations(data.get("facilities", []))
     problem["durations_matrix"] = {
@@ -54,7 +55,6 @@ def _deserialize_problem_data(data: Dict[str, Any]) -> Dict[str, Any]:
     }
     problem["pickup_nodes"] = [int(n) for n in data.get("pickup_nodes", [])]
     problem["demand_full"] = {int(k): int(v) for k, v in data.get("demand_full", {}).items()}
-    problem["deadlines"] = {int(k): float(v) for k, v in data.get("deadlines", {}).items()}
     problem["node_coords"] = {
         int(k): (float(v[0]), float(v[1])) for k, v in data.get("node_coords", {}).items()
     }
@@ -534,7 +534,6 @@ def main() -> int:
         individual=individual,
         n_depots=n_depots,
         durations_matrix=problem.get("durations_matrix", {}),
-        deadlines=problem.get("deadlines", {}),
         origin_by_bus=origin_by_bus,
         cap_by_bus=cap_by_bus,
         depots=problem.get("depots", []),
@@ -559,7 +558,6 @@ def main() -> int:
         n_depots=n_depots,
         durations_matrix=problem.get("durations_matrix", {}),
         demand_full=problem.get("demand_full", {}),
-        deadlines=problem.get("deadlines", {}),
         depots=problem.get("depots", []),
         vehicles=vehicles,
         node_coords=problem.get("node_coords", {}),

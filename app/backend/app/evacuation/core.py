@@ -19,7 +19,6 @@ facilities = []
 durations_matrix = {}
 demand_full = {}
 pickup_nodes = []
-deadlines = {}
 n_depots = 1
 n_facilities = 0
 MAX_TRIPS_PER_BUS = 5
@@ -30,7 +29,6 @@ PENALTY_FACTOR = 1e9
 EXTRA_TRIP_PENALTY_FACTOR = 1e4
 STOP_EMPTY_PENALTY = 1e9
 STOP_FULL_PENALTY = 1e9
-LATE_PENALTY = 1e6
 DEPOT_OVERFILL_PENALTY = 1e7
 
 # Initialize ORS client (only if a key is configured)
@@ -104,7 +102,7 @@ def load_facility_data(buffer_polygon, buffer_dist):
 # Initialize problem data
 def initialize_problem_data(evacuation_zones_input=None, buses_count=3, bus_capacity=80, default_evac_center_coords=None, buffer_meters_input=None):
     """Initialize problem data including depots, facilities, and duration matrix."""
-    global depots, facilities, n_depots, n_facilities, durations_matrix, pickup_nodes, demand_full, deadlines, MAX_TRIPS_PER_BUS, MAX_STOPS_PER_TRIP
+    global depots, facilities, n_depots, n_facilities, durations_matrix, pickup_nodes, demand_full, MAX_TRIPS_PER_BUS, MAX_STOPS_PER_TRIP
     
     # --- Use input values or fall back to defaults ---
     current_center_coords = default_evac_center_coords if default_evac_center_coords is not None else center_coords
@@ -157,8 +155,6 @@ def initialize_problem_data(evacuation_zones_input=None, buses_count=3, bus_capa
     for idx in pickup_nodes:
         lon, lat = facilities[idx]["coords"]
         node_coords[idx] = (lat, lon)
-    deadlines = {i: 120 for i in pickup_nodes}  # e.g., 120 min deadline
-
     # --- SIMPLIFIED & ROBUST INITIALIZATION LIMITS ---
     # MAX_TRIPS_PER_BUS is only used to generate the initial random population.
     # The algorithm can evolve solutions with more trips. A fixed, generous
@@ -239,7 +235,6 @@ def initialize_problem_data(evacuation_zones_input=None, buses_count=3, bus_capa
         'max_stops_per_trip': MAX_STOPS_PER_TRIP,
         'pickup_nodes': pickup_nodes,
         'demand_full': demand_full,
-        'deadlines': deadlines,
         'n_depots': n_depots,
         'n_facilities': n_facilities,
         'node_coords': node_coords,
@@ -348,9 +343,6 @@ def decode_individual(individual, n_buses, bus_capacity):
                         remaining_demand[stops[0]] -= pickup
                         trip_load += pickup
                         remaining_capacity -= pickup
-                        deadline = deadlines.get(stops[0], float('inf'))
-                        if arrival_time > deadline:
-                            extra_penalty_trip += LATE_PENALTY * (arrival_time - deadline) * pickup
                     else:
                         total_cost += STOP_EMPTY_PENALTY
                 else:
@@ -369,9 +361,6 @@ def decode_individual(individual, n_buses, bus_capacity):
                         remaining_demand[stops[i]] -= pickup
                         trip_load += pickup
                         remaining_capacity -= pickup
-                        deadline = deadlines.get(stops[i], float('inf'))
-                        if arrival_time > deadline:
-                            extra_penalty_trip += LATE_PENALTY * (arrival_time - deadline) * pickup
                     else:
                         total_cost += STOP_EMPTY_PENALTY
 

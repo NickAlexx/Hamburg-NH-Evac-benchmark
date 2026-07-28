@@ -27,9 +27,7 @@ class MemeticImprover:
         pickup_nodes,
         durations_matrix: Dict[Tuple[int, int], float],
         demand_full: Dict[int, int],
-        deadlines: Dict[int, float],
         penalty_factor: float,
-        lateness_penalty_factor: float,
         latest_evacuation_penalty_factor: float,
         # hetero + origin-aware context
         cap_by_bus: Optional[List[int]] = None,
@@ -55,9 +53,7 @@ class MemeticImprover:
         self.pickup_nodes = pickup_nodes
         self.durations_matrix = durations_matrix
         self.demand_full = demand_full
-        self.deadlines = deadlines
         self.penalty_factor = penalty_factor
-        self.lateness_penalty_factor = lateness_penalty_factor
         self.latest_evacuation_penalty_factor = latest_evacuation_penalty_factor
 
         # hetero + origin-aware context
@@ -101,9 +97,7 @@ class MemeticImprover:
             self.pickup_nodes,
             self.durations_matrix,
             self.demand_full,
-            self.deadlines,
             self.penalty_factor,
-            self.lateness_penalty_factor,
             self.latest_evacuation_penalty_factor,
             ls_params,
             context=context,
@@ -128,9 +122,7 @@ class MemeticImprover:
         pickup_nodes,
         durations_matrix,
         demand_full,
-        deadlines,
         penalty_factor,
-        lateness_penalty_factor,
         latest_evacuation_penalty_factor,
         ls_params: Dict[str, Any],
         *,
@@ -185,9 +177,7 @@ class MemeticImprover:
             n_depots,
             durations_matrix,
             demand_full,
-            deadlines,
             penalty_factor,
-            lateness_penalty_factor,
             latest_evacuation_penalty_factor,
         )
 
@@ -195,58 +185,58 @@ class MemeticImprover:
         def call_intra():
             return self._try_intra_trip_improvements(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
             )
 
         def call_relocate():
             return self._try_relocate_moves(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
                 rcl_size=rcl_size, allow_split_moves=allow_split_moves,
             )
 
         def call_swap_stops():
             return self._try_swap_stops(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
                 rcl_size=rcl_size,
             )
 
         def call_swap_trips():
             return self._try_swap_trips(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor, max_checks=max_checks
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor, max_checks=max_checks
             )
 
         def call_move_trip():
             return self._try_move_trip(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor, max_checks=max_checks
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor, max_checks=max_checks
             )
 
         def call_quantity():
             return self._try_quantity_rebalance(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
+                durations_matrix, demand_full,
             )
 
         def call_balance_makespan():
             return self._try_balance_makespan(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
             )
 
         def call_takeover_gap():
             return self._try_takeover_near_gap(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
                 gap_window_minutes=float(ls_params.get("gap_window_minutes", 12.0)),
                 rcl_size=int(ls_params.get("gap_rcl_size", 12)),
             )
@@ -254,51 +244,51 @@ class MemeticImprover:
         def call_fill_idle():
             return self._try_fill_idle_time(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
             )
 
         def call_change_depot():
             return self._try_change_end_depot(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
             )
 
         def call_consolidate_trips():
             return self._try_consolidate_trips(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
             )
         
         def call_spatial_relocate():
             return self._try_spatial_relocate(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
                 deadhead_threshold_min=15.0 # Tunable: How empty does a drive be to trigger this?
             )
             
         def call_split_mixed():
             return self._try_split_mixed_trips(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
             )
 
         def call_crumb_extract():
             return self._try_crumb_extraction(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
             )
             
         def call_self_consolidate():
             return self._try_self_consolidate(
                 best, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor,
             )
 
         ops = {
@@ -394,8 +384,8 @@ class MemeticImprover:
                         
                         new_cost = self._evaluate_fitness(
                             best, buses_count, bus_capacity, depots, facilities, n_depots,
-                            durations_matrix, demand_full, deadlines,
-                            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                            durations_matrix, demand_full,
+                            penalty_factor, latest_evacuation_penalty_factor,
                         )
                         gain = before - new_cost
                         if gain > 1e-9:
@@ -435,7 +425,6 @@ class MemeticImprover:
                     self.pickup_nodes,
                     durations_matrix,
                     demand_full,
-                    deadlines,
                 )
                 best[:] = self._repair(
                     best,
@@ -447,7 +436,6 @@ class MemeticImprover:
                     self.pickup_nodes,
                     durations_matrix,
                     demand_full,
-                    deadlines,
                 )
                 stalls = {k: 0 for k in ops}
                 disabled = {k: False for k in ops}
@@ -462,7 +450,7 @@ class MemeticImprover:
         # Final feasibility check with VERBOSE reporting on failure
         if not self._is_feasible_individual(best, buses_count, n_depots, durations_matrix, demand_full):
              best = self._repair(best, buses_count, bus_capacity, depots, facilities, n_depots,
-                                 self.pickup_nodes, durations_matrix, demand_full, deadlines)
+                                 self.pickup_nodes, durations_matrix, demand_full)
              best = self._finalize_after_local_search(best, buses_count)
              
              if not self._is_feasible_individual(best, buses_count, n_depots, durations_matrix, demand_full):
@@ -1153,8 +1141,8 @@ class MemeticImprover:
 
     def _try_intra_trip_improvements(
         self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-        durations_matrix, demand_full, deadlines, penalty_factor,
-        lateness_penalty_factor, latest_evacuation_penalty_factor
+        durations_matrix, demand_full, penalty_factor,
+        latest_evacuation_penalty_factor
     ) -> bool:
         """
         [COORDINATE & MAKESPAN AWARE]
@@ -1164,8 +1152,8 @@ class MemeticImprover:
         """
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
         improved = False
 
@@ -1242,8 +1230,8 @@ class MemeticImprover:
                     if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
                         new_cost = self._evaluate_fitness(
                             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                            durations_matrix, demand_full, deadlines,
-                            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+                            durations_matrix, demand_full,
+                            penalty_factor, latest_evacuation_penalty_factor,
                         )
                         if new_cost < base_cost:
                             base_cost = new_cost
@@ -1255,7 +1243,7 @@ class MemeticImprover:
         return improved
     
     def _try_spatial_relocate(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                              durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                              durations_matrix, demand_full, penalty_factor,
                               latest_evacuation_penalty_factor, deadhead_threshold_min=15.0) -> bool:
         """
         Spatial Relocation: Identifies trips where the bus has to drive empty for a long time 
@@ -1263,8 +1251,8 @@ class MemeticImprover:
         """
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
 
         # 1. Identify "Bad Links" (Long Deadheads)
@@ -1394,8 +1382,8 @@ class MemeticImprover:
                 if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
                     new_cost = self._evaluate_fitness(
                         individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                        durations_matrix, demand_full, deadlines,
-                        penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor
+                        durations_matrix, demand_full,
+                        penalty_factor, latest_evacuation_penalty_factor
                     )
                     
                     # Accept if better
@@ -1408,12 +1396,12 @@ class MemeticImprover:
 
         return False
     def _try_relocate_moves(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                            durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                            durations_matrix, demand_full, penalty_factor,
                             latest_evacuation_penalty_factor, rcl_size=24, allow_split_moves=True) -> bool:
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
         candidates = []
         for b in range(buses_count):
@@ -1440,7 +1428,7 @@ class MemeticImprover:
                         if cap_left >= cnt:
                             dst_trip["stops"].insert(pos, stop_to_move)
                             if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
-                                new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                                new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                                 if new_cost < base_cost: return True
                             dst_trip["stops"].pop(pos)
                         elif allow_split_moves and cap_left > 0:
@@ -1449,7 +1437,7 @@ class MemeticImprover:
                             dst_trip["stops"].insert(pos, part)
                             src_trip["stops"].append(remainder)
                             if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
-                                new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                                new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                                 if new_cost < base_cost: return True
                             dst_trip["stops"].pop(pos)
                             src_trip["stops"].pop()
@@ -1460,12 +1448,12 @@ class MemeticImprover:
         return False
 
     def _try_swap_stops(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                        durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                        durations_matrix, demand_full, penalty_factor,
                         latest_evacuation_penalty_factor, rcl_size=24) -> bool:
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
         stops = []
         for b in range(buses_count):
@@ -1493,18 +1481,18 @@ class MemeticImprover:
                 if new_load1 <= cap1 and new_load2 <= cap2:
                     trip1["stops"][s1], trip2["stops"][s2] = trip2["stops"][s2], trip1["stops"][s1]
                     if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
-                        new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                        new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                         if new_cost < base_cost: return True
                     trip1["stops"][s1], trip2["stops"][s2] = trip2["stops"][s2], trip1["stops"][s1]
         return False
 
     def _try_swap_trips(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                        durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                        durations_matrix, demand_full, penalty_factor,
                         latest_evacuation_penalty_factor, max_checks=1000) -> bool: # <--- Added param
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
         
         trip_positions = []
@@ -1554,7 +1542,7 @@ class MemeticImprover:
                     individual[b2] = self._fix_depot_connectivity(individual[b2], origin=self.origin_by_bus[b2])
                     
                     if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
-                        new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                        new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                         if new_cost < base_cost: 
                             return True
                     
@@ -1564,12 +1552,12 @@ class MemeticImprover:
         return False
 
     def _try_move_trip(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                       durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                       durations_matrix, demand_full, penalty_factor,
                        latest_evacuation_penalty_factor, max_checks=1000) -> bool: # <--- Added param
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
         
         trip_positions = []
@@ -1617,7 +1605,7 @@ class MemeticImprover:
                     individual[dst_b] = self._fix_depot_connectivity(individual[dst_b], origin=self.origin_by_bus[dst_b])
                     
                     if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
-                        new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                        new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                         if new_cost < base_cost: 
                             return True
                     
@@ -1630,13 +1618,13 @@ class MemeticImprover:
         return False
 
     def _try_change_end_depot(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                              durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                              durations_matrix, demand_full, penalty_factor,
                               latest_evacuation_penalty_factor) -> bool:
         if n_depots <= 1: return False
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
         for b_idx in range(buses_count):
             bus_schedule = individual[b_idx]
@@ -1648,7 +1636,7 @@ class MemeticImprover:
                     if new_depot == original_end_depot: continue
                     bus_schedule[t_idx]["end_depot"] = new_depot
                     individual[b_idx] = self._fix_depot_connectivity(bus_schedule, origin=self.origin_by_bus[b_idx])
-                    new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                    new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                     if new_cost < base_cost: return True
                     else:
                         individual[b_idx] = copy.deepcopy(original_schedule_snapshot)
@@ -1656,7 +1644,7 @@ class MemeticImprover:
         return False
 
     def _try_quantity_rebalance(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                                durations_matrix, demand_full, deadlines) -> bool:
+                                durations_matrix, demand_full) -> bool:
         occurrences = {}
         for b in range(buses_count):
             for t_idx, trip in enumerate(individual[b]):
@@ -1697,12 +1685,12 @@ class MemeticImprover:
         return False
 
     def _try_balance_makespan(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                              durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                              durations_matrix, demand_full, penalty_factor,
                               latest_evacuation_penalty_factor) -> bool:
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
         if buses_count <= 1: return False
         finish_times = self._bus_finish_times(individual, n_depots, durations_matrix)
@@ -1739,7 +1727,7 @@ class MemeticImprover:
                         if not found: temp_last_trip["stops"].append((node, shift_amount))
                         temp_tail_trip["stops"] = [s for s in temp_tail_trip["stops"] if s[1] > 0]
                         if self._is_feasible_individual(temp_individual, buses_count, n_depots, durations_matrix, demand_full):
-                            new_cost = self._evaluate_fitness(temp_individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                            new_cost = self._evaluate_fitness(temp_individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                             if new_cost < base_cost:
                                 individual[:] = temp_individual
                                 return True
@@ -1756,19 +1744,19 @@ class MemeticImprover:
                     new_trip = {"start_depot": start_depot, "stops": [(node, shift_amount)], "end_depot": best_depot}
                     temp_individual[bus_idx].append(new_trip)
                     if self._is_feasible_individual(temp_individual, buses_count, n_depots, durations_matrix, demand_full):
-                        new_cost = self._evaluate_fitness(temp_individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                        new_cost = self._evaluate_fitness(temp_individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                         if new_cost < base_cost:
                             individual[:] = temp_individual
                             return True
         return False
 
     def _try_takeover_near_gap(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                               durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                               durations_matrix, demand_full, penalty_factor,
                                latest_evacuation_penalty_factor, gap_window_minutes=12.0, rcl_size=12) -> bool:
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
         base_latest = self._latest_finish_time(individual, n_depots, durations_matrix)
         if buses_count <= 1: return False
@@ -1801,19 +1789,19 @@ class MemeticImprover:
             individual[bi] = self._fix_depot_connectivity(tmp_i, origin=self.origin_by_bus[bi])
             if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
                 new_latest = self._latest_finish_time(individual, n_depots, durations_matrix)
-                new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                new_cost = self._evaluate_fitness(individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                 if (new_cost + 1e-9 < base_cost) or (new_latest + 1e-9 < base_latest and new_cost <= base_cost + 1e-9): return True
             individual[bi] = bus_i_before
             individual[bj] = bus_j_before
         return False
 
     def _try_fill_idle_time(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                            durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                            durations_matrix, demand_full, penalty_factor,
                             latest_evacuation_penalty_factor, idle_threshold_minutes=20.0) -> bool:
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
         timelines = self._all_bus_timelines(individual, n_depots, durations_matrix)
         finish_times = [tl[-1][1] if tl else 0.0 for tl in timelines]
@@ -1824,7 +1812,7 @@ class MemeticImprover:
             if T_latest - t_finish > idle_threshold_minutes:
                 idle_buses.append((b_idx, t_finish))
         if not idle_buses: return False
-        late_pickups = []
+        latest_pickups = []
         for b_idx, tl in enumerate(timelines):
             if not individual[b_idx]: continue
             for t_idx, (t_start, t_end) in enumerate(tl):
@@ -1832,10 +1820,10 @@ class MemeticImprover:
                 trip_sched = self._compute_trip_schedule(trip, n_depots, durations_matrix, bus_idx=b_idx, trip_idx=t_idx)
                 for s_idx, (node, count) in enumerate(trip["stops"]):
                     arrival_time = t_start + trip_sched["arrival_times"][s_idx]
-                    late_pickups.append({"arrival": arrival_time, "bus": b_idx, "trip": t_idx, "stop_idx": s_idx, "node": node, "count": count})
-        if not late_pickups: return False
-        late_pickups.sort(key=lambda p: p["arrival"], reverse=True)
-        for pickup in late_pickups:
+                    latest_pickups.append({"arrival": arrival_time, "bus": b_idx, "trip": t_idx, "stop_idx": s_idx, "node": node, "count": count})
+        if not latest_pickups: return False
+        latest_pickups.sort(key=lambda p: p["arrival"], reverse=True)
+        for pickup in latest_pickups:
             src_bus, src_trip_idx, src_stop_idx = pickup["bus"], pickup["trip"], pickup["stop_idx"]
             node, count = pickup["node"], pickup["count"]
             for idle_bus_idx, idle_finish_time in idle_buses:
@@ -1857,7 +1845,7 @@ class MemeticImprover:
                     temp_new_trip["start_depot"] = temp_individual[idle_bus_idx][-1]["end_depot"] if temp_individual[idle_bus_idx] else (self.origin_by_bus[idle_bus_idx]['index'] if self.origin_by_bus[idle_bus_idx]['kind'] == 'depot' else 0)
                     temp_individual[idle_bus_idx].append(temp_new_trip)
                     if self._is_feasible_individual(temp_individual, buses_count, n_depots, durations_matrix, demand_full):
-                        new_cost = self._evaluate_fitness(temp_individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                        new_cost = self._evaluate_fitness(temp_individual, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                         if new_cost < base_cost:
                             individual[:] = temp_individual
                             return True
@@ -1911,15 +1899,15 @@ class MemeticImprover:
         return best_seq
 
     def _try_consolidate_trips(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                               durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                               durations_matrix, demand_full, penalty_factor,
                                latest_evacuation_penalty_factor) -> bool:
         """
         Aggressively merges ANY two trips that fit within bus capacity.
         """
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
 
         # Collect all trips with their metadata
@@ -1987,9 +1975,9 @@ class MemeticImprover:
                     # 5. Evaluate
                     if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
                         new_cost = self._evaluate_fitness(
-                            individual, buses_count, bus_capacity, depots, facilities, n_depots, 
-                            durations_matrix, demand_full, deadlines, 
-                            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor
+                            individual, buses_count, bus_capacity, depots, facilities, n_depots,
+                            durations_matrix, demand_full,
+                            penalty_factor, latest_evacuation_penalty_factor
                         )
                         if new_cost < base_cost:
                             return True # Success
@@ -2004,7 +1992,7 @@ class MemeticImprover:
         return False
     
     def _try_split_mixed_trips(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                               durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                               durations_matrix, demand_full, penalty_factor,
                                latest_evacuation_penalty_factor) -> bool:
         """
         [THE PURIFIER]
@@ -2014,8 +2002,8 @@ class MemeticImprover:
         """
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
 
         # 1. Identify Bottleneck to avoid making it worse
@@ -2091,8 +2079,8 @@ class MemeticImprover:
                         if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
                             new_cost = self._evaluate_fitness(
                                 individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                                durations_matrix, demand_full, deadlines,
-                                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor
+                                durations_matrix, demand_full,
+                                penalty_factor, latest_evacuation_penalty_factor
                             )
                             if new_cost < base_cost:
                                 return True # Success
@@ -2106,7 +2094,7 @@ class MemeticImprover:
         return False
     
     def _try_self_consolidate(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                              durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                              durations_matrix, demand_full, penalty_factor,
                               latest_evacuation_penalty_factor) -> bool:
         """
         [THE GLUTTON - FIXED]
@@ -2117,8 +2105,8 @@ class MemeticImprover:
         """
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
 
         improved = False
@@ -2215,8 +2203,8 @@ class MemeticImprover:
             if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
                 new_cost = self._evaluate_fitness(
                     individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                    durations_matrix, demand_full, deadlines,
-                    penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor
+                    durations_matrix, demand_full,
+                    penalty_factor, latest_evacuation_penalty_factor
                 )
                 
                 # Accept if cost is same or better (prioritize consolidation)
@@ -2226,7 +2214,7 @@ class MemeticImprover:
         return False
 
     def _try_crumb_extraction(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                               durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor,
+                               durations_matrix, demand_full, penalty_factor,
                                latest_evacuation_penalty_factor) -> bool:
         """
         [THE VACUUM - FIXED]
@@ -2236,8 +2224,8 @@ class MemeticImprover:
         """
         base_cost = self._evaluate_fitness(
             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
-            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor,
+            durations_matrix, demand_full,
+            penalty_factor, latest_evacuation_penalty_factor,
         )
 
         finish_times = self._bus_finish_times(individual, n_depots, durations_matrix)
@@ -2303,8 +2291,8 @@ class MemeticImprover:
                     if self._is_feasible_individual(individual, buses_count, n_depots, durations_matrix, demand_full):
                         new_cost = self._evaluate_fitness(
                             individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                            durations_matrix, demand_full, deadlines,
-                            penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor
+                            durations_matrix, demand_full,
+                            penalty_factor, latest_evacuation_penalty_factor
                         )
                         
                         # ACCEPT only if it helps global fitness (Makespan)
@@ -2336,7 +2324,7 @@ class MemeticImprover:
         return self.last_run_stats.get("flat_stats", {})
     
     def _alns_shake(self, individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                    pickup_nodes, durations_matrix, demand_full, deadlines, remove_fraction=0.12):
+                    pickup_nodes, durations_matrix, demand_full, remove_fraction=0.12):
         all_stops = []
         for b in range(buses_count):
             for t_idx, trip in enumerate(individual[b]):

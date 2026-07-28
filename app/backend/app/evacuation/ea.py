@@ -12,7 +12,7 @@ from .algorithm_interface import EvacuationAlgorithm, AlgorithmResult
 from .core import (
     initialize_problem_data, travel_time_for_trip, decode_individual,
     PENALTY_FACTOR, EXTRA_TRIP_PENALTY_FACTOR, STOP_EMPTY_PENALTY,
-    STOP_FULL_PENALTY, LATE_PENALTY, DEPOT_OVERFILL_PENALTY
+    STOP_FULL_PENALTY, DEPOT_OVERFILL_PENALTY
 )
 from . import visualization
 from ..logging_utils import log_evacuation_run, log_generation_metrics
@@ -62,7 +62,6 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
         mutation_rate = algorithm_specific_params.get('mutation_rate', 0.8)
         tournament_size = algorithm_specific_params.get('tournament_size', 3)
         penalty_factor = 1000
-        lateness_penalty_factor = algorithm_specific_params.get('lateness_penalty_factor', 50)
         latest_evacuation_penalty_factor = algorithm_specific_params.get('latest_evacuation_penalty_factor', 0)
 
         early_stopping_generations = algorithm_specific_params.get('early_stopping_generations', 1000)
@@ -120,7 +119,6 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
         n_facilities = problem_data['n_facilities']
         demand_full = problem_data['demand_full']
         print("Full Demand: ", demand_full)
-        deadlines = problem_data['deadlines']
         pickup_nodes = problem_data['pickup_nodes']
         max_trips_per_bus = problem_data['max_trips_per_bus']
         max_stops_per_trip = problem_data['max_stops_per_trip']
@@ -164,9 +162,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                 pickup_nodes=pickup_nodes,
                 durations_matrix=durations_matrix,
                 demand_full=demand_full,
-                deadlines=deadlines,
                 penalty_factor=penalty_factor,
-                lateness_penalty_factor=lateness_penalty_factor,
                 latest_evacuation_penalty_factor=latest_evacuation_penalty_factor,
                 cap_by_bus=cap_by_bus,
                 origin_by_bus=origin_by_bus,
@@ -202,7 +198,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
         population = self._initialize_population(
             population_size, buses_count, bus_capacity, depots, facilities,
             n_depots, pickup_nodes, max_trips_per_bus, max_stops_per_trip,
-            durations_matrix, demand_full, deadlines,
+            durations_matrix, demand_full,
             default_evac_center_coords=default_evac_center_coords,
             buffer_meters=buffer_meters,
             precomputed_problem_data=problem_data,
@@ -218,8 +214,8 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                 break
             fitness_values.append(self._evaluate_fitness(
                 individual, buses_count, bus_capacity, depots, facilities,
-                n_depots, durations_matrix, demand_full, deadlines,
-                penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor
+                n_depots, durations_matrix, demand_full,
+                penalty_factor, latest_evacuation_penalty_factor
             ))
             evaluated_population.append(individual)
         population = evaluated_population
@@ -264,7 +260,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
         print(f"🔄 Logging initial generation metrics...")
         _ = self._extract_and_log_generation_metrics(
             0, population, fitness_values, buses_count, bus_capacity,
-            depots, facilities, n_depots, durations_matrix, demand_full, deadlines,
+            depots, facilities, n_depots, durations_matrix, demand_full,
             algorithm_stats
         )
 
@@ -382,23 +378,23 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                 # Evaluate parents for GA stats (telemetry only)
                 parents_min = None
                 if collect_operator_telemetry:
-                    p1_cost = self._evaluate_fitness(parent1, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
-                    p2_cost = self._evaluate_fitness(parent2, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                    p1_cost = self._evaluate_fitness(parent1, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
+                    p2_cost = self._evaluate_fitness(parent2, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                     parents_min = min(p1_cost, p2_cost)
 
                 # --- Crossover ---
                 if random.random() < crossover_rate:
                     offspring1, offspring2 = self._crossover(
                         parent1, parent2, buses_count, bus_capacity, depots, facilities,
-                        n_depots, durations_matrix, demand_full, deadlines
+                        n_depots, durations_matrix, demand_full
                     )
                     if collect_operator_telemetry:
                         # Evaluate Crossover Gain
                         # We use temp copies to avoid messing up the flow if repairs are needed later
-                        t_o1 = self._repair(offspring1, buses_count, bus_capacity, depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full, deadlines)
-                        t_o2 = self._repair(offspring2, buses_count, bus_capacity, depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full, deadlines)
-                        o1_c = self._evaluate_fitness(t_o1, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
-                        o2_c = self._evaluate_fitness(t_o2, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                        t_o1 = self._repair(offspring1, buses_count, bus_capacity, depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full)
+                        t_o2 = self._repair(offspring2, buses_count, bus_capacity, depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full)
+                        o1_c = self._evaluate_fitness(t_o1, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
+                        o2_c = self._evaluate_fitness(t_o2, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                         gain = max(0, parents_min - min(o1_c, o2_c))
                         operator_scoreboard["ga_crossover"] += gain
                         if gain > 0: operator_scoreboard["ga_crossover_cnt"] += 1
@@ -411,23 +407,23 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                     if random.random() < mutation_rate:
                         if collect_operator_telemetry:
                             # Eval Before
-                            c_before = self._evaluate_fitness(ind, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                            c_before = self._evaluate_fitness(ind, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
 
                         # Mutate
                         mutated, op_name = self._mutate(
                             ind, buses_count, bus_capacity, depots, facilities,
-                            n_depots, pickup_nodes, durations_matrix, demand_full, deadlines
+                            n_depots, pickup_nodes, durations_matrix, demand_full
                         )
                         
                         # Repair
                         mutated = self._repair(
                             mutated, buses_count, bus_capacity, depots, facilities,
-                            n_depots, pickup_nodes, durations_matrix, demand_full, deadlines
+                            n_depots, pickup_nodes, durations_matrix, demand_full
                         )
                         
                         if collect_operator_telemetry:
                             # Eval After
-                            c_after = self._evaluate_fitness(mutated, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, deadlines, penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor)
+                            c_after = self._evaluate_fitness(mutated, buses_count, bus_capacity, depots, facilities, n_depots, durations_matrix, demand_full, penalty_factor, latest_evacuation_penalty_factor)
                             
                             # Record Stats
                             gain = max(0, c_before - c_after)
@@ -440,7 +436,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                         return mutated
                     else:
                         # Ensure valid even if not mutated
-                        return self._repair(ind, buses_count, bus_capacity, depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full, deadlines)
+                        return self._repair(ind, buses_count, bus_capacity, depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full)
 
                 offspring1 = process_mutation(offspring1)
                 offspring2 = process_mutation(offspring2)
@@ -481,8 +477,8 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                     break
                 new_fitness_values.append(self._evaluate_fitness(
                     individual, buses_count, bus_capacity, depots, facilities,
-                    n_depots, durations_matrix, demand_full, deadlines,
-                    penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor
+                    n_depots, durations_matrix, demand_full,
+                    penalty_factor, latest_evacuation_penalty_factor
                 ))
 
             if budget.is_strict and budget.expired():
@@ -502,7 +498,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
 
             generation_metrics = self._extract_and_log_generation_metrics(
                 generation + 1, population, fitness_values, buses_count, bus_capacity,
-                depots, facilities, n_depots, durations_matrix, demand_full, deadlines,
+                depots, facilities, n_depots, durations_matrix, demand_full,
                 algorithm_stats
             )
 
@@ -578,7 +574,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
 
         simulation_data = self.create_simulation_data(
             best_solution, buses_count, self._cap_by_bus, depots, facilities,
-            n_depots, durations_matrix, demand_full, deadlines,
+            n_depots, durations_matrix, demand_full,
             **self._service_params
         )
 
@@ -604,7 +600,6 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             "n_depots": n_depots,
             "durations_matrix": {str(k): v for k, v in durations_matrix.items()},
             "demand_full": demand_full,
-            "deadlines": deadlines,
             "max_trips_per_bus": max_trips_per_bus,
             "max_stops_per_trip": max_stops_per_trip,
             "depots": depots,
@@ -626,7 +621,6 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             n_depots=n_depots,
             durations_matrix=durations_matrix,
             demand_full=demand_full,
-            deadlines=deadlines,
             depots=depots, #  Pass depots to metrics calculation
             service_time_min=10.0, # Kept for legacy; service params are used
             vehicles=normalized_vehicles,
@@ -666,7 +660,6 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             "mutation_rate": mutation_rate,
             "tournament_size": tournament_size,
             "penalty_factor": penalty_factor,
-            "lateness_penalty_factor": lateness_penalty_factor,
             "latest_evacuation_penalty_factor": latest_evacuation_penalty_factor,
             "ls_gen_aware": ls_gen_aware,
             "use_local_search": use_local_search,
@@ -796,7 +789,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
     def _initialize_population(self, population_size, buses_count, bus_capacity,
                                depots, facilities, n_depots, pickup_nodes,
                                max_trips_per_bus, max_stops_per_trip, durations_matrix,
-                               demand_full, deadlines,
+                               demand_full,
                                default_evac_center_coords=None, buffer_meters=None,
                                precomputed_problem_data=None, deadline=None):
 
@@ -854,13 +847,13 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                     # FIX: Unpack the tuple (individual, op_name)
                     # We only care about the individual here
                     clone, _ = self._mutate(clone, buses_count, bus_capacity, depots, facilities, n_depots,
-                                         pickup_nodes, durations_matrix, demand_full, deadlines)
+                                         pickup_nodes, durations_matrix, demand_full)
 
                 if deadline_reached():
                     break
                 # Repair the heavily mutated clone to ensure it's valid
                 repaired_clone = self._repair(clone, buses_count, bus_capacity, depots, facilities, n_depots,
-                                              pickup_nodes, durations_matrix, demand_full, deadlines)
+                                              pickup_nodes, durations_matrix, demand_full)
                 population.append(repaired_clone)
 
         except Exception as e:
@@ -922,7 +915,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                 if not active_pickup_nodes: break
 
             individual = self._repair(individual, buses_count, bus_capacity, depots, facilities, n_depots,
-                                      pickup_nodes, durations_matrix, demand_full, deadlines)
+                                      pickup_nodes, durations_matrix, demand_full)
             population.append(individual)
 
         if not population:
@@ -938,7 +931,6 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                 pickup_nodes,
                 durations_matrix,
                 demand_full,
-                deadlines,
             )
             population.append(fallback)
 
@@ -961,8 +953,8 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
 
     # ---------- Fitness ----------
     def _evaluate_fitness(self, individual, buses_count, bus_capacity, depots, facilities,
-                          n_depots, durations_matrix, demand_full, deadlines,
-                          penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor=0.0):
+                          n_depots, durations_matrix, demand_full,
+                          penalty_factor, latest_evacuation_penalty_factor=0.0):
         """
         Calculates fitness score by calling the central simulation helper.
         """
@@ -970,7 +962,6 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             individual=individual,
             n_depots=n_depots,
             durations_matrix=durations_matrix,
-            deadlines=deadlines,
             origin_by_bus=self._origin_by_bus,
             cap_by_bus=self._cap_by_bus,
             depots=self._depots_runtime, # Pass depot data for capacity checks
@@ -1007,7 +998,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
     # ----------------------------------------------------------------------------------
     def _crossover(self, parent1: List[List[Dict]], parent2: List[List[Dict]],
                 buses_count, bus_capacity, depots, facilities,
-                n_depots, durations_matrix, demand_full, deadlines) -> Tuple[List[List[Dict]], List[List[Dict]]]:
+                n_depots, durations_matrix, demand_full) -> Tuple[List[List[Dict]], List[List[Dict]]]:
         """
         Main crossover dispatcher. Probabilistically selects a specialized crossover operator.
         This hybrid approach balances structured recombination, exploitation, and exploration.
@@ -1429,7 +1420,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
         return mutated
     
     def _mutate(self, individual, buses_count, bus_capacity, depots, facilities,
-                n_depots, pickup_nodes, durations_matrix, demand_full, deadlines) -> Tuple[List[List[Dict]], str]:
+                n_depots, pickup_nodes, durations_matrix, demand_full) -> Tuple[List[List[Dict]], str]:
 
         mutated = copy.deepcopy(individual)
         cap_by_bus = self._cap_by_bus or [bus_capacity for _ in range(buses_count)]
@@ -1638,7 +1629,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
 
 
     def _repair(self, individual, buses_count, bus_capacity, depots, facilities,
-                    n_depots, pickup_nodes, durations_matrix, demand_full, deadlines):
+                    n_depots, pickup_nodes, durations_matrix, demand_full):
         """
         Repairs an individual to be a valid solution.
         CONTEXT-AWARE: Tracks depot loads, splits over-capacity trips, and respects vehicle origins.
@@ -1870,7 +1861,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
     # ---------- Metrics extraction ----------
     def _extract_and_log_generation_metrics(self, generation: int, population, fitness_values,
                                           buses_count, bus_capacity, depots, facilities,
-                                          n_depots, durations_matrix, demand_full, deadlines,
+                                          n_depots, durations_matrix, demand_full,
                                           algorithm_stats: Dict[str, Any]):
         """
         Extracts metrics for the best individual by calling the central simulation helper.
@@ -1885,7 +1876,6 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                 individual=best_individual,
                 n_depots=n_depots,
                 durations_matrix=durations_matrix,
-                deadlines=deadlines,
                 origin_by_bus=self._origin_by_bus,
                 cap_by_bus=self._cap_by_bus,
                 depots=self._depots_runtime,

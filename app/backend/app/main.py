@@ -91,7 +91,6 @@ class OptimizationPayload(BaseModel):
     
     # These are part of EA2 but I will keep them for now, the algorithm handles them.
     penalty_factor: float = Field(1000, description="Penalty for unserved demand.", ge=0)
-    lateness_penalty_factor: float = Field(50, description="Penalty for late pickups.", ge=0)
     # NEW: custom center and buffer
     default_evac_center_coords: Optional[Tuple[float, float]] = Field(None, description="Coordinates for the main evacuation center [lon, lat]. If not provided, a default is used.")
     buffer_meters: Optional[int] = Field(None, description="Buffer in meters around the main center to select facilities. If not provided, a default is used.", gt=0)
@@ -129,7 +128,6 @@ class OptimizationPayload(BaseModel):
                 "mutation_rate": 0.15,
                 "tournament_size": 5,
                 "penalty_factor": 1000,
-                "lateness_penalty_factor": 50,
                 "latest_evacuation_penalty_factor": 1.0,
                 "default_evac_center_coords": [10.05, 53.56],
                 "buffer_meters": 2000,
@@ -243,7 +241,6 @@ def _run_optimization_payload(payload: OptimizationPayload) -> dict[str, Any]:
             mutation_rate=payload.mutation_rate,
             tournament_size=payload.tournament_size,
             penalty_factor=payload.penalty_factor,
-            lateness_penalty_factor=payload.lateness_penalty_factor,
             latest_evacuation_penalty_factor=payload.latest_evacuation_penalty_factor,
             default_evac_center_coords=payload.default_evac_center_coords,
             buffer_meters=payload.buffer_meters,
@@ -469,7 +466,6 @@ def run_optimization(background_tasks: BackgroundTasks, payload: OptimizationPay
                 mutation_rate=payload.mutation_rate,
                 tournament_size=payload.tournament_size,
                 penalty_factor=payload.penalty_factor,
-                lateness_penalty_factor=payload.lateness_penalty_factor,
                 latest_evacuation_penalty_factor=payload.latest_evacuation_penalty_factor,
                 default_evac_center_coords=payload.default_evac_center_coords,
                 buffer_meters=payload.buffer_meters,

@@ -117,6 +117,7 @@ def _deserialize_locations(items):
 
 def _serialize_problem_data(problem_data):
     data = dict(problem_data)
+    data.pop("deadlines", None)  # Ignore obsolete fields in legacy in-memory inputs.
     data["_cache_version"] = CACHE_VERSION
     data["depots"] = _serialize_locations(problem_data.get("depots", []))
     data["facilities"] = _serialize_locations(problem_data.get("facilities", []))
@@ -125,7 +126,6 @@ def _serialize_problem_data(problem_data):
     }
     data["pickup_nodes"] = [int(n) for n in problem_data.get("pickup_nodes", [])]
     data["demand_full"] = {str(k): v for k, v in problem_data.get("demand_full", {}).items()}
-    data["deadlines"] = {str(k): v for k, v in problem_data.get("deadlines", {}).items()}
     data["node_coords"] = {
         str(k): [float(v[0]), float(v[1])] for k, v in problem_data.get("node_coords", {}).items()
     }
@@ -133,6 +133,7 @@ def _serialize_problem_data(problem_data):
 
 def _deserialize_problem_data(data):
     problem_data = dict(data)
+    problem_data.pop("deadlines", None)  # Legacy cache files remain readable.
     problem_data["depots"] = _deserialize_locations(data.get("depots", []))
     problem_data["facilities"] = _deserialize_locations(data.get("facilities", []))
     problem_data["durations_matrix"] = {
@@ -140,7 +141,6 @@ def _deserialize_problem_data(data):
     }
     problem_data["pickup_nodes"] = [int(n) for n in data.get("pickup_nodes", [])]
     problem_data["demand_full"] = {int(k): v for k, v in data.get("demand_full", {}).items()}
-    problem_data["deadlines"] = {int(k): v for k, v in data.get("deadlines", {}).items()}
     problem_data["node_coords"] = {
         int(k): (v[0], v[1]) for k, v in data.get("node_coords", {}).items()
     }
@@ -257,7 +257,6 @@ def extract_run_summary(result, scenario_name, fleet_name, algo_name, run_num, r
         "avg_evac_time": metrics.get('wait', {}).get('mean_min', float('nan')),
         "p95_wait_time": metrics.get('wait', {}).get('p95_min', float('nan')),
         "makespan": metrics.get('timeline', {}).get('latest_return_min', float('nan')),
-        "late_pickups": metrics.get('counts', {}).get('late_people', float('nan')),
         "trip_count": total_trips,
         "stop_count": total_stops,  # <--- NEW FIELD
         "total_travel_time": metrics.get('efficiency', {}).get('total_travel_time_min', float('nan')),

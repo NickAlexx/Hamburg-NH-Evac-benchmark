@@ -182,7 +182,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
 
     # penalty knobs (kept for fitness equivalence)
     _penalty_factor: float = 1000.0
-    _lateness_penalty_factor: float = 50.0
     _latest_evacuation_penalty_factor: float = 0.0
 
     # cache for node-node travel minutes (pickup graph)
@@ -215,7 +214,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         service_time_per_person_min: float = 20.0 / 60.0,
         # penalty knobs (passed in your experiments)
         penalty_factor: float = 1000.0,
-        lateness_penalty_factor: float = 50.0,
         latest_evacuation_penalty_factor: float = 0.0,
         # ALNS settings
         time_limit_seconds: Optional[float] = None,
@@ -258,7 +256,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             "service_time_per_person_min": float(service_time_per_person_min),
         }
         self._penalty_factor = float(penalty_factor)
-        self._lateness_penalty_factor = float(lateness_penalty_factor)
         self._latest_evacuation_penalty_factor = float(latest_evacuation_penalty_factor)
 
         self._avg_speed_kmh = float(avg_speed_kmh)
@@ -288,7 +285,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         n_depots = problem_data["n_depots"]
         pickup_nodes = problem_data["pickup_nodes"]
         demand_full = problem_data["demand_full"]
-        deadlines = problem_data["deadlines"]
         self._node_coords = problem_data.get("node_coords")
         self._depots_runtime = depots
 
@@ -309,7 +305,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             pickup_nodes=pickup_nodes,
             demand_full=demand_full,
             durations_matrix=durations_matrix,
-            deadlines=deadlines,
             depots=depots,
             facilities=facilities,
             precomputed_problem_data=problem_data,
@@ -318,14 +313,13 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         )
         current = self._repair(
             current, buses_count, bus_capacity,
-            depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full, deadlines
+            depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full
         )
 
         current_cost = self._evaluate_fitness(
             current, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
+            durations_matrix, demand_full,
             penalty_factor=self._penalty_factor,
-            lateness_penalty_factor=self._lateness_penalty_factor,
             latest_evacuation_penalty_factor=self._latest_evacuation_penalty_factor,
         )
 
@@ -369,7 +363,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             pickup_nodes=pickup_nodes,
             durations_matrix=durations_matrix,
             demand_full=demand_full,
-            deadlines=deadlines,
         )
 
         # SA temperature calibration (important for stability)
@@ -387,7 +380,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             pickup_nodes=pickup_nodes,
             durations_matrix=durations_matrix,
             demand_full=demand_full,
-            deadlines=deadlines,
             deadline=budget.deadline if budget.is_strict else None,
         )
 
@@ -436,7 +428,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             best_cost=best_cost,
             n_depots=n_depots,
             durations_matrix=durations_matrix,
-            deadlines=deadlines,
         )
 
         # ------------------ main loop ------------------
@@ -482,13 +473,12 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                 )
                 current = self._repair(
                     current, buses_count, bus_capacity,
-                    depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full, deadlines
+                    depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full
                 )
                 current_cost = self._evaluate_fitness(
                     current, buses_count, bus_capacity, depots, facilities, n_depots,
-                    durations_matrix, demand_full, deadlines,
+                    durations_matrix, demand_full,
                     penalty_factor=self._penalty_factor,
-                    lateness_penalty_factor=self._lateness_penalty_factor,
                     latest_evacuation_penalty_factor=self._latest_evacuation_penalty_factor,
                 )
                 continue
@@ -526,14 +516,13 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             # Strict feasibility fix (ensures exact demand satisfaction, capacity, connectivity)
             candidate = self._repair(
                 candidate, buses_count, bus_capacity,
-                depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full, deadlines
+                depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full
             )
 
             cand_cost = self._evaluate_fitness(
                 candidate, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
+                durations_matrix, demand_full,
                 penalty_factor=self._penalty_factor,
-                lateness_penalty_factor=self._lateness_penalty_factor,
                 latest_evacuation_penalty_factor=self._latest_evacuation_penalty_factor,
             )
 
@@ -593,7 +582,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                             pickup_nodes=pickup_nodes,
                             durations_matrix=durations_matrix,
                             demand_full=demand_full,
-                            deadlines=deadlines,
                         )
                         candidate = candidate2
                         cand_cost = cand_cost2
@@ -655,7 +643,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                     best_cost=best_cost,
                     n_depots=n_depots,
                     durations_matrix=durations_matrix,
-                    deadlines=deadlines,
                 )
 
             if cfg.log_every_seconds and (_now() - last_log_time) >= cfg.log_every_seconds:
@@ -668,7 +655,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                     best_cost=best_cost,
                     n_depots=n_depots,
                     durations_matrix=durations_matrix,
-                    deadlines=deadlines,
                 )
 
         opt_end = budget.now()
@@ -690,7 +676,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             n_depots,
             durations_matrix,
             demand_full,
-            deadlines,
             **self._service_params,
         )
 
@@ -721,7 +706,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                     n_depots=n_depots,
                     durations_matrix=durations_matrix,
                     demand_full=demand_full,
-                    deadlines=deadlines,
                     depots=depots,
                     service_time_min=10.0,  # legacy arg
                     vehicles=normalized_vehicles,
@@ -775,9 +759,7 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         n_depots: int,
         durations_matrix: Dict[Tuple[int, int], float],
         demand_full: Dict[int, int],
-        deadlines: Dict[int, float],
         penalty_factor: float = 1000.0,
-        lateness_penalty_factor: float = 50.0,
         latest_evacuation_penalty_factor: float = 0.0,
     ) -> float:
         if _simulate_and_get_timings is None:
@@ -788,7 +770,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             individual=individual,
             n_depots=n_depots,
             durations_matrix=durations_matrix,
-            deadlines=deadlines,
             origin_by_bus=self._origin_by_bus,
             cap_by_bus=self._cap_by_bus,
             depots=self._depots_runtime,
@@ -811,7 +792,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         individual: Individual,
         n_depots: int,
         durations_matrix: Dict[Tuple[int, int], float],
-        deadlines: Dict[int, float],
     ) -> Optional[Dict[str, Any]]:
         if _simulate_and_get_timings is None:
             return None
@@ -819,7 +799,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             individual=individual,
             n_depots=n_depots,
             durations_matrix=durations_matrix,
-            deadlines=deadlines,
             origin_by_bus=self._origin_by_bus,
             cap_by_bus=self._cap_by_bus,
             depots=self._depots_runtime,
@@ -853,9 +832,8 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         best_cost: float,
         n_depots: int,
         durations_matrix: Dict[Tuple[int, int], float],
-        deadlines: Dict[int, float],
     ) -> None:
-        summary = self._summarize_individual(best, n_depots, durations_matrix, deadlines)
+        summary = self._summarize_individual(best, n_depots, durations_matrix)
         if summary is None:
             return
         stats["progress"].append({
@@ -1433,7 +1411,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         pickup_nodes: List[int],
         demand_full: Dict[int, int],
         durations_matrix: Dict[Tuple[int, int], float],
-        deadlines: Dict[int, float],
         depots: List[Dict[str, Any]],
         facilities: List[Dict[str, Any]],
         precomputed_problem_data: Dict[str, Any],
@@ -1458,7 +1435,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                     # keep same service + penalty knobs for apples-to-apples (fitness)
                     **self._service_params,
                     penalty_factor=self._penalty_factor,
-                    lateness_penalty_factor=self._lateness_penalty_factor,
                     latest_evacuation_penalty_factor=self._latest_evacuation_penalty_factor,
                 )
                 best_solution = baseline_result.get("best_solution")
@@ -1505,7 +1481,7 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                 )
                 current = self._repair(
                     current, buses_count, bus_capacity,
-                    depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full, deadlines
+                    depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full
                 )
             indiv = current
 
@@ -1639,7 +1615,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         pickup_nodes: List[int],
         durations_matrix: Dict[Tuple[int, int], float],
         demand_full: Dict[int, int],
-        deadlines: Dict[int, float],
         deadline: Optional[float] = None,
     ) -> float:
         """
@@ -1669,13 +1644,12 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             cand = repair_ops[r_name](partial, removed=removed, cfg=cfg, buses_count=buses_count, n_depots=n_depots, durations_matrix=durations_matrix)
             cand = self._repair(
                 cand, buses_count, bus_capacity,
-                depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full, deadlines
+                depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full
             )
             c = self._evaluate_fitness(
                 cand, buses_count, bus_capacity, depots, facilities, n_depots,
-                durations_matrix, demand_full, deadlines,
+                durations_matrix, demand_full,
                 penalty_factor=self._penalty_factor,
-                lateness_penalty_factor=self._lateness_penalty_factor,
                 latest_evacuation_penalty_factor=self._latest_evacuation_penalty_factor,
             )
             delta = c - current_cost
@@ -1707,7 +1681,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         pickup_nodes: List[int],
         durations_matrix: Dict[Tuple[int, int], float],
         demand_full: Dict[int, int],
-        deadlines: Dict[int, float],
     ) -> Optional[Any]:
         """Construct the MemeticImprover exactly like EA/MA does (if available)."""
         if not cfg.use_memetic_polish:
@@ -1727,9 +1700,7 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                 pickup_nodes=pickup_nodes,
                 durations_matrix=durations_matrix,
                 demand_full=demand_full,
-                deadlines=deadlines,
                 penalty_factor=self._penalty_factor,
-                lateness_penalty_factor=self._lateness_penalty_factor,
                 latest_evacuation_penalty_factor=self._latest_evacuation_penalty_factor,
                 origin_by_bus=self._origin_by_bus,
                 cap_by_bus=self._cap_by_bus,
@@ -1759,7 +1730,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         pickup_nodes: List[int],
         durations_matrix: Dict[Tuple[int, int], float],
         demand_full: Dict[int, int],
-        deadlines: Dict[int, float],
     ) -> Tuple[Individual, float, float, Dict[str, float]]:
         """Tiny-budget MA local search (same MemeticImprover interface as EA/MA)."""
         before = float(candidate_cost)
@@ -1780,14 +1750,13 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         # Safety net: enforce feasibility invariants.
         improved = self._repair(
             improved, buses_count, bus_capacity,
-            depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full, deadlines
+            depots, facilities, n_depots, pickup_nodes, durations_matrix, demand_full
         )
 
         improved_cost = self._evaluate_fitness(
             improved, buses_count, bus_capacity, depots, facilities, n_depots,
-            durations_matrix, demand_full, deadlines,
+            durations_matrix, demand_full,
             penalty_factor=self._penalty_factor,
-            lateness_penalty_factor=self._lateness_penalty_factor,
             latest_evacuation_penalty_factor=self._latest_evacuation_penalty_factor,
         )
 
@@ -2590,7 +2559,6 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         pickup_nodes: List[int],
         durations_matrix: Dict[Tuple[int, int], float],
         demand_full: Dict[int, int],
-        deadlines: Dict[int, float],
     ) -> Individual:
         """
         Feasibility/consistency repair:

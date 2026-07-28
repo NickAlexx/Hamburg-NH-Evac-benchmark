@@ -41,7 +41,6 @@ interface TripData {
   label: string;
   color: string;
   details: string[];
-  hasLatePicups: boolean;
 }
 
 const BusGanttChart: React.FC<BusGanttChartProps> = ({
@@ -101,11 +100,6 @@ const BusGanttChart: React.FC<BusGanttChartProps> = ({
           calculatedMaxTime = trip.return;
         }
         
-        // Check if the trip has any late pickups
-        const hasLatePicups = trip.details.some(detail => 
-          detail.includes("(late)") && detail.includes("picked up")
-        );
-        
         // Create trip data object
         newTrips.push({
           busId: busIdx,
@@ -114,8 +108,7 @@ const BusGanttChart: React.FC<BusGanttChartProps> = ({
           end: trip.return,
           label: `Trip ${tripIdx}`,
           color: busColor,
-          details: trip.details,
-          hasLatePicups
+          details: trip.details
         });
       });
     });
@@ -128,9 +121,6 @@ const BusGanttChart: React.FC<BusGanttChartProps> = ({
   const getTripStats = (trip: TripData): string => {
     let totalEvacuees = 0;
     const facilityNames: string[] = [];
-    const latePickups = trip.details.filter(detail => 
-      detail.includes("(late)") && detail.includes("picked up")
-    ).length;
     
     trip.details.forEach(detail => {
       const pickupMatch = detail.match(/picked up (\d+)/);
@@ -141,12 +131,7 @@ const BusGanttChart: React.FC<BusGanttChartProps> = ({
       // Extract facility names
       if (detail.startsWith('Stop ') && detail.includes('picked up')) {
         const facilityName = detail.split(':')[0].replace('Stop ', '').trim();
-        const isLate = detail.includes('(late)');
-        if (isLate) {
-          facilityNames.push(`${facilityName} ⚠️ (late)`);
-        } else {
-          facilityNames.push(facilityName);
-        }
+        facilityNames.push(facilityName);
       }
     });
 
@@ -188,7 +173,6 @@ const BusGanttChart: React.FC<BusGanttChartProps> = ({
       Duration: ${(trip.end - trip.start).toFixed(1)} min<br>
       ${routeInfo}
       Evacuees: ${totalEvacuees}<br>
-      ${latePickups > 0 ? `<span style="color:#e74c3c">Late pickups: ${latePickups}</span><br>` : ''}
       Stops: ${facilityNames.length > 0 ? ' • ' + facilityNames.join('<br> • ') : 'None'}
     `;
   };
@@ -206,39 +190,6 @@ const BusGanttChart: React.FC<BusGanttChartProps> = ({
   const uniqueBusIds = Array.from(new Set(trips.map(t => t.busId)))
     .sort((a, b) => parseInt(a) - parseInt(b));
     
-  // Render warning label separately - don't attach it to the bar
-  const renderWarningLabels = () => {
-    return trips.filter(trip => trip.hasLatePicups).map(trip => {
-      const busIdx = uniqueBusIds.indexOf(trip.busId);
-      if (busIdx === -1) return null;
-      
-      // Calculate position
-      const left = `${(trip.end / chartMaxTime) * 100}%`;
-      
-      return (
-        <div
-          key={`warning-${trip.busId}-${trip.tripId}`}
-          className="warning-label"
-          style={{
-            position: 'absolute',
-            left: left,
-            top: `${busIdx * 30}px`, // Align with the top of the row
-            height: '75px', // Match the height of gantt row
-            display: 'flex',
-            alignItems: 'center', // Center vertically
-            marginLeft: '-20px', // Pull left to overlap end of bar
-            fontSize: '14px',
-            zIndex: 2,
-            pointerEvents: 'none' // So it doesn't interfere with mouse events
-          }}
-          title="Contains late pickups"
-        >
-          ⚠️
-        </div>
-      );
-    });
-  };
-
   return (
     <div className="bus-gantt-chart" ref={chartRef}>
       <h3>Vehicle Timelines</h3>
@@ -293,9 +244,6 @@ const BusGanttChart: React.FC<BusGanttChartProps> = ({
               ))}
             </div>
           ))}
-          
-          {/* Warning icons - rendered separately */}
-          {renderWarningLabels()}
         </div>
       </div>
       

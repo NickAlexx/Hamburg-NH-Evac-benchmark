@@ -15,7 +15,7 @@ from typing import Dict, List, Any, Optional, Tuple, Union
 try:
     from .core import (
         initialize_problem_data, travel_time_for_trip, decode_individual,
-        PENALTY_FACTOR, EXTRA_TRIP_PENALTY_FACTOR, STOP_EMPTY_PENALTY, STOP_FULL_PENALTY, LATE_PENALTY
+        PENALTY_FACTOR, EXTRA_TRIP_PENALTY_FACTOR, STOP_EMPTY_PENALTY, STOP_FULL_PENALTY
     )
 except Exception:
     # Degrade gracefully when optional geo deps are missing (tests can patch initialize_problem)
@@ -26,7 +26,6 @@ except Exception:
     EXTRA_TRIP_PENALTY_FACTOR = 1e4  # type: ignore
     STOP_EMPTY_PENALTY = 1e9  # type: ignore
     STOP_FULL_PENALTY = 1e9  # type: ignore
-    LATE_PENALTY = 1e6  # type: ignore
 from . import visualization
 from ..logging_utils import log_evacuation_run
 
@@ -98,7 +97,6 @@ class EvacuationAlgorithm(ABC):
         core.n_depots = problem_data['n_depots']
         core.n_facilities = problem_data['n_facilities']
         core.demand_full = problem_data['demand_full']
-        core.deadlines = problem_data['deadlines']
         
         # Also update visualization module
         visualization.depots = problem_data['depots']
@@ -106,13 +104,12 @@ class EvacuationAlgorithm(ABC):
         visualization.durations_matrix = problem_data['durations_matrix']
         visualization.n_depots = problem_data['n_depots']
         visualization.demand_full = problem_data['demand_full']
-        visualization.deadlines = problem_data['deadlines']
         
         return problem_data
 
     @staticmethod
     def create_simulation_data(best_solution, buses_count, bus_capacity, depots, facilities, n_depots, 
-                              durations_matrix, demand_full, deadlines, **kwargs):
+                              durations_matrix, demand_full, **kwargs):
         """
         Create simulation data from the best solution for visualization.
         
@@ -120,7 +117,7 @@ class EvacuationAlgorithm(ABC):
         """
         return visualization.simulate_solution_with_timeline(
             best_solution, buses_count, bus_capacity, depots, facilities, 
-            n_depots, durations_matrix, demand_full, deadlines, **kwargs
+            n_depots, durations_matrix, demand_full, **kwargs
         )
 
     @staticmethod
@@ -203,7 +200,6 @@ def algorithm_function_template(
     n_depots = problem_data['n_depots']
     n_facilities = problem_data['n_facilities']
     demand_full = problem_data['demand_full']
-    deadlines = problem_data['deadlines']
     
     # 2. Algorithm implementation would go here
     # best_solution = ...
@@ -216,7 +212,7 @@ def algorithm_function_template(
     # 3. Create simulation data
     simulation_data = EvacuationAlgorithm.create_simulation_data(
         best_solution, buses_count, bus_capacity, depots, facilities,
-        n_depots, durations_matrix, demand_full, deadlines
+        n_depots, durations_matrix, demand_full
     )
     
     # 4. Create solution summary for logging
