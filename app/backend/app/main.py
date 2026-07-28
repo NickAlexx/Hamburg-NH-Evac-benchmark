@@ -70,6 +70,15 @@ class OptimizationPayload(BaseModel):
     buses_count: int = Field(3, description="Number of buses to use for homogeneous fleet.", gt=0)
     bus_capacity: int = Field(80, description="Capacity of each bus for homogeneous fleet.", gt=0)
     time_limit_seconds: int = Field(30, description="Maximum runtime for the algorithm in seconds.", gt=0)
+    budget_mode: Literal["strict", "legacy_results"] = Field(
+        "strict",
+        description="Runtime protocol. strict includes solver initialization; legacy_results reproduces the boundary-based protocol used by the stored published results.",
+    )
+    postprocess_reserve_seconds: float = Field(
+        0.25,
+        description="Seconds reserved for result construction in strict mode.",
+        ge=0,
+    )
     
     # NEW: Heterogeneous fleet definition
     vehicles: Optional[List[Vehicle]] = Field(None, description="List of custom vehicles. If provided, overrides buses_count and bus_capacity.")
@@ -108,6 +117,8 @@ class OptimizationPayload(BaseModel):
                 "buses_count": 3,
                 "bus_capacity": 80,
                 "time_limit_seconds": 60,
+                "budget_mode": "strict",
+                "postprocess_reserve_seconds": 0.25,
                 "vehicles": [
                     {"capacity": 100, "start_depot": 0},
                     {"capacity": 50, "start_depot": 0},
@@ -225,6 +236,8 @@ def _run_optimization_payload(payload: OptimizationPayload) -> dict[str, Any]:
             population_size=payload.population_size,
             generations=generations_limit,
             time_limit_seconds=payload.time_limit_seconds,
+            budget_mode=payload.budget_mode,
+            postprocess_reserve_seconds=payload.postprocess_reserve_seconds,
             use_local_search=use_local_search,
             crossover_rate=payload.crossover_rate,
             mutation_rate=payload.mutation_rate,
@@ -260,6 +273,8 @@ def _run_optimization_payload(payload: OptimizationPayload) -> dict[str, Any]:
             bus_capacity=payload.bus_capacity,
             vehicles=vehicles_list,
             time_limit_seconds=payload.time_limit_seconds,
+            budget_mode=payload.budget_mode,
+            postprocess_reserve_seconds=payload.postprocess_reserve_seconds,
             default_evac_center_coords=payload.default_evac_center_coords,
             buffer_meters=payload.buffer_meters,
             start_to_node_seconds=start_to_node_seconds,
@@ -447,6 +462,8 @@ def run_optimization(background_tasks: BackgroundTasks, payload: OptimizationPay
                 population_size=payload.population_size,
                 generations=generations_limit,
                 time_limit_seconds=payload.time_limit_seconds,
+                budget_mode=payload.budget_mode,
+                postprocess_reserve_seconds=payload.postprocess_reserve_seconds,
                 use_local_search=use_local_search,
                 crossover_rate=payload.crossover_rate,
                 mutation_rate=payload.mutation_rate,
@@ -483,6 +500,8 @@ def run_optimization(background_tasks: BackgroundTasks, payload: OptimizationPay
                 bus_capacity=payload.bus_capacity,
                 vehicles=vehicles_list,
                 time_limit_seconds=payload.time_limit_seconds,
+                budget_mode=payload.budget_mode,
+                postprocess_reserve_seconds=payload.postprocess_reserve_seconds,
                 default_evac_center_coords=payload.default_evac_center_coords,
                 buffer_meters=payload.buffer_meters,
                 start_to_node_seconds=start_to_node_seconds,

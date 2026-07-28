@@ -18,6 +18,7 @@ from . import visualization
 from ..logging_utils import log_evacuation_run, log_generation_metrics
 from .metrics import compute_solution_metrics, _simulate_and_get_timings
 from .local_search import MemeticImprover
+from .runtime_budget import RuntimeBudget
 
 
 class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
@@ -52,8 +53,8 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
         **algorithm_specific_params
     ) -> AlgorithmResult:
 
-        # Wall-clock start for the whole run (init + optimization + post)
-        run_start_wall = time.time()
+        # Monotonic start for the whole solver run.
+        run_start_wall = time.monotonic()
 
         population_size = algorithm_specific_params.get('population_size', 50)
         generations = algorithm_specific_params.get('generations', 100)
@@ -80,6 +81,14 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
         time_limit_seconds = algorithm_specific_params.get('time_limit_seconds', None)
         if isinstance(time_limit_seconds, (int, float)) and time_limit_seconds <= 0:
             time_limit_seconds = None
+        budget = RuntimeBudget(
+            limit_seconds=time_limit_seconds,
+            mode=algorithm_specific_params.get("budget_mode", "strict"),
+            postprocess_reserve_seconds=float(
+                algorithm_specific_params.get("postprocess_reserve_seconds", 0.25)
+            ),
+            run_started_at=run_start_wall,
+        )
 
         # Allow experiment to toggle generation awareness of memetic
         ls_gen_aware = bool(algorithm_specific_params.get("ls_gen_aware", True))
@@ -195,17 +204,28 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             n_depots, pickup_nodes, max_trips_per_bus, max_stops_per_trip,
             durations_matrix, demand_full, deadlines,
             default_evac_center_coords=default_evac_center_coords,
-            buffer_meters=buffer_meters, precomputed_problem_data=problem_data
+            buffer_meters=buffer_meters,
+            precomputed_problem_data=problem_data,
+            deadline=budget.deadline if budget.is_strict else None,
         )
 
-        fitness_values = [
-            self._evaluate_fitness(
+        evaluated_population = []
+        fitness_values = []
+        for individual in population:
+            # Always evaluate at least one incumbent, even when initialization
+            # consumed an exceptionally short strict budget.
+            if budget.is_strict and fitness_values and budget.expired():
+                break
+            fitness_values.append(self._evaluate_fitness(
                 individual, buses_count, bus_capacity, depots, facilities,
                 n_depots, durations_matrix, demand_full, deadlines,
                 penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor
-            )
-            for individual in population
-        ]
+            ))
+            evaluated_population.append(individual)
+        population = evaluated_population
+
+        if not population:
+            raise RuntimeError("Unable to construct an initial feasible incumbent.")
 
         best_individual_idx = fitness_values.index(min(fitness_values))
         best_individual = population[best_individual_idx]
@@ -237,6 +257,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             "postprocessing_runtime": None,
             "total_runtime": None,
             "collect_operator_telemetry": bool(collect_operator_telemetry),
+            **budget.metadata(),
         }
 
         # Gen 0 metrics
@@ -247,11 +268,10 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             algorithm_stats
         )
 
-        # IMPORTANT:
-        # - start_time_wall is the reference for the optimization loop time budget
-        # - preprocessing happens before this (population init, initial fitness, gen0 metrics)
-        start_time_wall = time.time()
-        algorithm_stats["preprocessing_runtime"] = float(start_time_wall - run_start_wall)
+        # In legacy_results mode the budget starts here. In strict mode the
+        # deadline was fixed at solver entry and initialization is included.
+        start_time_wall = budget.start_search()
+        algorithm_stats["preprocessing_runtime"] = budget.preprocessing_runtime()
 
         # --- METRICS SCOREBOARD INIT ---
         if collect_operator_telemetry:
@@ -294,7 +314,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                     print(f"⚠️ Failed to init CSV: {e}")
         import time as _t
         for generation in range(generations):
-            if (time_limit_seconds is not None) and ((time.time() - start_time_wall) >= time_limit_seconds):
+            if budget.expired():
                 algorithm_stats["stopped_by_time_limit"] = True
                 print(f"⏱️ Time limit ({time_limit_seconds:.1f}s) reached; stopping before generation {generation}.")
                 break
@@ -306,6 +326,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
 
             gen_wall_start = _t.perf_counter()
             gen_ls_time = 0.0
+            generation_incomplete = False
 
             new_population = []
 
@@ -322,12 +343,18 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             )
             context = {
                 "generation": generation,
-                "algorithm_start_time": start_time_wall,       # Global start time
-                "time_limit_seconds": time_limit_seconds       # Total budget
+                "algorithm_start_time": start_time_wall,
+                "time_limit_seconds": time_limit_seconds,
+                "deadline_monotonic": (
+                    budget.deadline if budget.is_strict else None
+                ),
             } if use_local_search else None
 
             # Elites
             for rank, idx in enumerate(elite_indices):
+                if budget.is_strict and budget.expired():
+                    generation_incomplete = True
+                    break
                 elite = copy.deepcopy(population[idx])
                 if apply_ls_this_gen and rank < ls_policy["max_elites_to_polish"]:
                     t0 = _t.perf_counter()
@@ -340,8 +367,15 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                             operator_scoreboard[k] = operator_scoreboard.get(k, 0.0) + v
                 new_population.append(elite)
 
+            if generation_incomplete:
+                algorithm_stats["stopped_by_time_limit"] = True
+                break
+
             # Offspring Loop
             while len(new_population) < population_size:
+                if budget.is_strict and budget.expired():
+                    generation_incomplete = True
+                    break
                 parent1 = self._tournament_selection(population, fitness_values, tournament_size)
                 parent2 = self._tournament_selection(population, fitness_values, tournament_size)
                 
@@ -411,6 +445,10 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                 offspring1 = process_mutation(offspring1)
                 offspring2 = process_mutation(offspring2)
 
+                if budget.is_strict and budget.expired():
+                    generation_incomplete = True
+                    break
+
                 # --- Local Search ---
                 if apply_ls_this_gen and random.random() < ls_policy["offspring_probability"]:
                     t0 = _t.perf_counter()
@@ -432,16 +470,29 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                 if len(new_population) < population_size:
                     new_population.append(offspring2)
 
-            population = new_population
+            if generation_incomplete:
+                algorithm_stats["stopped_by_time_limit"] = True
+                break
 
-            fitness_values = [
-                self._evaluate_fitness(
+            new_fitness_values = []
+            for individual in new_population:
+                if budget.is_strict and budget.expired():
+                    generation_incomplete = True
+                    break
+                new_fitness_values.append(self._evaluate_fitness(
                     individual, buses_count, bus_capacity, depots, facilities,
                     n_depots, durations_matrix, demand_full, deadlines,
                     penalty_factor, lateness_penalty_factor, latest_evacuation_penalty_factor
-                )
-                for individual in population
-            ]
+                ))
+
+            if budget.is_strict and budget.expired():
+                generation_incomplete = True
+            if generation_incomplete:
+                algorithm_stats["stopped_by_time_limit"] = True
+                break
+
+            population = new_population
+            fitness_values = new_fitness_values
 
             current_best_idx = fitness_values.index(min(fitness_values))
             if fitness_values[current_best_idx] < best_fitness:
@@ -516,8 +567,10 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                     pass
 
 
-        optimization_end_time = time.time()
-        algorithm_stats["optimization_runtime"] = optimization_end_time - start_time_wall
+        optimization_end_time = budget.now()
+        algorithm_stats["optimization_runtime"] = budget.search_runtime(
+            optimization_end_time
+        )
 
         best_solution = self._individual_to_solution(
             best_individual, buses_count, depots, n_depots
@@ -564,6 +617,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
         result["stopped_by_time_limit"] = bool(algorithm_stats.get("stopped_by_time_limit", False))
         result["stopped_by_early_stopping"] = bool(algorithm_stats.get("stopped_by_early_stopping", False))
         result["time_limit_seconds"] = time_limit_seconds
+        result["budget_mode"] = budget.mode
 
         # compute and attach metrics (minutes/person-minutes)
         result["metrics"] = compute_solution_metrics(
@@ -583,8 +637,8 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             **self._service_params,
         )
 
-        run_end_wall = time.time()
-        algorithm_stats["total_runtime"] = float(run_end_wall - run_start_wall)
+        run_end_wall = budget.now()
+        algorithm_stats["total_runtime"] = budget.total_runtime(run_end_wall)
         if (
             algorithm_stats.get("preprocessing_runtime") is not None
             and algorithm_stats.get("optimization_runtime") is not None
@@ -618,6 +672,7 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             "use_local_search": use_local_search,
             "collect_operator_telemetry": bool(collect_operator_telemetry),
             "time_limit_seconds": time_limit_seconds,
+            "budget_mode": budget.mode,
             "early_stopping_generations": early_stopping_generations,
             **self._service_params,
         }
@@ -632,9 +687,25 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             algorithm_stats=algorithm_stats
         )
 
-        
-        self._print_detailed_debug_info(best_solution, n_depots, durations_matrix)
-        
+        if not budget.is_strict:
+            self._print_detailed_debug_info(best_solution, n_depots, durations_matrix)
+
+        final_end = budget.now()
+        algorithm_stats["total_runtime"] = budget.total_runtime(final_end)
+        algorithm_stats["postprocessing_runtime"] = max(
+            0.0,
+            algorithm_stats["total_runtime"]
+            - algorithm_stats["preprocessing_runtime"]
+            - algorithm_stats["optimization_runtime"],
+        )
+        algorithm_stats["budget_overshoot_seconds"] = budget.overshoot_seconds(final_end)
+        algorithm_stats["budget_adhered"] = (
+            not budget.is_strict
+            or algorithm_stats["budget_overshoot_seconds"] <= 1e-9
+        )
+        result["optimization_runtime"] = algorithm_stats["optimization_runtime"]
+        result["total_runtime"] = algorithm_stats["total_runtime"]
+
         return result
 
     # ---------- fleet normalization ----------
@@ -726,11 +797,15 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
                                depots, facilities, n_depots, pickup_nodes,
                                max_trips_per_bus, max_stops_per_trip, durations_matrix,
                                demand_full, deadlines,
-                               default_evac_center_coords=None, buffer_meters=None, precomputed_problem_data=None):
+                               default_evac_center_coords=None, buffer_meters=None,
+                               precomputed_problem_data=None, deadline=None):
 
         from ..evacuation.baselines.pendelverkehr import PendelverkehrShuttleAlgorithm
 
         population = []
+
+        def deadline_reached():
+            return deadline is not None and time.monotonic() >= float(deadline)
 
         # --- Hybrid Seeding Strategy ---
         print("🌱 Seeding initial population with Pendelverkehr heuristic...")
@@ -769,14 +844,20 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             # 3. Add mutated clones to introduce diversity around the good seed
             print(f"🧬 Creating {num_clones} mutated clones of the seed...")
             for _ in range(num_clones):
+                if deadline_reached():
+                    break
                 clone = copy.deepcopy(pendel_individual)
                 # Apply 3-5 rounds of mutation to create significant variation
                 for _ in range(random.randint(3, 5)):
+                    if deadline_reached():
+                        break
                     # FIX: Unpack the tuple (individual, op_name)
                     # We only care about the individual here
                     clone, _ = self._mutate(clone, buses_count, bus_capacity, depots, facilities, n_depots,
                                          pickup_nodes, durations_matrix, demand_full, deadlines)
-                
+
+                if deadline_reached():
+                    break
                 # Repair the heavily mutated clone to ensure it's valid
                 repaired_clone = self._repair(clone, buses_count, bus_capacity, depots, facilities, n_depots,
                                               pickup_nodes, durations_matrix, demand_full, deadlines)
@@ -796,6 +877,8 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
         origin_by_bus = self._origin_by_bus or [{"kind": "depot", "index": 0} for _ in range(buses_count)]
 
         for _ in range(num_to_fill):
+            if deadline_reached():
+                break
             individual = [[] for _ in range(buses_count)]
             depot_loads = [0] * n_depots
             remaining_people = {node: demand_full[node] for node in pickup_nodes}
@@ -841,6 +924,23 @@ class RevisionaryEvolutionaryAlgorithm(EvacuationAlgorithm):
             individual = self._repair(individual, buses_count, bus_capacity, depots, facilities, n_depots,
                                       pickup_nodes, durations_matrix, demand_full, deadlines)
             population.append(individual)
+
+        if not population:
+            # A strict budget must still return a complete incumbent. Repairing
+            # the empty schedule is the cheapest deterministic fallback.
+            fallback = self._repair(
+                [[] for _ in range(buses_count)],
+                buses_count,
+                bus_capacity,
+                depots,
+                facilities,
+                n_depots,
+                pickup_nodes,
+                durations_matrix,
+                demand_full,
+                deadlines,
+            )
+            population.append(fallback)
 
         return population
 

@@ -12,7 +12,7 @@ The NH-Evac-VRP addresses the operational challenge of evacuating mobility-impai
 - **Open-ended shuttle topology**: Vehicles chain trips without returning to a central depot
 - **Heterogeneous fleets**: Mixed specialized medical transport and requisitioned buses
 
-All optimization methods operate under a strict **300-second (5-minute) planning budget** reflecting operational time pressure.
+New optimization runs default to a strict **300-second (5-minute) end-to-end solver budget**. The committed paper results used the separately documented `legacy_results` boundary-based protocol.
 
 ---
 
@@ -34,6 +34,7 @@ All optimization methods operate under a strict **300-second (5-minute) planning
   - [Genetic Algorithm (GA)](#genetic-algorithm-ga)
   - [Memetic Algorithm (MA)](#memetic-algorithm-ma)
   - [Adaptive Large Neighborhood Search (ALNS)](#adaptive-large-neighborhood-search-alns)
+- [Runtime Protocol](#runtime-protocol)
 - [Data Layout](#data-layout)
 - [App Setup](#app-setup-frontend--backend)
 - [Evaluation](#evaluation)
@@ -269,6 +270,35 @@ ALNS iteratively destroys and repairs solutions with adaptive operator selection
 **Greedy:** Inserts each removed request at the lowest-cost position considering travel detour, service time, and makespan penalty.
 
 **Regret-2 / Regret-3:** Prioritizes inserting requests with the largest difference between best and second/third-best insertion options to prevent costly forced insertions later.
+
+---
+
+## Runtime Protocol
+
+The experiment runner exposes two explicit runtime protocols:
+
+- `strict` (default for new runs) starts timing at solver entry, includes initialization, reserves a small postprocessing allowance, checks the deadline within generations/iterations and local search, and returns the last fully evaluated incumbent.
+- `legacy_results` reproduces the protocol used by the committed results in `benchmark_data/solutions/main_results`: the 300-second clock covers the optimization loop, the limit is checked at generation/iteration boundaries, and an active work unit is allowed to finish. Initialization and result construction are measured separately.
+
+Run a new strict experiment suite with:
+
+```bash
+python benchmark_scripts/run_paper_experiments.py --budget-mode strict
+```
+
+Use the compatibility mode only when reproducing the published execution protocol:
+
+```bash
+python benchmark_scripts/run_paper_experiments.py --budget-mode legacy_results
+```
+
+Each solver result records `budget_mode`, budget scope, preprocessing, optimization and total runtime, plus strict-budget adherence and overshoot. The runner refuses to mix protocols when resuming a directory and does not save a strict run that reports an overrun. Existing published result files are retained unchanged.
+
+The deterministic budget and solver smoke tests do not run the benchmark suite:
+
+```bash
+python -m unittest discover -s tests -v
+```
 
 ---
 

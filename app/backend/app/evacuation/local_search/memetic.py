@@ -82,6 +82,15 @@ class MemeticImprover:
     # ---------------------------
 
     def improve(self, individual, ls_params: Dict[str, Any], *, context: Optional[Dict[str, Any]] = None):
+        context = context or {}
+        deadline = context.get("deadline_monotonic")
+        if deadline is not None and time.monotonic() >= float(deadline):
+            self.last_run_stats = {
+                "time_limit_s": 0.0,
+                "iterations": 0,
+                "deadline_reached": True,
+            }
+            return individual
         return self._memetic_improve(
             copy.deepcopy(individual),
             self.buses_count,
@@ -97,7 +106,7 @@ class MemeticImprover:
             self.lateness_penalty_factor,
             self.latest_evacuation_penalty_factor,
             ls_params,
-            context=context or {},
+            context=context,
         )
 
     # ---------------------------
@@ -148,13 +157,14 @@ class MemeticImprover:
         # 2. Retrieve timing context
         algo_start = context.get("algorithm_start_time")
         algo_limit = context.get("time_limit_seconds")
+        global_deadline = context.get("deadline_monotonic")
         
         # 3. Calculate Progress (0.0 to 1.0)
         progress = 0.5 # Default middle-game
         
         if algo_start is not None and algo_limit is not None and algo_limit > 0:
             # Time-based progress
-            elapsed = time.time() - float(algo_start)
+            elapsed = time.monotonic() - float(algo_start)
             progress = min(1.0, max(0.0, elapsed / float(algo_limit)))
         else:
             # Fallback to Generation-based progress (assuming standard 100 gens)
@@ -334,10 +344,13 @@ class MemeticImprover:
             scored.sort(reverse=True)
             return [k for _, _, k in scored]
 
-        start = time.time()
+        start = time.monotonic()
+        local_deadline = start + max(0.0, time_limit_s)
+        if global_deadline is not None:
+            local_deadline = min(local_deadline, float(global_deadline))
         it = 0
 
-        while it < max_it and (time.time() - start) < time_limit_s:
+        while it < max_it and time.monotonic() < local_deadline:
             it += 1
             improved_any = False
 
@@ -345,7 +358,7 @@ class MemeticImprover:
             if not ordered_ops:
                 break
 
-            remaining = time_limit_s - (time.time() - start)
+            remaining = local_deadline - time.monotonic()
             if remaining <= 0:
                 break
 
@@ -357,15 +370,18 @@ class MemeticImprover:
                 if disabled[k]:
                     continue
 
-                slice_deadline = time.time() + per_op_slice[k]
+                slice_deadline = min(
+                    local_deadline,
+                    time.monotonic() + per_op_slice[k],
+                )
                 local_tries = 0
 
-                while time.time() < slice_deadline and local_tries < micro_batch_calls:
+                while time.monotonic() < slice_deadline and local_tries < micro_batch_calls:
                     local_tries += 1
-                    t0 = time.time()
+                    t0 = time.monotonic()
                     before = best_cost
                     ok = ops[k]()
-                    dt = time.time() - t0
+                    dt = time.monotonic() - t0
                     acc_time[k] += dt
 
                     if ok:
@@ -397,13 +413,18 @@ class MemeticImprover:
                         disabled[k] = True
                         break
 
-                    if (time.time() - start) >= time_limit_s:
+                    if time.monotonic() >= local_deadline:
                         break
 
-                if (time.time() - start) >= time_limit_s:
+                if time.monotonic() >= local_deadline:
                     break
 
-            if use_alns_shake and not improved_any and (it % shake_every == 0) and (time.time() - start) < time_limit_s:
+            if (
+                use_alns_shake
+                and not improved_any
+                and (it % shake_every == 0)
+                and time.monotonic() < local_deadline
+            ):
                 self._alns_shake(
                     best,
                     buses_count,

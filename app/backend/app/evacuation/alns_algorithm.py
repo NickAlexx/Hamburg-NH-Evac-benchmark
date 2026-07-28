@@ -8,6 +8,8 @@ import math
 import random
 import time
 
+from .runtime_budget import RuntimeBudget
+
 try:
     # Same interfaces used by ea.py
     from .algorithm_interface import EvacuationAlgorithm, AlgorithmResult  # type: ignore
@@ -72,7 +74,7 @@ def _haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return R * c
 
 def _now() -> float:
-    return time.time()
+    return time.monotonic()
 
 
 def _fast_clone_individual(ind: Individual) -> Individual:
@@ -222,6 +224,8 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         log_every_seconds: Optional[float] = None,
         alns_config: Optional[Dict[str, Any]] = None,
         seed: Optional[int] = None,
+        budget_mode: str = "strict",
+        postprocess_reserve_seconds: float = 0.25,
         **_
     ) -> AlgorithmResult:
         if seed is not None:
@@ -240,6 +244,13 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             cfg.log_every_iterations = int(log_every_iterations)
         if log_every_seconds is not None:
             cfg.log_every_seconds = float(log_every_seconds)
+
+        budget = RuntimeBudget(
+            limit_seconds=cfg.time_limit_seconds,
+            mode=budget_mode,
+            postprocess_reserve_seconds=postprocess_reserve_seconds,
+            run_started_at=run_start,
+        )
 
         self._service_params = {
             "use_dynamic_service_time": bool(use_dynamic_service_time),
@@ -303,6 +314,7 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             facilities=facilities,
             precomputed_problem_data=problem_data,
             normalized_vehicles=normalized_vehicles,
+            deadline=budget.deadline if budget.is_strict else None,
         )
         current = self._repair(
             current, buses_count, bus_capacity,
@@ -376,6 +388,7 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             durations_matrix=durations_matrix,
             demand_full=demand_full,
             deadlines=deadlines,
+            deadline=budget.deadline if budget.is_strict else None,
         )
 
         # Telemetry
@@ -403,10 +416,11 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             "optimization_runtime": None,
             "postprocessing_runtime": None,
             "total_runtime": None,
+            **budget.metadata(),
         }
 
-        start_time = _now()
-        stats["preprocessing_runtime"] = float(start_time - run_start)
+        start_time = budget.start_search()
+        stats["preprocessing_runtime"] = budget.preprocessing_runtime()
         last_log_time = start_time
         last_best_time = start_time
         last_reheat_time = start_time
@@ -427,8 +441,12 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
 
         # ------------------ main loop ------------------
         for it in range(1, cfg.max_iterations + 1):
-            elapsed = _now() - start_time
-            if elapsed >= effective_time_limit:
+            elapsed = (
+                budget.total_runtime()
+                if budget.is_strict
+                else budget.search_runtime()
+            )
+            if budget.expired():
                 stats["stopped_by_time_limit"] = True
                 break
             if (elapsed - (last_best_time - start_time)) >= cfg.stall_seconds:
@@ -519,6 +537,12 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                 latest_evacuation_penalty_factor=self._latest_evacuation_penalty_factor,
             )
 
+            # A strict run only accepts candidates whose complete evaluation
+            # finished before the deadline.
+            if budget.is_strict and budget.expired():
+                stats["stopped_by_time_limit"] = True
+                break
+
             # SA acceptance
             delta = cand_cost - current_cost
             accept = False
@@ -557,6 +581,9 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                                 "generation": int(it),
                                 "algorithm_start_time": start_time,
                                 "time_limit_seconds": None if math.isinf(effective_time_limit) else float(effective_time_limit),
+                                "deadline_monotonic": (
+                                    budget.deadline if budget.is_strict else None
+                                ),
                             },
                             buses_count=buses_count,
                             bus_capacity=bus_capacity,
@@ -575,6 +602,13 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                             for k, v in ls_stats.items():
                                 operator_scoreboard[k] += float(v)
                             operator_scoreboard["LS:memetic_polish"] += float(polish_gain)
+
+                # A local-search call may finish after the strict deadline.
+                # Discard that in-progress iteration and retain the previously
+                # completed incumbent.
+                if budget.is_strict and budget.expired():
+                    stats["stopped_by_time_limit"] = True
+                    break
 
                 if cand_cost < best_cost:
                     operator_scoreboard[f"D:{d_name}"] += float(best_cost - cand_cost)
@@ -637,8 +671,8 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
                     deadlines=deadlines,
                 )
 
-        opt_end = _now()
-        stats["optimization_runtime"] = float(opt_end - start_time)
+        opt_end = budget.now()
+        stats["optimization_runtime"] = budget.search_runtime(opt_end)
 
         stats["final_destroy_weights"] = dict(w_destroy)
         stats["final_repair_weights"] = dict(w_repair)
@@ -676,6 +710,7 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             "vehicles": normalized_vehicles,
             "algorithm_stats": stats,
             "time_limit_seconds": None if math.isinf(effective_time_limit) else float(effective_time_limit),
+            "budget_mode": budget.mode,
         })
 
         if compute_solution_metrics is not None:
@@ -699,22 +734,31 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
             except Exception:
                 pass
 
-        run_end = _now()
-        stats["total_runtime"] = float(run_end - run_start)
-        if stats.get("preprocessing_runtime") is not None and stats.get("optimization_runtime") is not None:
-            stats["postprocessing_runtime"] = float(
-                stats["total_runtime"] - stats["preprocessing_runtime"] - stats["optimization_runtime"]
-            )
+        if not budget.is_strict:
+            print("\nDISTANCE MATRIX (Minutes)")
+            print("-" * 60)
+            self._print_distance_matrix(durations_matrix, n_depots)
 
-        print("\nDISTANCE MATRIX (Minutes)")
-        print("-" * 60)
-        self._print_distance_matrix(durations_matrix, n_depots)
+            print("\nFIRST LEG MATRIX (Minutes) [Origins -> Nodes]")
+            print("-" * 60)
+            self._print_first_leg_matrix(best_solution, n_depots, durations_matrix)
 
-        print("\nFIRST LEG MATRIX (Minutes) [Origins -> Nodes]")
-        print("-" * 60)
-        self._print_first_leg_matrix(best_solution, n_depots, durations_matrix)
+            self._print_final_solution(best_solution, n_depots, durations_matrix)
 
-        self._print_final_solution(best_solution, n_depots, durations_matrix)
+        run_end = budget.now()
+        stats["total_runtime"] = budget.total_runtime(run_end)
+        stats["postprocessing_runtime"] = max(
+            0.0,
+            stats["total_runtime"]
+            - stats["preprocessing_runtime"]
+            - stats["optimization_runtime"],
+        )
+        stats["budget_overshoot_seconds"] = budget.overshoot_seconds(run_end)
+        stats["budget_adhered"] = (
+            not budget.is_strict or stats["budget_overshoot_seconds"] <= 1e-9
+        )
+        result["optimization_runtime"] = stats["optimization_runtime"]
+        result["total_runtime"] = stats["total_runtime"]
 
         return result
 
@@ -1394,6 +1438,7 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         facilities: List[Dict[str, Any]],
         precomputed_problem_data: Dict[str, Any],
         normalized_vehicles: List[Dict[str, Any]],
+        deadline: Optional[float] = None,
     ) -> Individual:
         # 1) Seed from dispatcher baseline (strong starting point, used by EA population seeding)
         indiv: Optional[Individual] = None
@@ -1437,6 +1482,8 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         if cfg.initial_shake_cycles > 0:
             current = indiv
             for _ in range(int(cfg.initial_shake_cycles)):
+                if deadline is not None and _now() >= float(deadline):
+                    break
                 total_stops = self._count_total_stops(current)
                 if total_stops <= 0:
                     break
@@ -1593,6 +1640,7 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         durations_matrix: Dict[Tuple[int, int], float],
         demand_full: Dict[int, int],
         deadlines: Dict[int, float],
+        deadline: Optional[float] = None,
     ) -> float:
         """
         Choose T0 so that a typical uphill move is accepted with probability ~p0.
@@ -1613,6 +1661,8 @@ class ALNSEvacuationAlgorithm(EvacuationAlgorithm):
         r_keys = list(repair_ops.keys())
 
         for _ in range(int(cfg.sa_samples_for_T0)):
+            if deadline is not None and _now() >= float(deadline):
+                break
             d_name = random.choice(d_keys)
             r_name = random.choice(r_keys)
             partial, removed = destroy_ops[d_name](current, q=q_small, buses_count=buses_count, n_depots=n_depots, durations_matrix=durations_matrix)

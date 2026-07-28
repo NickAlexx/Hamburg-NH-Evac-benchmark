@@ -8,20 +8,28 @@ import random
 from datetime import datetime
 from pathlib import Path
 
-# Add the backend root to the Python path
+# Make repository-qualified imports work both as a script and as a module.
 repo_root = Path(__file__).resolve().parent.parent
-backend_dir = repo_root / "app" / "backend"
-sys.path.append(str(backend_dir))
-current_dir = backend_dir
+if str(repo_root) not in sys.path:
+    sys.path.insert(0, str(repo_root))
 import numpy as np
 
 # Import algorithms and scenarios
-from app.evacuation.ea import run_evolutionary_algorithm, RevisionaryEvolutionaryAlgorithm
-from app.evacuation.alns_algorithm import run_alns_algorithm
-from app.evacuation.baselines.pendelverkehr import PendelverkehrShuttleAlgorithm
-from app.evacuation.scenarios import ALL_SCENARIOS
+from app.backend.app.evacuation.ea import (
+    RevisionaryEvolutionaryAlgorithm,
+    run_evolutionary_algorithm,
+)
+from app.backend.app.evacuation.alns_algorithm import run_alns_algorithm
+from app.backend.app.evacuation.baselines.pendelverkehr import (
+    PendelverkehrShuttleAlgorithm,
+)
+from app.backend.app.evacuation.runtime_budget import (
+    LEGACY_RESULTS_BUDGET_MODE,
+    STRICT_BUDGET_MODE,
+)
+from app.backend.app.evacuation.scenarios import ALL_SCENARIOS
 from openrouteservice import Client as ORSClient
-from app.config import ORS_KEY
+from app.backend.app.config import ORS_KEY
 
 # --- EXPERIMENT CONFIGURATION ---
 NUM_RUNS = 30
@@ -266,18 +274,56 @@ def save_summary_file(output_dir, all_results):
     except Exception as e:
         print(f"     Warning: Failed to save summary file: {e}")
 
-# --- MAIN ---
-def main():
+def _recorded_budget_mode(result):
+    """Return the explicit mode, or legacy for pre-metadata result files."""
+    stats = result.get("algorithm_stats", {}) if isinstance(result, dict) else {}
+    return (
+        result.get("budget_mode")
+        or stats.get("budget_mode")
+        or LEGACY_RESULTS_BUDGET_MODE
+    )
+
+def _require_matching_budget_mode(result, requested_mode, result_path):
+    existing_mode = _recorded_budget_mode(result)
+    if existing_mode != requested_mode:
+        raise RuntimeError(
+            f"{result_path} uses budget_mode={existing_mode!r}, "
+            f"but this run requested {requested_mode!r}. "
+            "Use a new output directory instead of mixing protocols."
+        )
+
+def build_argument_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("--resume", type=str, default=None)
-    args = parser.parse_args()
+    parser.add_argument(
+        "--budget-mode",
+        choices=(STRICT_BUDGET_MODE, LEGACY_RESULTS_BUDGET_MODE),
+        default=STRICT_BUDGET_MODE,
+        help=(
+            "strict includes solver initialization and returns the last fully "
+            "evaluated incumbent before the deadline; legacy_results "
+            "reproduces the non-preemptive search-loop protocol used by the "
+            "stored published results"
+        ),
+    )
+    parser.add_argument(
+        "--postprocess-reserve-seconds",
+        type=float,
+        default=0.25,
+        help="Time reserved for solver result construction in strict mode.",
+    )
+    return parser
+
+# --- MAIN ---
+def main():
+    args = build_argument_parser().parse_args()
 
     if args.resume:
         output_base_dir = Path(args.resume)
         if not output_base_dir.exists(): sys.exit(f" Error: {output_base_dir} not found")
         print(f" Resuming: {output_base_dir}")
     else:
-        output_base_dir = BENCHMARK_DATA_DIR / "solutions" / f"paper_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        output_base_dir = BENCHMARK_DATA_DIR / "solutions" / f"benchmark_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
         os.makedirs(output_base_dir, exist_ok=True)
         print(f" Starting: {output_base_dir}")
 
@@ -303,7 +349,10 @@ def main():
 
     data_loader = RevisionaryEvolutionaryAlgorithm()
 
-    print(f"Runs: {NUM_RUNS} | Time Limit: {TIME_LIMIT_SECONDS}s")
+    print(
+        f"Runs: {NUM_RUNS} | Time Limit: {TIME_LIMIT_SECONDS}s "
+        f"| Budget Mode: {args.budget_mode}"
+    )
 
     for s_idx, (s_key, s_conf) in enumerate(ALL_SCENARIOS.items()):
         print(f"\n\n---  SCENARIO: {s_conf['name']} ---")
@@ -458,7 +507,17 @@ def main():
                     f_path = run_dir / f"run_{run_num}.json"
                     if f_path.exists():
                         try:
-                            with open(f_path) as f: existing = json.load(f)
+                            with open(f_path) as f:
+                                existing = json.load(f)
+                        except Exception:
+                            existing = None
+
+                        if existing is not None:
+                            _require_matching_budget_mode(
+                                existing,
+                                args.budget_mode,
+                                f_path,
+                            )
                             all_results_summary.append(
                                 extract_run_summary(
                                     existing, s_conf['name'], f_name, a_name, run_num,
@@ -467,7 +526,6 @@ def main():
                             )
                             print(f"        Trial {run_num} SKIPPED")
                             continue
-                        except: pass
 
                     print(f"      ▶  Trial {run_num}/{NUM_RUNS}...", end="", flush=True)
                     seed = None
@@ -492,6 +550,8 @@ def main():
                             "precomputed_problem_data": cached_data,     # <--- PASS DATA
                             "start_to_node_seconds": start_to_node_seconds, # <--- PASS DATA
                             "time_limit_seconds": TIME_LIMIT_SECONDS,
+                            "budget_mode": args.budget_mode,
+                            "postprocess_reserve_seconds": args.postprocess_reserve_seconds,
                             "output_dir": str(run_dir), 
                             **SHARED_EXECUTION_PARAMS,
                             **a_conf["params"]
@@ -501,6 +561,17 @@ def main():
                         result = a_conf["runner"](**params)
                         rt = time.time() - t0
                         stats = result.get("algorithm_stats", {})
+                        if (
+                            args.budget_mode == "strict"
+                            and stats.get("budget_adhered") is not True
+                        ):
+                            overshoot = float(
+                                stats.get("budget_overshoot_seconds", 0.0)
+                            )
+                            raise RuntimeError(
+                                "Strict runtime budget was not met "
+                                f"(overshoot={overshoot:.6f}s); result not saved."
+                            )
                         opt_runtime = (
                             result.get("optimization_runtime")
                             or stats.get("optimization_runtime")

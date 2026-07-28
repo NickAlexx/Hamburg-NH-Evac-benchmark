@@ -26,6 +26,7 @@ import numpy as np
 from ..algorithm_interface import EvacuationAlgorithm, AlgorithmResult
 from .. import visualization
 from ..metrics import compute_solution_metrics, _simulate_and_get_timings
+from ..runtime_budget import RuntimeBudget
 
 
 @dataclass
@@ -167,6 +168,22 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
         **algorithm_specific_params: Any,
     ) -> AlgorithmResult:
 
+        run_started_at = time.monotonic()
+        budget = RuntimeBudget(
+            limit_seconds=algorithm_specific_params.get(
+                "time_limit_seconds",
+                None,
+            ),
+            mode=algorithm_specific_params.get("budget_mode", "strict"),
+            postprocess_reserve_seconds=float(
+                algorithm_specific_params.get(
+                    "postprocess_reserve_seconds",
+                    0.25,
+                )
+            ),
+            run_started_at=run_started_at,
+        )
+
         pendel = PendelParams(
             home_depot=int(algorithm_specific_params.get("home_depot", 0)),
             use_nearest_depot=bool(algorithm_specific_params.get("use_nearest_depot", True)),
@@ -174,8 +191,6 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
             max_rounds=int(algorithm_specific_params.get("max_rounds", 10_000)),
             secondary_stop_threshold=float(algorithm_specific_params.get("secondary_stop_threshold", 0.6)),
         )
-        start_wall = time.time()
-        
         self._service_params = {
             "use_dynamic_service_time": algorithm_specific_params.get('use_dynamic_service_time', False),
             "service_time_base_min": algorithm_specific_params.get('service_time_base_min', 3.0),
@@ -236,6 +251,7 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
         
         bus_available_time = [0.0] * buses_count
         bus_current_location = [v.get('start', {"kind": "depot", "index": pendel.home_depot}) for v in normalized_vehicles]
+        budget.start_search()
 
         def get_travel_time_from_location(location: dict, to_node: int) -> float:
             kind = location.get('kind')
@@ -360,15 +376,26 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
             n_depots, durations_matrix, demand_full, deadlines, fitness=best_fitness
         )
 
+        optimization_ended_at = budget.now()
         algorithm_stats: Dict[str, Any] = {
-            "total_runtime": time.time() - start_wall, "generation_costs": [best_fitness], "best_per_generation": [best_fitness],
+            "preprocessing_runtime": budget.preprocessing_runtime(),
+            "optimization_runtime": budget.search_runtime(optimization_ended_at),
+            "postprocessing_runtime": None,
+            "total_runtime": budget.total_runtime(optimization_ended_at),
+            "generation_costs": [best_fitness], "best_per_generation": [best_fitness],
             "avg_per_generation": [best_fitness], "generation_avg_evacuation_times": [gen_metrics.get("gen_avg_evacuation_time", float("inf"))],
             "generation_latest_evacuation_times": [gen_metrics.get("gen_latest_evacuation_time", float("inf"))],
             "generation_total_people_evacuated": [gen_metrics.get("gen_total_people_evacuated", 0)],
             "generation_evacuation_efficiencies": [gen_metrics.get("gen_evacuation_efficiency", 0.0)],
-            "generation_fitness_std": [0.0], "generation_population_diversity": [1.0], "time_limit_seconds": None,
+            "generation_fitness_std": [0.0], "generation_population_diversity": [1.0],
+            "time_limit_seconds": budget.limit_seconds,
             "stopped_by_time_limit": False,
+            **budget.metadata(),
         }
+        if budget.is_strict:
+            algorithm_stats["stopping_rule"] = (
+                "complete_constructive_plan_or_reject_overrun"
+            )
         
         result = self.create_result_object(
             "pendelverkehr_shuttle", best_fitness, best_solution, simulation_data,
@@ -382,6 +409,8 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
             "vehicles": normalized_vehicles,
         }
         result["algorithm_stats"] = algorithm_stats
+        result["budget_mode"] = budget.mode
+        result["time_limit_seconds"] = budget.limit_seconds
         result["metrics"] = compute_solution_metrics(
             best_solution, buses_count=buses_count, n_depots=n_depots, durations_matrix=durations_matrix,
             demand_full=demand_full, deadlines=deadlines, vehicles=normalized_vehicles, depots=depots, 
@@ -396,7 +425,28 @@ class PendelverkehrShuttleAlgorithm(EvacuationAlgorithm):
             facilities, best_fitness, solution_summary, depots, algorithm_stats=algorithm_stats,
         )
 
-        self._print_final_summary(result)
+        if not budget.is_strict:
+            self._print_final_summary(result)
+
+        run_ended_at = budget.now()
+        algorithm_stats["total_runtime"] = budget.total_runtime(run_ended_at)
+        algorithm_stats["postprocessing_runtime"] = max(
+            0.0,
+            algorithm_stats["total_runtime"]
+            - algorithm_stats["preprocessing_runtime"]
+            - algorithm_stats["optimization_runtime"],
+        )
+        algorithm_stats["budget_overshoot_seconds"] = (
+            budget.overshoot_seconds(run_ended_at)
+        )
+        algorithm_stats["budget_adhered"] = (
+            not budget.is_strict
+            or algorithm_stats["budget_overshoot_seconds"] <= 1e-9
+        )
+        result["optimization_runtime"] = algorithm_stats[
+            "optimization_runtime"
+        ]
+        result["total_runtime"] = algorithm_stats["total_runtime"]
         return result
 
     def _calculate_first_leg_minutes(self, bus_idx: int, first_node: int, origin: dict, n_depots: int, durations_matrix: dict) -> float:
